@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3275012640889656252}
-  m_Layer: 10
+  m_Layer: 9
   m_Name: RoadBlock_Straight_high
   m_TagString: wall
   m_Icon: {fileID: 0}
@@ -44,7 +44,7 @@ GameObject:
   - component: {fileID: 2934920217431681709}
   - component: {fileID: 1850105066427379247}
   - component: {fileID: 2622615293019616712}
-  m_Layer: 10
+  m_Layer: 9
   m_Name: RoadStraight
   m_TagString: wall
   m_Icon: {fileID: 0}
@@ -139,7 +139,7 @@ GameObject:
   - component: {fileID: 7685483778891599509}
   - component: {fileID: 8667650105100301992}
   - component: {fileID: 5185683835202464116}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Cube
   m_TagString: checkpoint
   m_Icon: {fileID: 0}

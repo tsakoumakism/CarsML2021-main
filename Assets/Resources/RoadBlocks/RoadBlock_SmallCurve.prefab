@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1348618262929221621}
   - component: {fileID: 971051601340918796}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: RoadBlock_SmallCurve
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -60,7 +60,7 @@ GameObject:
   - component: {fileID: 4040547434664014680}
   - component: {fileID: 1634454670758212652}
   - component: {fileID: 3169150846207437491}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Cube
   m_TagString: checkpoint
   m_Icon: {fileID: 0}
@@ -167,7 +167,7 @@ GameObject:
   - component: {fileID: 8106809943621357099}
   - component: {fileID: 3366989442709666831}
   - component: {fileID: 5869690889320716065}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: RoadCurve
   m_TagString: Untagged
   m_Icon: {fileID: 0}

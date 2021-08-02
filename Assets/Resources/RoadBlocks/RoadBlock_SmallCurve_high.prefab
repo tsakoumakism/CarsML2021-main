@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 1921800642799650303}
   - component: {fileID: 4941368251837069275}
   - component: {fileID: 6235506812576322551}
-  m_Layer: 10
+  m_Layer: 9
   m_Name: RoadCurve
   m_TagString: wall
   m_Icon: {fileID: 0}
@@ -211,7 +211,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8691373454799612961}
-  m_Layer: 10
+  m_Layer: 9
   m_Name: RoadBlock_SmallCurve_high
   m_TagString: Untagged
   m_Icon: {fileID: 0}
