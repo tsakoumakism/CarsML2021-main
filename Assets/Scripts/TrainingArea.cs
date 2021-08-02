@@ -12,10 +12,10 @@ public class TrainingArea : MonoBehaviour
     [Header("Training Area Settings")]
     public CarAgent agentPrefabPPO;
     public CarAgent agentPrefabSAC;
-    //comment
+
 
     public bool spawnAgents = false;
-    public int agentAmount;
+    //public int agentAmount;
     public int totalCheckpoints;
     public Transform finishLine;
 
@@ -41,6 +41,10 @@ public class TrainingArea : MonoBehaviour
 
     string mapName;
     string modelName;
+
+    int agentPPO;
+    int agentSAC;
+    int numOfAgents;
     [SerializeField] private BlockData bd;
 
 
@@ -65,7 +69,7 @@ public class TrainingArea : MonoBehaviour
 
         Debug.Log("Training Start");
         
-        int agentsToSpawn = agentAmount;
+        int agentsToSpawn = numOfAgents;
         if (spawnAgents && academy.spawnAgents)
         {
             if (academy.agentsPerArea != 0)
@@ -91,8 +95,20 @@ public class TrainingArea : MonoBehaviour
     {
         for (int i = 0; i < agents; i++)
         {
-            Instantiate(agentPrefabPPO, _position, _rotation, transform.Find("Agents"));
-            Instantiate(agentPrefabSAC, _position, _rotation, transform.Find("Agents"));
+            if(agentPPO != 0 && agentSAC != 0)
+            {
+                Instantiate(agentPrefabPPO, _position, _rotation, transform.Find("Agents"));
+                Instantiate(agentPrefabSAC, _position, _rotation, transform.Find("Agents"));
+            }
+            else if(agentPPO == 0)
+            {
+                Instantiate(agentPrefabSAC, _position, _rotation, transform.Find("Agents"));
+            }
+            else
+            {
+                Instantiate(agentPrefabPPO, _position, _rotation, transform.Find("Agents"));
+            }
+            
         }
     }
 
@@ -158,6 +174,31 @@ public class TrainingArea : MonoBehaviour
         Debug.Log("Loaded Successfully");
     }
 
+    private void ReadNumOfAgents()
+    {
+        string line;
+        string numOfAgentsString;
+        string numofAgentsPPO;
+        string numOfAgentsSAC;
+        using (StreamReader sr = new StreamReader(Application.dataPath + "/options.json"))
+        {
+            while ((line = sr.ReadLine()) != null)
+            {  //is while necessary? probably not, it's probably making a lot of junk objects like this, but will i dare change it? nah.
+                Options options = new Options();
+                options = JsonUtility.FromJson<Options>(line);
+                numOfAgentsString = options.numOfAgents;
+                numofAgentsPPO = options.numOfAgentsPPO;
+                numOfAgentsSAC = options.numOfAgentsSAC;
+
+                numOfAgents = Int32.Parse(numOfAgentsString);
+                agentPPO = Int32.Parse(numofAgentsPPO);
+                agentSAC = Int32.Parse(numOfAgentsSAC);
+
+            }
+
+        }
+        
+    }
     public void EnableCheckPoints(){
         string checkDiff;
         using(StreamReader sr = new StreamReader(Path.Combine(Application.persistentDataPath,"checkpoints.txt"))){

@@ -70,6 +70,7 @@ public class TM_OnClickObject : MonoBehaviour
    
 
     Dropdown d_map;
+    Dropdown d_algorithm;
     Text m_MapText;
     void Awake(){
 
@@ -80,6 +81,9 @@ public class TM_OnClickObject : MonoBehaviour
         options_path = Application.dataPath + "/options.json";
 
         d_map = GameObject.Find("MapDropDown").GetComponent<Dropdown>();
+        d_algorithm = GameObject.Find("Dropdown").GetComponent<Dropdown>();
+
+
         mapPath = Application.persistentDataPath;
         List<string> m_mapDropOptions = new List<string>();
         foreach(var f in Directory.GetFiles(mapPath,"*.json")){
@@ -299,6 +303,22 @@ public class TM_OnClickObject : MonoBehaviour
             options.idlePenalty = idlePenalty;
             options.wrongCheckPenalty = wrongCheckPenalty;
             options.timescale = timescale;
+            if(d_algorithm.value == 0)
+            {
+                options.numOfAgentsPPO = numOfAgents;
+                options.numOfAgentsSAC = "0";
+            }
+            else if(d_algorithm.value == 1)
+            {
+                options.numOfAgentsPPO = "0";
+                options.numOfAgentsSAC = numOfAgents;
+            }
+            else
+            {
+                options.numOfAgentsPPO = numOfAgents;
+                options.numOfAgentsSAC = numOfAgents;
+            }
+           
             string opt = JsonUtility.ToJson(options);
             sw.WriteLine(opt);
         }
@@ -393,6 +413,7 @@ public class TM_OnClickObject : MonoBehaviour
                     txt_idlePenalty = options.idlePenalty;
                     txt_wrongCheckPenalty = options.wrongCheckPenalty;
                     txt_timeScale = options.timescale;
+                    
 
                     tf_numOfAgents.GetComponent<InputField>().text = txt_numOfAgents;
                     tf_cpReward.GetComponent<InputField>().text = txt_cpReward;

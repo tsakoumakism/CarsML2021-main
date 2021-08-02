@@ -1,1 +1,1 @@
-{"numOfAgents":"3","cpReward":"4","speedReward":"5","collisionPenalty":"6","idlePenalty":"7","wrongCheckPenalty":"8","timescale":"30"}
+{"numOfAgents":"3","cpReward":"4","speedReward":"5","collisionPenalty":"6","idlePenalty":"7","wrongCheckPenalty":"8","timescale":"2","numOfAgentsPPO":"0","numOfAgentsSAC":"3"}
