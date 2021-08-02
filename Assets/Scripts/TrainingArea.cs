@@ -5,7 +5,6 @@ using UnityEngine.SceneManagement;
 using System.Collections.Generic;
 using System.Collections;
 using System.IO;
-using TMPro;
 using System.Text.RegularExpressions;
 
 public class TrainingArea : MonoBehaviour
@@ -13,6 +12,8 @@ public class TrainingArea : MonoBehaviour
     [Header("Training Area Settings")]
     public CarAgent agentPrefabPPO;
     public CarAgent agentPrefabSAC;
+    //comment
+
     public bool spawnAgents = false;
     public int agentAmount;
     public int totalCheckpoints;
@@ -27,7 +28,7 @@ public class TrainingArea : MonoBehaviour
     public float wrongCheckpointPenalty = -10f;
 
     //public TextMeshProUGUI monitorHUD;
-    public TextMeshProUGUI areaMonitor;
+    //public TextMeshProUGUI areaMonitor;
     private Vector3 startPosition;
     private Vector3 finishLinePos;
     private CarAgent[] agentList;
@@ -103,7 +104,7 @@ public class TrainingArea : MonoBehaviour
 
     public void UpdateMonitor(string text)
     {
-        areaMonitor.text = text;
+        //areaMonitor.text = text;
         //monitorHUD.text = text;
     }
 
@@ -152,6 +153,8 @@ public class TrainingArea : MonoBehaviour
                         go.tag = "wall";
                         go.layer = 10;
                         go.transform.GetChild(0).gameObject.layer = 10;
+                        go.transform.GetChild(0).gameObject.tag = "wall";
+                        go.transform.GetChild(1).gameObject.tag = "checkpoint";
                         go.transform.localPosition = bd.blockPosition;
                         go.transform.localRotation = bd.blockRotation;
                     }
