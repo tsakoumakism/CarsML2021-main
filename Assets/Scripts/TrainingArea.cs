@@ -65,7 +65,6 @@ public class TrainingArea : MonoBehaviour
 
         Debug.Log("Training Start");
         
-
         int agentsToSpawn = agentAmount;
         if (spawnAgents && academy.spawnAgents)
         {
@@ -80,7 +79,6 @@ public class TrainingArea : MonoBehaviour
             }
             SpawnAgents(agentsToSpawn, startPosition, Quaternion.Euler(0, 0, 0));
         }
-
     }
 
     private void FixedUpdate()
@@ -88,15 +86,11 @@ public class TrainingArea : MonoBehaviour
         
     }
 
-
-
-
     //spawn agents in an area around the specified position
     public void SpawnAgents(int agents, Vector3 _position, Quaternion _rotation)
     {
         for (int i = 0; i < agents; i++)
         {
-            //Instantiate(agentPrefab, new Vector3(_position.x + Random.Range(-1.5f, 1.5f), 0.1f, _position.z), _rotation, transform.Find("Agents"));
             Instantiate(agentPrefabPPO, _position, _rotation, transform.Find("Agents"));
             Instantiate(agentPrefabSAC, _position, _rotation, transform.Find("Agents"));
         }
