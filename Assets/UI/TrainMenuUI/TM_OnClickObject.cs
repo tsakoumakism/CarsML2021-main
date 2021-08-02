@@ -195,44 +195,86 @@ public class TM_OnClickObject : MonoBehaviour
     public void OverwriteHyperParameters(string epochNum, string epsilon, string lamda, string LR, string LRS, string batchSize, string bufferSize, string beta, string hiddenUnits, string numOfLayers){
         using(StreamWriter sw = new StreamWriter(config_path)){
             //write all hyperparamaters in YAML format
-    
+
             //construct objects to write in yaml
-            var yamlObj = new YamlObj{
-                behaviors = new Behaviors{
-                CarBrain = new CarBrain{
-                    trainer_type = "ppo",
+            var yamlObj = new YamlObj {
+                behaviors = new Behaviors
+                {
+                    CarBrainPPO = new CarBrainPPO
+                    {
+                        trainer_type = "ppo",
+                        time_horizon = "128",
+                        max_steps = "1.0e8",
+                        summary_freq = "10000",
+                        threaded = "true",
 
-                    hyperparameters = new Hyperparameters{
-                    num_epoch = txt_epochNum,
-                    epsilon = txt_epsilon,
-                    lambd = txt_lamda,
-                    learning_rate = txt_LR,
-                    learning_rate_schedule = txt_LRS,
-                    batch_size = txt_batchSize,
-                    buffer_size = txt_bufferSize,
-                    beta = txt_beta
-                    },
+                        hyperparameters = new Hyperparameters
+                        {
+                            num_epoch = txt_epochNum,
+                            epsilon = txt_epsilon,
+                            lambd = txt_lamda,
+                            learning_rate = txt_LR,
+                            learning_rate_schedule = txt_LRS,
+                            batch_size = txt_batchSize,
+                            buffer_size = txt_bufferSize,
+                            beta = txt_beta
+                        },
 
-                    network_settings = new NetworkSettings{
-                    normalize = "true",
-                    hidden_units = txt_hiddenUnits,
-                    num_layers = txt_numOfLayers
-                    },
+                        network_settings = new NetworkSettings
+                        {
+                            normalize = "true",
+                            hidden_units = txt_hiddenUnits,
+                            num_layers = txt_numOfLayers
+                        },
 
-                    reward_signals = new RewardSignals(){
-                        extrinsic = new Extrinsic{
-                            gamma = "0.99",
-                            strength = "1.0"
+                        reward_signals = new RewardSignals()
+                        {
+                            extrinsic = new Extrinsic
+                            {
+                                gamma = "0.99",
+                                strength = "1.0"
+                            },
                         },
                     },
 
-                    time_horizon = "128",
-                    max_steps = "1.0e8",
-                    summary_freq = "10000"
+                    CarBrainSAC = new CarBrainSAC
+                    {
+                        trainer_type = "sac",
 
+                        time_horizon = "128",
+                        max_steps = "1.0e8",
+                        summary_freq = "10000",
+                        threaded = "true",
+
+                        hyperparameters = new Hyperparameters
+                        {
+                            buffer_init_steps = "1000",
+                            init_entcoef = "1.0",
+                            save_replay_buffer = "false",
+                            tau = "0.005",
+                            steps_per_update = "1",
+                            learning_rate = "1e-4",
+                            learning_rate_schedule = "linear",
+                            batch_size = "2048",
+                            buffer_size = "20480",
+                        },
+                        network_settings = new NetworkSettings
+                        {
+                            normalize = "true",
+                            hidden_units = txt_hiddenUnits,
+                            num_layers = txt_numOfLayers
+                        },
+                        reward_signals = new RewardSignals()
+                        {
+                            extrinsic = new Extrinsic
+                            {
+                                gamma = "0.99",
+                                strength = "1.0"
+                            },
+                        },
+                    }
                 }
-            }
-            };
+                };
 
             //string behav = JsonUtility.ToJson(behaviors);
             var serializer = new SerializerBuilder().Build();
@@ -306,16 +348,16 @@ public class TM_OnClickObject : MonoBehaviour
                     var json = serializer.Serialize(yamlObject);
                     yam = JsonUtility.FromJson<YamlObj>(json);
                     
-                    txt_epochNum = yam.behaviors.CarBrain.hyperparameters.num_epoch;
-                    txt_epsilon = yam.behaviors.CarBrain.hyperparameters.epsilon;
-                    txt_lamda = yam.behaviors.CarBrain.hyperparameters.lambd;
-                    txt_LR = yam.behaviors.CarBrain.hyperparameters.learning_rate;
-                    txt_LRS = yam.behaviors.CarBrain.hyperparameters.learning_rate_schedule;
-                    txt_batchSize = yam.behaviors.CarBrain.hyperparameters.batch_size;
-                    txt_bufferSize = yam.behaviors.CarBrain.hyperparameters.buffer_size;
-                    txt_beta = yam.behaviors.CarBrain.hyperparameters.beta;
-                    txt_hiddenUnits = yam.behaviors.CarBrain.network_settings.hidden_units;
-                    txt_numOfLayers = yam.behaviors.CarBrain.network_settings.num_layers;
+                    txt_epochNum = yam.behaviors.CarBrainPPO.hyperparameters.num_epoch;
+                    txt_epsilon = yam.behaviors.CarBrainPPO.hyperparameters.epsilon;
+                    txt_lamda = yam.behaviors.CarBrainPPO.hyperparameters.lambd;
+                    txt_LR = yam.behaviors.CarBrainPPO.hyperparameters.learning_rate;
+                    txt_LRS = yam.behaviors.CarBrainPPO.hyperparameters.learning_rate_schedule;
+                    txt_batchSize = yam.behaviors.CarBrainPPO.hyperparameters.batch_size;
+                    txt_bufferSize = yam.behaviors.CarBrainPPO.hyperparameters.buffer_size;
+                    txt_beta = yam.behaviors.CarBrainPPO.hyperparameters.beta;
+                    txt_hiddenUnits = yam.behaviors.CarBrainPPO.network_settings.hidden_units;
+                    txt_numOfLayers = yam.behaviors.CarBrainPPO.network_settings.num_layers;
 
 
 
@@ -392,6 +434,8 @@ public class TM_OnClickObject : MonoBehaviour
 }
 
 //all the classes to make the yaml object with the correct format Behaviors->CarBrain->HyperParams|NetSettings|RewardSignals->Extrinsic
+
+//PPO
 [System.Serializable]
 public class Hyperparameters{
     public string   num_epoch;
@@ -402,6 +446,15 @@ public class Hyperparameters{
     public string   batch_size;
     public string   buffer_size;
     public string   beta;
+
+
+    //sac options
+    public string buffer_init_steps;
+    public string init_entcoef;
+    public string save_replay_buffer;
+    public string tau;
+    public string steps_per_update;
+    
 }
 
 [System.Serializable]
@@ -420,7 +473,8 @@ public class RewardSignals{
     public Extrinsic extrinsic ;
 }
 [System.Serializable]
-public class CarBrain{
+public class CarBrainPPO
+{
     public string   trainer_type    ;
     public Hyperparameters hyperparameters ;
     public NetworkSettings network_settings ;
@@ -428,6 +482,7 @@ public class CarBrain{
     public string time_horizon ;
     public string max_steps ;
     public string summary_freq ;
+    public string threaded;
 }
 [System.Serializable]
 public class YamlObj{
@@ -435,6 +490,20 @@ public class YamlObj{
 }
 [System.Serializable]
 public class Behaviors{
-    public CarBrain CarBrain ;
+    public CarBrainPPO CarBrainPPO ;
+    public CarBrainSAC CarBrainSAC;
 }
 
+
+//SAC
+public class CarBrainSAC
+{
+    public string trainer_type;
+    public Hyperparameters hyperparameters;
+    public NetworkSettings network_settings;
+    public RewardSignals reward_signals;
+    public string time_horizon;
+    public string max_steps;
+    public string summary_freq;
+    public string threaded;
+}

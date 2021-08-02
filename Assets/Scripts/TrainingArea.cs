@@ -151,6 +151,7 @@ public class TrainingArea : MonoBehaviour
                         go.transform.SetParent(GameObject.Find("Track").transform);
                         go.tag = "wall";
                         go.layer = 10;
+                        go.transform.GetChild(0).gameObject.layer = 10;
                         go.transform.localPosition = bd.blockPosition;
                         go.transform.localRotation = bd.blockRotation;
                     }
