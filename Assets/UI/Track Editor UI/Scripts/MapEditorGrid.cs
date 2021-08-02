@@ -54,7 +54,7 @@ public class MapEditorGrid{
         gridFloor.transform.localPosition = new Vector3(gridFloor.transform.position.x + (width*cellSize / 2), 
                                                         gridFloor.transform.position.y - 0.2f, 
                                                         gridFloor.transform.position.z + (height * cellSize/2));
-        gridFloor.GetComponent<Renderer>().material = new Material(Shader.Find("Sprites/Diffuse"));
+        gridFloor.GetComponent<Renderer>().material = new Material(Shader.Find("CustomShaders/BasicTransparency"));
         Debug.Log("Created Grid" + ToString());
     }
 
