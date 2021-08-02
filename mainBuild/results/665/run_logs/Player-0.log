@@ -1,0 +1,391 @@
+Mono path[0] = 'E:/CarsML2021-main/trainingScene/CarsML2021_Data/Managed'
+Mono config path = 'E:/CarsML2021-main/trainingScene/MonoBleedingEdge/etc'
+PlayerConnection initialized from E:/CarsML2021-main/trainingScene/CarsML2021_Data (debug = 0)
+PlayerConnection initialized network socket : 0.0.0.0 55191
+Multi-casting "[IP] 192.168.178.20 [Port] 55191 [Flags] 2 [Guid] 2028921448 [EditorId] 582049263 [Version] 1048832 [Id] WindowsPlayer(DESKTOP-MUVOSHJ) [Debug] 1 [PackageName] WindowsPlayer [ProjectName] CarsML2021" to [225.0.0.222:54997]...
+Started listening to [0.0.0.0:55191]
+Starting managed debugger on port 56448
+Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=0.0.0.0:56448
+PlayerConnection already initialized - listening to [0.0.0.0:55191]
+Initialize engine version: 2019.4.23f1 (3f4e01f1a5ec)
+[Subsystems] Discovering subsystems at path E:/CarsML2021-main/trainingScene/CarsML2021_Data/UnitySubsystems
+GfxDevice: creating device client; threaded=1
+Direct3D:
+    Version:  Direct3D 11.0 [level 11.1]
+    Renderer: NVIDIA GeForce GTX 1060 6GB (ID=0x1c03)
+    Vendor:   (null)
+    VRAM:     3072 MB
+    Driver:   30.0.14.7141
+Begin MonoManager ReloadAssembly
+- Completed reload, in  1.343 seconds
+D3D11 device created for Microsoft Media Foundation video decoding.
+<RI> Initializing input.
+<RI> Input initialized.
+<RI> Initialized touch support.
+UnloadTime: 0.844000 ms
+script nameRoadBlock_Straight || listname:RoadBlock_Straight
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:Log (object)
+TrainingArea:LoadMap () (at E:/CarsML2021-main/Assets/Scripts/TrainingArea.cs:146)
+TrainingArea:Awake () (at E:/CarsML2021-main/Assets/Scripts/TrainingArea.cs:51)
+ 
+(Filename: E:/CarsML2021-main/Assets/Scripts/TrainingArea.cs Line: 146)
+
+script nameRoadBlock_Straight || listname:RoadBlock_SmallCurve
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:Log (object)
+TrainingArea:LoadMap () (at E:/CarsML2021-main/Assets/Scripts/TrainingArea.cs:146)
+TrainingArea:Awake () (at E:/CarsML2021-main/Assets/Scripts/TrainingArea.cs:51)
+ 
+(Filename: E:/CarsML2021-main/Assets/Scripts/TrainingArea.cs Line: 146)
+
+script nameRoadBlock_Straight || listname:RoadBlock_BigCurve
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:Log (object)
+TrainingArea:LoadMap () (at E:/CarsML2021-main/Assets/Scripts/TrainingArea.cs:146)
+TrainingArea:Awake () (at E:/CarsML2021-main/Assets/Scripts/TrainingArea.cs:51)
+ 
+(Filename: E:/CarsML2021-main/Assets/Scripts/TrainingArea.cs Line: 146)
+
+script nameRoadBlock_Straight || listname:RoadBlock_Straight
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:Log (object)
+TrainingArea:LoadMap () (at E:/CarsML2021-main/Assets/Scripts/TrainingArea.cs:146)
+TrainingArea:Awake () (at E:/CarsML2021-main/Assets/Scripts/TrainingArea.cs:51)
+ 
+(Filename: E:/CarsML2021-main/Assets/Scripts/TrainingArea.cs Line: 146)
+
+script nameRoadBlock_Straight || listname:RoadBlock_SmallCurve
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:Log (object)
+TrainingArea:LoadMap () (at E:/CarsML2021-main/Assets/Scripts/TrainingArea.cs:146)
+TrainingArea:Awake () (at E:/CarsML2021-main/Assets/Scripts/TrainingArea.cs:51)
+ 
+(Filename: E:/CarsML2021-main/Assets/Scripts/TrainingArea.cs Line: 146)
+
+script nameRoadBlock_Straight || listname:RoadBlock_BigCurve
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:Log (object)
+TrainingArea:LoadMap () (at E:/CarsML2021-main/Assets/Scripts/TrainingArea.cs:146)
+TrainingArea:Awake () (at E:/CarsML2021-main/Assets/Scripts/TrainingArea.cs:51)
+ 
+(Filename: E:/CarsML2021-main/Assets/Scripts/TrainingArea.cs Line: 146)
+
+script nameRoadBlock_Straight || listname:RoadBlock_Straight
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:Log (object)
+TrainingArea:LoadMap () (at E:/CarsML2021-main/Assets/Scripts/TrainingArea.cs:146)
+TrainingArea:Awake () (at E:/CarsML2021-main/Assets/Scripts/TrainingArea.cs:51)
+ 
+(Filename: E:/CarsML2021-main/Assets/Scripts/TrainingArea.cs Line: 146)
+
+script nameRoadBlock_Straight || listname:RoadBlock_SmallCurve
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:Log (object)
+TrainingArea:LoadMap () (at E:/CarsML2021-main/Assets/Scripts/TrainingArea.cs:146)
+TrainingArea:Awake () (at E:/CarsML2021-main/Assets/Scripts/TrainingArea.cs:51)
+ 
+(Filename: E:/CarsML2021-main/Assets/Scripts/TrainingArea.cs Line: 146)
+
+script nameRoadBlock_Straight || listname:RoadBlock_BigCurve
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:Log (object)
+TrainingArea:LoadMap () (at E:/CarsML2021-main/Assets/Scripts/TrainingArea.cs:146)
+TrainingArea:Awake () (at E:/CarsML2021-main/Assets/Scripts/TrainingArea.cs:51)
+ 
+(Filename: E:/CarsML2021-main/Assets/Scripts/TrainingArea.cs Line: 146)
+
+script nameRoadBlock_BigCurve || listname:RoadBlock_Straight
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:Log (object)
+TrainingArea:LoadMap () (at E:/CarsML2021-main/Assets/Scripts/TrainingArea.cs:146)
+TrainingArea:Awake () (at E:/CarsML2021-main/Assets/Scripts/TrainingArea.cs:51)
+ 
+(Filename: E:/CarsML2021-main/Assets/Scripts/TrainingArea.cs Line: 146)
+
+script nameRoadBlock_BigCurve || listname:RoadBlock_SmallCurve
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:Log (object)
+TrainingArea:LoadMap () (at E:/CarsML2021-main/Assets/Scripts/TrainingArea.cs:146)
+TrainingArea:Awake () (at E:/CarsML2021-main/Assets/Scripts/TrainingArea.cs:51)
+ 
+(Filename: E:/CarsML2021-main/Assets/Scripts/TrainingArea.cs Line: 146)
+
+script nameRoadBlock_BigCurve || listname:RoadBlock_BigCurve
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:Log (object)
+TrainingArea:LoadMap () (at E:/CarsML2021-main/Assets/Scripts/TrainingArea.cs:146)
+TrainingArea:Awake () (at E:/CarsML2021-main/Assets/Scripts/TrainingArea.cs:51)
+ 
+(Filename: E:/CarsML2021-main/Assets/Scripts/TrainingArea.cs Line: 146)
+
+script nameRoadBlock_BigCurve || listname:RoadBlock_Straight
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:Log (object)
+TrainingArea:LoadMap () (at E:/CarsML2021-main/Assets/Scripts/TrainingArea.cs:146)
+TrainingArea:Awake () (at E:/CarsML2021-main/Assets/Scripts/TrainingArea.cs:51)
+ 
+(Filename: E:/CarsML2021-main/Assets/Scripts/TrainingArea.cs Line: 146)
+
+script nameRoadBlock_BigCurve || listname:RoadBlock_SmallCurve
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:Log (object)
+TrainingArea:LoadMap () (at E:/CarsML2021-main/Assets/Scripts/TrainingArea.cs:146)
+TrainingArea:Awake () (at E:/CarsML2021-main/Assets/Scripts/TrainingArea.cs:51)
+ 
+(Filename: E:/CarsML2021-main/Assets/Scripts/TrainingArea.cs Line: 146)
+
+script nameRoadBlock_BigCurve || listname:RoadBlock_BigCurve
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:Log (object)
+TrainingArea:LoadMap () (at E:/CarsML2021-main/Assets/Scripts/TrainingArea.cs:146)
+TrainingArea:Awake () (at E:/CarsML2021-main/Assets/Scripts/TrainingArea.cs:51)
+ 
+(Filename: E:/CarsML2021-main/Assets/Scripts/TrainingArea.cs Line: 146)
+
+script nameRoadBlock_BigCurve || listname:RoadBlock_Straight
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:Log (object)
+TrainingArea:LoadMap () (at E:/CarsML2021-main/Assets/Scripts/TrainingArea.cs:146)
+TrainingArea:Awake () (at E:/CarsML2021-main/Assets/Scripts/TrainingArea.cs:51)
+ 
+(Filename: E:/CarsML2021-main/Assets/Scripts/TrainingArea.cs Line: 146)
+
+script nameRoadBlock_BigCurve || listname:RoadBlock_SmallCurve
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:Log (object)
+TrainingArea:LoadMap () (at E:/CarsML2021-main/Assets/Scripts/TrainingArea.cs:146)
+TrainingArea:Awake () (at E:/CarsML2021-main/Assets/Scripts/TrainingArea.cs:51)
+ 
+(Filename: E:/CarsML2021-main/Assets/Scripts/TrainingArea.cs Line: 146)
+
+script nameRoadBlock_BigCurve || listname:RoadBlock_BigCurve
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:Log (object)
+TrainingArea:LoadMap () (at E:/CarsML2021-main/Assets/Scripts/TrainingArea.cs:146)
+TrainingArea:Awake () (at E:/CarsML2021-main/Assets/Scripts/TrainingArea.cs:51)
+ 
+(Filename: E:/CarsML2021-main/Assets/Scripts/TrainingArea.cs Line: 146)
+
+script nameRoadBlock_BigCurve || listname:RoadBlock_Straight
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:Log (object)
+TrainingArea:LoadMap () (at E:/CarsML2021-main/Assets/Scripts/TrainingArea.cs:146)
+TrainingArea:Awake () (at E:/CarsML2021-main/Assets/Scripts/TrainingArea.cs:51)
+ 
+(Filename: E:/CarsML2021-main/Assets/Scripts/TrainingArea.cs Line: 146)
+
+script nameRoadBlock_BigCurve || listname:RoadBlock_SmallCurve
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:Log (object)
+TrainingArea:LoadMap () (at E:/CarsML2021-main/Assets/Scripts/TrainingArea.cs:146)
+TrainingArea:Awake () (at E:/CarsML2021-main/Assets/Scripts/TrainingArea.cs:51)
+ 
+(Filename: E:/CarsML2021-main/Assets/Scripts/TrainingArea.cs Line: 146)
+
+script nameRoadBlock_BigCurve || listname:RoadBlock_BigCurve
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:Log (object)
+TrainingArea:LoadMap () (at E:/CarsML2021-main/Assets/Scripts/TrainingArea.cs:146)
+TrainingArea:Awake () (at E:/CarsML2021-main/Assets/Scripts/TrainingArea.cs:51)
+ 
+(Filename: E:/CarsML2021-main/Assets/Scripts/TrainingArea.cs Line: 146)
+
+script nameRoadBlock_Straight || listname:RoadBlock_Straight
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:Log (object)
+TrainingArea:LoadMap () (at E:/CarsML2021-main/Assets/Scripts/TrainingArea.cs:146)
+TrainingArea:Awake () (at E:/CarsML2021-main/Assets/Scripts/TrainingArea.cs:51)
+ 
+(Filename: E:/CarsML2021-main/Assets/Scripts/TrainingArea.cs Line: 146)
+
+script nameRoadBlock_Straight || listname:RoadBlock_SmallCurve
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:Log (object)
+TrainingArea:LoadMap () (at E:/CarsML2021-main/Assets/Scripts/TrainingArea.cs:146)
+TrainingArea:Awake () (at E:/CarsML2021-main/Assets/Scripts/TrainingArea.cs:51)
+ 
+(Filename: E:/CarsML2021-main/Assets/Scripts/TrainingArea.cs Line: 146)
+
+script nameRoadBlock_Straight || listname:RoadBlock_BigCurve
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:Log (object)
+TrainingArea:LoadMap () (at E:/CarsML2021-main/Assets/Scripts/TrainingArea.cs:146)
+TrainingArea:Awake () (at E:/CarsML2021-main/Assets/Scripts/TrainingArea.cs:51)
+ 
+(Filename: E:/CarsML2021-main/Assets/Scripts/TrainingArea.cs Line: 146)
+
+script nameRoadBlock_Straight || listname:RoadBlock_Straight
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:Log (object)
+TrainingArea:LoadMap () (at E:/CarsML2021-main/Assets/Scripts/TrainingArea.cs:146)
+TrainingArea:Awake () (at E:/CarsML2021-main/Assets/Scripts/TrainingArea.cs:51)
+ 
+(Filename: E:/CarsML2021-main/Assets/Scripts/TrainingArea.cs Line: 146)
+
+script nameRoadBlock_Straight || listname:RoadBlock_SmallCurve
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:Log (object)
+TrainingArea:LoadMap () (at E:/CarsML2021-main/Assets/Scripts/TrainingArea.cs:146)
+TrainingArea:Awake () (at E:/CarsML2021-main/Assets/Scripts/TrainingArea.cs:51)
+ 
+(Filename: E:/CarsML2021-main/Assets/Scripts/TrainingArea.cs Line: 146)
+
+script nameRoadBlock_Straight || listname:RoadBlock_BigCurve
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:Log (object)
+TrainingArea:LoadMap () (at E:/CarsML2021-main/Assets/Scripts/TrainingArea.cs:146)
+TrainingArea:Awake () (at E:/CarsML2021-main/Assets/Scripts/TrainingArea.cs:51)
+ 
+(Filename: E:/CarsML2021-main/Assets/Scripts/TrainingArea.cs Line: 146)
+
+script nameRoadBlock_Straight || listname:RoadBlock_Straight
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:Log (object)
+TrainingArea:LoadMap () (at E:/CarsML2021-main/Assets/Scripts/TrainingArea.cs:146)
+TrainingArea:Awake () (at E:/CarsML2021-main/Assets/Scripts/TrainingArea.cs:51)
+ 
+(Filename: E:/CarsML2021-main/Assets/Scripts/TrainingArea.cs Line: 146)
+
+script nameRoadBlock_Straight || listname:RoadBlock_SmallCurve
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:Log (object)
+TrainingArea:LoadMap () (at E:/CarsML2021-main/Assets/Scripts/TrainingArea.cs:146)
+TrainingArea:Awake () (at E:/CarsML2021-main/Assets/Scripts/TrainingArea.cs:51)
+ 
+(Filename: E:/CarsML2021-main/Assets/Scripts/TrainingArea.cs Line: 146)
+
+script nameRoadBlock_Straight || listname:RoadBlock_BigCurve
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:Log (object)
+TrainingArea:LoadMap () (at E:/CarsML2021-main/Assets/Scripts/TrainingArea.cs:146)
+TrainingArea:Awake () (at E:/CarsML2021-main/Assets/Scripts/TrainingArea.cs:51)
+ 
+(Filename: E:/CarsML2021-main/Assets/Scripts/TrainingArea.cs Line: 146)
+
+Loaded Successfully
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:Log (object)
+TrainingArea:LoadMap () (at E:/CarsML2021-main/Assets/Scripts/TrainingArea.cs:157)
+TrainingArea:Awake () (at E:/CarsML2021-main/Assets/Scripts/TrainingArea.cs:51)
+ 
+(Filename: E:/CarsML2021-main/Assets/Scripts/TrainingArea.cs Line: 157)
+
+Track (UnityEngine.GameObject)
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:Log (object)
+TrainingArea:EnableCheckPoints () (at E:/CarsML2021-main/Assets/Scripts/TrainingArea.cs:175)
+TrainingArea:Awake () (at E:/CarsML2021-main/Assets/Scripts/TrainingArea.cs:58)
+ 
+(Filename: E:/CarsML2021-main/Assets/Scripts/TrainingArea.cs Line: 175)
+
+Training Start
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:Log (object)
+TrainingArea:Awake () (at E:/CarsML2021-main/Assets/Scripts/TrainingArea.cs:64)
+ 
+(Filename: E:/CarsML2021-main/Assets/Scripts/TrainingArea.cs Line: 64)
+
+Agents (academy): 9
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:Log (object)
+TrainingArea:Awake () (at E:/CarsML2021-main/Assets/Scripts/TrainingArea.cs:72)
+ 
+(Filename: E:/CarsML2021-main/Assets/Scripts/TrainingArea.cs Line: 72)
+
+Fallback handler could not load library E:/CarsML2021-main/trainingScene/CarsML2021_Data/Mono/libcoreclr.so
+Fallback handler could not load library E:/CarsML2021-main/trainingScene/CarsML2021_Data/Mono/libcoreclr.so.dll
+Fallback handler could not load library E:/CarsML2021-main/trainingScene/CarsML2021_Data/Mono/libcoreclr.so
+Fallback handler could not load library E:/CarsML2021-main/trainingScene/CarsML2021_Data/Mono/libdl.so
+Fallback handler could not load library E:/CarsML2021-main/trainingScene/CarsML2021_Data/Mono/libdl.so.dll
+Fallback handler could not load library E:/CarsML2021-main/trainingScene/CarsML2021_Data/Mono/libdl.so
+Fallback handler could not load library E:/CarsML2021-main/trainingScene/CarsML2021_Data/Mono/libSystem.dylib
+Fallback handler could not load library E:/CarsML2021-main/trainingScene/CarsML2021_Data/Mono/libSystem.dylib.dll
+Fallback handler could not load library E:/CarsML2021-main/trainingScene/CarsML2021_Data/Mono/libSystem.dylib
+Fallback handler could not load library E:/CarsML2021-main/trainingScene/CarsML2021_Data/Mono/libcoreclr.so
+Fallback handler could not load library E:/CarsML2021-main/trainingScene/CarsML2021_Data/Mono/libcoreclr.so.dll
+Fallback handler could not load library E:/CarsML2021-main/trainingScene/CarsML2021_Data/Mono/libcoreclr.so
+Fallback handler could not load library E:/CarsML2021-main/trainingScene/CarsML2021_Data/Mono/libdl.so
+Fallback handler could not load library E:/CarsML2021-main/trainingScene/CarsML2021_Data/Mono/libdl.so.dll
+Fallback handler could not load library E:/CarsML2021-main/trainingScene/CarsML2021_Data/Mono/libdl.so
+Fallback handler could not load library E:/CarsML2021-main/trainingScene/CarsML2021_Data/Mono/libSystem.dylib
+Fallback handler could not load library E:/CarsML2021-main/trainingScene/CarsML2021_Data/Mono/libSystem.dylib.dll
+Fallback handler could not load library E:/CarsML2021-main/trainingScene/CarsML2021_Data/Mono/libSystem.dylib
+Setting up 8 worker threads for Enlighten.
+  Thread -> id: 8190 -> priority: 1 
+  Thread -> id: 58d0 -> priority: 1 
+  Thread -> id: 6610 -> priority: 1 
+  Thread -> id: 8ec8 -> priority: 1 
+  Thread -> id: 42a0 -> priority: 1 
+  Thread -> id: 1728 -> priority: 1 
+  Thread -> id: d88 -> priority: 1 
+  Thread -> id: 6818 -> priority: 1 
+##utp:{"type":"MemoryLeaks","version":2,"phase":"Immediate","time":1627480223485,"processId":36692,"allocatedMemory":847987,"memoryLabels":[{"Permanent":24},{"NewDelete":5568},{"Thread":68},{"Manager":2044},{"Physics":16},{"Serialization":838972},{"String":415},{"PoolAlloc":64},{"GI":184},{"VR":1132},{"Subsystems":4294966796}]}

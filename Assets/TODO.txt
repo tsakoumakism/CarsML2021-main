@@ -1,0 +1,20 @@
+! done
+## not sure if needed
+
+
+!Test Model Page
+!Test Model -> Drop down for model and drop down for map.
+Test Model -> Run a command that executes the trainingScene with the selected testmodel and map.
+
+!Train Model -> Check in the models folder what file names exist #method exists in TR_OnClick.cs
+!Train Model -> Check if the model already exists and add --resume
+!Train Model -> add the latest edited model as a default value to the Model Name Input Field
+!Train Model -> add timescale in options so you can save the previous inputted value instead of a static one.
+
+Map Editor -> Fix transparency issue on the board.
+
+
+## Training -> Load up selected map on awake.
+
+
+!Add back buttons to the menus.
