@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 7671505200189466039}
   - component: {fileID: 4604909707376237079}
   - component: {fileID: 9010474831541835349}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Cube
   m_TagString: checkpoint
   m_Icon: {fileID: 0}
@@ -120,7 +120,7 @@ GameObject:
   - component: {fileID: 5914394038459404995}
   - component: {fileID: 4863304429969568017}
   - component: {fileID: 8761339123554400111}
-  m_Layer: 10
+  m_Layer: 9
   m_Name: Road_BigCurve
   m_TagString: wall
   m_Icon: {fileID: 0}
@@ -211,7 +211,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2853231402061620865}
-  m_Layer: 10
+  m_Layer: 9
   m_Name: RoadBlock_BigCurve
   m_TagString: wall
   m_Icon: {fileID: 0}

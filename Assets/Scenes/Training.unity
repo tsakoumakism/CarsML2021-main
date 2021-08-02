@@ -1128,7 +1128,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 813e04e651726b848967f0db150fd90a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  agentPrefab: {fileID: 5835202638623221330, guid: f8c4c684ae669b44b92b76f083b3d84d,
+  agentPrefabPPO: {fileID: 5835202638623221330, guid: f8c4c684ae669b44b92b76f083b3d84d,
+    type: 3}
+  agentPrefabSAC: {fileID: 7522652056596063935, guid: aaec8bea77a97f3448136ef9318db568,
     type: 3}
   spawnAgents: 1
   agentAmount: 10

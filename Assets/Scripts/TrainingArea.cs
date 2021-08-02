@@ -11,7 +11,8 @@ using System.Text.RegularExpressions;
 public class TrainingArea : MonoBehaviour
 {
     [Header("Training Area Settings")]
-    public CarAgent agentPrefab;
+    public CarAgent agentPrefabPPO;
+    public CarAgent agentPrefabSAC;
     public bool spawnAgents = false;
     public int agentAmount;
     public int totalCheckpoints;
@@ -95,7 +96,8 @@ public class TrainingArea : MonoBehaviour
         for (int i = 0; i < agents; i++)
         {
             //Instantiate(agentPrefab, new Vector3(_position.x + Random.Range(-1.5f, 1.5f), 0.1f, _position.z), _rotation, transform.Find("Agents"));
-            Instantiate(agentPrefab, _position, _rotation, transform.Find("Agents"));
+            Instantiate(agentPrefabPPO, _position, _rotation, transform.Find("Agents"));
+            Instantiate(agentPrefabSAC, _position, _rotation, transform.Find("Agents"));
         }
     }
 
