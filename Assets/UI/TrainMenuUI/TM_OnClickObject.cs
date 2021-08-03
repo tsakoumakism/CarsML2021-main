@@ -173,15 +173,15 @@ public class TM_OnClickObject : MonoBehaviour
         string strCmdText1;
         string confPath;
         if (!Application.isEditor) 
-        strCmdText1 = Path.Combine(Application.dataPath, "../../") + "/trainingScene/CarsML2021";
+        strCmdText1 = Path.Combine(Application.dataPath, "../../") + "/trainingScene/CarsML2021-main";
         else
-        strCmdText1 = Path.Combine(Application.dataPath, "../") + "/trainingScene/CarsML2021";
+        strCmdText1 = Path.Combine(Application.dataPath, "../") + "/trainingScene/CarsML2021-main";
         //if (!Application.isEditor)
         //confPath = Path.Combine(Application.dataPath, "../../") +  "/config/" + config_fileName;
         //else
         confPath = Path.Combine(Application.dataPath, "../") +  "/config/" + config_fileName;
 
-        strCmdText = "/K mlagents-learn " + confPath + " --train --time-scale="+txt_timeScale+" --run-id="+txt_runID+" --env=" + strCmdText1 ;
+        strCmdText = "/K mlagents-learn " + confPath + " --time-scale="+txt_timeScale+" --run-id="+txt_runID+" --env=" + strCmdText1 ;
         //System.Diagnostics.Process.Start("CMD.exe",strCmdText1); //Start cmd process
         Debug.Log(strCmdText);
         System.Diagnostics.Process.Start("CMD.exe",strCmdText); //Start cmd process
