@@ -181,7 +181,7 @@ public class TM_OnClickObject : MonoBehaviour
         //else
         confPath = Path.Combine(Application.dataPath, "../") +  "/config/" + config_fileName;
 
-        strCmdText = "/K mlagents-learn " + confPath + " --time-scale="+txt_timeScale+" --run-id="+txt_runID+" --env=" + strCmdText1 ;
+        strCmdText = "/K mlagents-learn " + confPath + " --time-scale="+txt_timeScale+" --run-id="+txt_runID+" --env=" + strCmdText1 + " --width=1920 --height=1080" ;
         //System.Diagnostics.Process.Start("CMD.exe",strCmdText1); //Start cmd process
         Debug.Log(strCmdText);
         System.Diagnostics.Process.Start("CMD.exe",strCmdText); //Start cmd process
@@ -211,6 +211,7 @@ public class TM_OnClickObject : MonoBehaviour
                         max_steps = "1.0e8",
                         summary_freq = "10000",
                         threaded = "true",
+ 
 
                         hyperparameters = new Hyperparameters
                         {
@@ -484,6 +485,7 @@ public class NetworkSettings{
     public string hidden_units ;
     public string num_layers ;
 }
+
 [System.Serializable]
 public class Extrinsic{
     public string gamma ;
@@ -504,6 +506,8 @@ public class CarBrainPPO
     public string max_steps ;
     public string summary_freq ;
     public string threaded;
+    public string width;
+    public string height;
 }
 [System.Serializable]
 public class YamlObj{
