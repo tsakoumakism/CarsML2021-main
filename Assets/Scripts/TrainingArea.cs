@@ -42,8 +42,8 @@ public class TrainingArea : MonoBehaviour
     string mapName;
     string modelName;
 
-    int agentPPO;
-    int agentSAC;
+    int agentPPO=1;
+    int agentSAC=0;
     int numOfAgents;
     [SerializeField] private BlockData bd;
 
