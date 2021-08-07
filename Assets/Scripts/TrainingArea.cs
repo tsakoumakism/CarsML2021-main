@@ -48,10 +48,7 @@ public class TrainingArea : MonoBehaviour
     [SerializeField] private BlockData bd;
 
 
-    void Awake(){
-
-        //Screen.SetResolution(1920, 1080, true);
-        //Screen.fullScreen = true;
+    void Awake() {
 
         mapName = "selectedMap";
         LoadMap();
@@ -93,9 +90,13 @@ public class TrainingArea : MonoBehaviour
     //spawn agents in an area around the specified position
     public void SpawnAgents(int agents, Vector3 _position, Quaternion _rotation)
     {
+        ReadNumOfAgents();
         for (int i = 0; i < agents; i++)
         {
-            if(agentPPO != 0 && agentSAC != 0)
+            Debug.Log(agents);
+            Debug.Log(agentPPO);
+            Debug.Log(agentSAC);
+            if (agentPPO != 0 && agentSAC != 0)
             {
                 Instantiate(agentPrefabPPO, _position, _rotation, transform.Find("Agents"));
                 Instantiate(agentPrefabSAC, _position, _rotation, transform.Find("Agents"));
@@ -180,7 +181,7 @@ public class TrainingArea : MonoBehaviour
         string numOfAgentsString;
         string numofAgentsPPO;
         string numOfAgentsSAC;
-        using (StreamReader sr = new StreamReader(Application.dataPath + "/options.json"))
+        using (StreamReader sr = new StreamReader("../mainBuild/CarsML2021-main_Data/options.json"))
         {
             while ((line = sr.ReadLine()) != null)
             {  //is while necessary? probably not, it's probably making a lot of junk objects like this, but will i dare change it? nah.

@@ -81,7 +81,7 @@ public class TM_OnClickObject : MonoBehaviour
         options_path = Application.dataPath + "/options.json";
 
         d_map = GameObject.Find("MapDropDown").GetComponent<Dropdown>();
-        d_algorithm = GameObject.Find("Dropdown").GetComponent<Dropdown>();
+        d_algorithm = GameObject.Find("AlgorithmDropdown").GetComponent<Dropdown>();
 
 
         mapPath = Application.persistentDataPath;
@@ -210,9 +210,8 @@ public class TM_OnClickObject : MonoBehaviour
                         time_horizon = "128",
                         max_steps = "1.0e8",
                         summary_freq = "10000",
-                        threaded = "true",
+                        threaded = "false",
  
-
                         hyperparameters = new Hyperparameters
                         {
                             num_epoch = txt_epochNum,
@@ -249,7 +248,7 @@ public class TM_OnClickObject : MonoBehaviour
                         time_horizon = "128",
                         max_steps = "1.0e8",
                         summary_freq = "10000",
-                        threaded = "true",
+                        threaded = "false",
 
                         hyperparameters = new Hyperparameters
                         {

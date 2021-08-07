@@ -12,7 +12,12 @@ public class TR_OnClick : MonoBehaviour
     Text m_ModelText;
     Text m_MapText;
 
+    string config_fileName;
+
     void Awake(){
+
+        config_fileName = "trainer_config.yaml";
+
         d_model = GameObject.Find("ModelDropdown").GetComponent<Dropdown>();
         d_map = GameObject.Find("MapDropdown").GetComponent<Dropdown>();
 
@@ -30,19 +35,21 @@ public class TR_OnClick : MonoBehaviour
         
         path = Application.persistentDataPath;
         List<string> m_mapDropOptions = new List<string>();
+        /*
         foreach(var f in Directory.GetFiles(path,"*.json")){
             var filename = new FileInfo(f).Name;
-            m_mapDropOptions.Add(filename);
+           m_mapDropOptions.Add(filename);
         }
 
         d_model.AddOptions(m_modelDropOptions);
         d_map.AddOptions(m_mapDropOptions);
+        */
         
     }
 
 
     public void OnClickRun(){
-        int modelVal = d_model.value;
+        /* int modelVal = d_model.value;
         m_ModelText.text = d_model.options[modelVal].text;
 
         int mapVal = d_map.value;
@@ -50,8 +57,26 @@ public class TR_OnClick : MonoBehaviour
 
         DontDestroyOnLoad(m_ModelText);
         DontDestroyOnLoad(m_MapText);
+        
 
-        SceneManager.LoadScene("TestModelArena", LoadSceneMode.Single);
+        SceneManager.LoadScene("Training", LoadSceneMode.Single);
+        */
+        string strCmdText;
+        string strCmdText1;
+        string confPath;
+        if (!Application.isEditor)
+            strCmdText1 = Path.Combine(Application.dataPath, "../../") + "/trainingScene/CarsML2021-main";
+        else
+            strCmdText1 = Path.Combine(Application.dataPath, "../") + "/trainingScene/CarsML2021-main";
+        if (!Application.isEditor)
+        confPath = Path.Combine(Application.dataPath, "../../") +  "/config/" + config_fileName;
+        else
+        confPath = Path.Combine(Application.dataPath, "../") + "/config/" + config_fileName;
+
+        strCmdText = "/K mlagents-learn --inference --env=" + strCmdText1 + " --width=1920 --height=1080";
+        System.Diagnostics.Process.Start("CMD.exe",strCmdText1); //Start cmd process
+        Debug.Log(strCmdText);
+        System.Diagnostics.Process.Start("CMD.exe", strCmdText); //Start cmd process
     }
 
 

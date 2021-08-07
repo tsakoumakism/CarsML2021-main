@@ -21,7 +21,7 @@ behaviors:
     time_horizon: 128
     max_steps: 1.0e8
     summary_freq: 10000
-    threaded: true
+    threaded: false
   CarBrainSAC:
     trainer_type: sac
     hyperparameters:
@@ -45,5 +45,5 @@ behaviors:
     time_horizon: 128
     max_steps: 1.0e8
     summary_freq: 10000
-    threaded: true
+    threaded: false
 
