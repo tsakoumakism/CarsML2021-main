@@ -181,7 +181,14 @@ public class TrainingArea : MonoBehaviour
         string numOfAgentsString;
         string numofAgentsPPO;
         string numOfAgentsSAC;
-        using (StreamReader sr = new StreamReader("../mainBuild/CarsML2021-main_Data/options.json"))
+        StreamReader sr;
+        if (!Application.isEditor)
+            sr = new StreamReader("../mainBuild/CarsML2021-main_Data/options.json");
+        else
+        {
+            sr = new StreamReader("options.json");
+        }
+        using (sr)
         {
             while ((line = sr.ReadLine()) != null)
             {  //is while necessary? probably not, it's probably making a lot of junk objects like this, but will i dare change it? nah.

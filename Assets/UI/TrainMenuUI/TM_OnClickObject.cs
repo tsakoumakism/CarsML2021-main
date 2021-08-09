@@ -181,7 +181,7 @@ public class TM_OnClickObject : MonoBehaviour
         //else
         confPath = Path.Combine(Application.dataPath, "../") +  "/config/" + config_fileName;
 
-        strCmdText = "/K mlagents-learn " + confPath + " --time-scale="+txt_timeScale+" --run-id="+txt_runID+" --env=" + strCmdText1 + " --width=1920 --height=1080" ;
+        strCmdText = "/K mlagents-learn " + confPath + " --time-scale="+txt_timeScale+" --run-id="+" "+txt_runID+CheckRunID(txt_runID)+" --env=" + strCmdText1 + " --width=1920 --height=1080";
         //System.Diagnostics.Process.Start("CMD.exe",strCmdText1); //Start cmd process
         Debug.Log(strCmdText);
         System.Diagnostics.Process.Start("CMD.exe",strCmdText); //Start cmd process
@@ -331,7 +331,7 @@ public class TM_OnClickObject : MonoBehaviour
     }
 
     public string CheckRunID(string runID){
-        string path = Path.Combine(Application.dataPath, "../") + "/models/";
+        string path = Path.Combine(Application.dataPath, "../") + "/results/";
             if(Directory.Exists(path + runID)){
                 Debug.Log("Directory Exists:" + path + runID);
                 return "--resume";
@@ -474,15 +474,14 @@ public class Hyperparameters{
     public string init_entcoef;
     public string save_replay_buffer;
     public string tau;
-    public string steps_per_update;
-    
+    public string steps_per_update;  
 }
 
 [System.Serializable]
 public class NetworkSettings{
     public string normalize;
-    public string hidden_units ;
-    public string num_layers ;
+    public string hidden_units;
+    public string num_layers;
 }
 
 [System.Serializable]

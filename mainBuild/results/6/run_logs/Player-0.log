@@ -1,12 +1,12 @@
 Mono path[0] = 'E:/CarsML2021-main/trainingScene/CarsML2021-main_Data/Managed'
 Mono config path = 'E:/CarsML2021-main/trainingScene/MonoBleedingEdge/etc'
 PlayerConnection initialized from E:/CarsML2021-main/trainingScene/CarsML2021-main_Data (debug = 0)
-PlayerConnection initialized network socket : 0.0.0.0 55245
-Multi-casting "[IP] 192.168.178.20 [Port] 55245 [Flags] 2 [Guid] 171494353 [EditorId] 1550896361 [Version] 1048832 [Id] WindowsPlayer(DESKTOP-MUVOSHJ) [Debug] 1 [PackageName] WindowsPlayer [ProjectName] CarsML2021-main" to [225.0.0.222:54997]...
-Started listening to [0.0.0.0:55245]
-Starting managed debugger on port 56353
-Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=0.0.0.0:56353
-PlayerConnection already initialized - listening to [0.0.0.0:55245]
+PlayerConnection initialized network socket : 0.0.0.0 55289
+Multi-casting "[IP] 192.168.178.20 [Port] 55289 [Flags] 2 [Guid] 91254470 [EditorId] 1550896361 [Version] 1048832 [Id] WindowsPlayer(DESKTOP-MUVOSHJ) [Debug] 1 [PackageName] WindowsPlayer [ProjectName] CarsML2021-main" to [225.0.0.222:54997]...
+Started listening to [0.0.0.0:55289]
+Starting managed debugger on port 56470
+Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=0.0.0.0:56470
+PlayerConnection already initialized - listening to [0.0.0.0:55289]
 Initialize engine version: 2019.4.28f1 (1381962e9d08)
 [Subsystems] Discovering subsystems at path E:/CarsML2021-main/trainingScene/CarsML2021-main_Data/UnitySubsystems
 GfxDevice: creating device client; threaded=1
@@ -17,7 +17,7 @@ Direct3D:
     VRAM:     6052 MB
     Driver:   30.0.14.7141
 Begin MonoManager ReloadAssembly
-- Completed reload, in  0.138 seconds
+- Completed reload, in  2.907 seconds
 D3D11 device created for Microsoft Media Foundation video decoding.
 <RI> Initializing input.
 <RI> Input initialized.
@@ -25,7 +25,7 @@ D3D11 device created for Microsoft Media Foundation video decoding.
 The referenced script on this Behaviour (Game Object 'Monitor1') is missing! 
 (Filename: C:\buildslave\unity\build\Runtime/Mono/ManagedMonoBehaviourRef.cpp Line: 334)
 
-UnloadTime: 0.983600 ms
+UnloadTime: 7.064300 ms
 script nameRoadBlock_Straight || listname:RoadBlock_Straight
 UnityEngine.StackTraceUtility:ExtractStackTrace ()
 UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
@@ -833,12 +833,12 @@ TrainingArea:Awake () (at E:/CarsML2021-main/Assets/Scripts/TrainingArea.cs:81)
 (Filename: E:/CarsML2021-main/Assets/Scripts/TrainingArea.cs Line: 98)
 
 Setting up 8 worker threads for Enlighten.
-  Thread -> id: 83c0 -> priority: 1 
-  Thread -> id: 15a8 -> priority: 1 
-  Thread -> id: 2e88 -> priority: 1 
-  Thread -> id: 538c -> priority: 1 
-  Thread -> id: 8234 -> priority: 1 
-  Thread -> id: 68d0 -> priority: 1 
-  Thread -> id: 5dc8 -> priority: 1 
-  Thread -> id: 6d10 -> priority: 1 
-##utp:{"type":"MemoryLeaks","version":2,"phase":"Immediate","time":1628250915022,"processId":34104,"allocatedMemory":796627,"memoryLabels":[{"Permanent":40},{"NewDelete":6232},{"Thread":144},{"Manager":2160},{"Physics":32},{"Serialization":785864},{"String":371},{"PoolAlloc":112},{"GI":296},{"VR":2040},{"Subsystems":-664}]}
+  Thread -> id: 6038 -> priority: 1 
+  Thread -> id: 960 -> priority: 1 
+  Thread -> id: 4a3c -> priority: 1 
+  Thread -> id: 24d0 -> priority: 1 
+  Thread -> id: 76a8 -> priority: 1 
+  Thread -> id: 4788 -> priority: 1 
+  Thread -> id: 55a4 -> priority: 1 
+  Thread -> id: 1ef8 -> priority: 1 
+##utp:{"type":"MemoryLeaks","version":2,"phase":"Immediate","time":1628502193617,"processId":16744,"allocatedMemory":796627,"memoryLabels":[{"Permanent":40},{"NewDelete":6232},{"Thread":144},{"Manager":2160},{"Physics":32},{"Serialization":785864},{"String":371},{"PoolAlloc":112},{"GI":296},{"VR":2040},{"Subsystems":-664}]}

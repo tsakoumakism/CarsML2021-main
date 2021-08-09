@@ -2,12 +2,6 @@
     "CarBrainPPO": {
         "checkpoints": [
             {
-                "steps": 499979,
-                "file_path": "results\\6\\CarBrainPPO\\CarBrainPPO-499979.onnx",
-                "reward": 259.1436394246725,
-                "creation_time": 1628244721.2111166
-            },
-            {
                 "steps": 999930,
                 "file_path": "results\\6\\CarBrainPPO\\CarBrainPPO-999930.onnx",
                 "reward": null,
@@ -30,13 +24,19 @@
                 "file_path": "results\\6\\CarBrainPPO\\CarBrainPPO-2103661.onnx",
                 "reward": null,
                 "creation_time": 1628250915.240554
+            },
+            {
+                "steps": 2122093,
+                "file_path": "results\\6\\CarBrainPPO\\CarBrainPPO-2122093.onnx",
+                "reward": null,
+                "creation_time": 1628502193.837245
             }
         ],
         "final_checkpoint": {
-            "steps": 2103661,
+            "steps": 2122093,
             "file_path": "results\\6\\CarBrainPPO.onnx",
             "reward": null,
-            "creation_time": 1628250915.240554
+            "creation_time": 1628502193.837245
         }
     },
     "metadata": {
