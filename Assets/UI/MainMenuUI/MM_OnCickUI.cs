@@ -25,4 +25,12 @@ public class MM_OnCickUI : MonoBehaviour
     public void OnClickTestModel(){
         SceneManager.LoadScene("TestModel", LoadSceneMode.Single);
     }
+
+    public void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            Application.Quit();
+        }
+    }
 }

@@ -65,7 +65,8 @@ public class TrainingArea : MonoBehaviour
         Instantiate(finishLine, finishLinePos, Quaternion.Euler(0, 0, 0), transform.Find("Track"));
 
         Debug.Log("Training Start");
-        
+
+        ReadNumOfAgents();
         int agentsToSpawn = numOfAgents;
         if (spawnAgents && academy.spawnAgents)
         {
@@ -90,7 +91,7 @@ public class TrainingArea : MonoBehaviour
     //spawn agents in an area around the specified position
     public void SpawnAgents(int agents, Vector3 _position, Quaternion _rotation)
     {
-        ReadNumOfAgents();
+
         for (int i = 0; i < agents; i++)
         {
             Debug.Log(agents);
@@ -108,8 +109,7 @@ public class TrainingArea : MonoBehaviour
             else
             {
                 Instantiate(agentPrefabPPO, _position, _rotation, transform.Find("Agents"));
-            }
-            
+            }   
         }
     }
 
@@ -182,11 +182,12 @@ public class TrainingArea : MonoBehaviour
         string numofAgentsPPO;
         string numOfAgentsSAC;
         StreamReader sr;
-        if (!Application.isEditor)
+        if (!Application.isEditor) { 
             sr = new StreamReader("../mainBuild/CarsML2021-main_Data/options.json");
+        }
         else
         {
-            sr = new StreamReader("options.json");
+            sr = new StreamReader("/CarsML2021-main_Data/options.json");
         }
         using (sr)
         {
@@ -201,12 +202,10 @@ public class TrainingArea : MonoBehaviour
                 numOfAgents = Int32.Parse(numOfAgentsString);
                 agentPPO = Int32.Parse(numofAgentsPPO);
                 agentSAC = Int32.Parse(numOfAgentsSAC);
-
             }
-
-        }
-        
+        }  
     }
+
     public void EnableCheckPoints(){
         string checkDiff;
         using(StreamReader sr = new StreamReader(Path.Combine(Application.persistentDataPath,"checkpoints.txt"))){

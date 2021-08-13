@@ -181,7 +181,7 @@ public class TM_OnClickObject : MonoBehaviour
         //else
         confPath = Path.Combine(Application.dataPath, "../") +  "/config/" + config_fileName;
 
-        strCmdText = "/K mlagents-learn " + confPath + " --time-scale="+txt_timeScale+" --run-id="+" "+txt_runID+CheckRunID(txt_runID)+" --env=" + strCmdText1 + " --width=1920 --height=1080";
+        strCmdText = "/K mlagents-learn " + confPath + " --time-scale="+txt_timeScale+" --run-id="+txt_runID + " "+ CheckRunID(txt_runID)+" --env=" + strCmdText1 + " --width=1920 --height=1080";
         //System.Diagnostics.Process.Start("CMD.exe",strCmdText1); //Start cmd process
         Debug.Log(strCmdText);
         System.Diagnostics.Process.Start("CMD.exe",strCmdText); //Start cmd process
@@ -192,6 +192,14 @@ public class TM_OnClickObject : MonoBehaviour
         string mapFile = d_map.options[mapVal].text;
 
         File.Copy(Path.Combine(mapPath,mapFile),Path.Combine(mapPath,"selectedMap.json"),true);
+    }
+
+    public void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            SceneManager.LoadScene("MainMenu", LoadSceneMode.Single);
+        }
     }
 
 
@@ -231,14 +239,14 @@ public class TM_OnClickObject : MonoBehaviour
                             num_layers = txt_numOfLayers
                         },
 
-                        reward_signals = new RewardSignals()
+                        reward_signals = new RewardSignals
                         {
                             extrinsic = new Extrinsic
                             {
                                 gamma = "0.99",
                                 strength = "1.0"
-                            },
-                        },
+                            }
+                        }
                     },
 
                     CarBrainSAC = new CarBrainSAC
@@ -256,11 +264,11 @@ public class TM_OnClickObject : MonoBehaviour
                             init_entcoef = "1.0",
                             save_replay_buffer = "false",
                             tau = "0.005",
-                            steps_per_update = "1",
+                            steps_per_update = txt_numOfAgents,
                             learning_rate = "1e-4",
                             learning_rate_schedule = "linear",
-                            batch_size = "2048",
-                            buffer_size = "20480",
+                            batch_size = "512",
+                            buffer_size = "5120",
                         },
                         network_settings = new NetworkSettings
                         {
@@ -268,17 +276,17 @@ public class TM_OnClickObject : MonoBehaviour
                             hidden_units = txt_hiddenUnits,
                             num_layers = txt_numOfLayers
                         },
-                        reward_signals = new RewardSignals()
+                        reward_signals = new RewardSignals
                         {
                             extrinsic = new Extrinsic
                             {
                                 gamma = "0.99",
                                 strength = "1.0"
-                            },
-                        },
+                            }
+                        }
                     }
                 }
-                };
+            };
 
             //string behav = JsonUtility.ToJson(behaviors);
             var serializer = new SerializerBuilder().Build();
