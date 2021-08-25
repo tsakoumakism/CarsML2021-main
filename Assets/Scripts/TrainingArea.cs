@@ -15,6 +15,9 @@ public class TrainingArea : MonoBehaviour
 
 
     public bool spawnAgents = false;
+    public bool agentPPO;
+    public bool agentSAC;
+    public int numOfAgents;
     //public int agentAmount;
     public int totalCheckpoints;
     public Transform finishLine;
@@ -42,13 +45,11 @@ public class TrainingArea : MonoBehaviour
     string mapName;
     string modelName;
 
-    int agentPPO=1;
-    int agentSAC=0;
-    int numOfAgents;
     [SerializeField] private BlockData bd;
 
 
-    void Awake() {
+    void Awake()
+    {
 
         mapName = "selectedMap";
         LoadMap();
@@ -56,31 +57,39 @@ public class TrainingArea : MonoBehaviour
         academy = GameObject.Find("Academy").GetComponent<CarAcademy>();
 
         startPosition = GameObject.Find("Track").transform.GetChild(0).GetChild(0).position; // get the first road block of the track
-       // float offsetY = startPosition.y + 10f;
-       // startPosition = new Vector3(startPosition.x, offsetY, startPosition.z);
+                                                                                             // float offsetY = startPosition.y + 10f;
+                                                                                             // startPosition = new Vector3(startPosition.x, offsetY, startPosition.z);
         EnableCheckPoints();
 
         //create finish line
-        finishLinePos = new Vector3(startPosition.x, startPosition.y + 1.5f, startPosition.z-3f);
+        finishLinePos = new Vector3(startPosition.x, startPosition.y + 1.5f, startPosition.z - 3f);
         Instantiate(finishLine, finishLinePos, Quaternion.Euler(0, 0, 0), transform.Find("Track"));
 
         Debug.Log("Training Start");
-
-        ReadNumOfAgents();
-        int agentsToSpawn = numOfAgents;
-        if (spawnAgents && academy.spawnAgents)
+        int agentsToSpawn;
+        if (!Application.isEditor)
         {
-            if (academy.agentsPerArea != 0)
-            {
-                Debug.Log("Agents (academy): " + academy.agentsPerArea);
-                agentsToSpawn = academy.agentsPerArea;
-            }
-            else
-            {
-                Debug.Log("Agents (area): " + agentsToSpawn);
-            }
-            SpawnAgents(agentsToSpawn, startPosition, Quaternion.Euler(0, 0, 0));
+            ReadNumOfAgents();
+            agentsToSpawn = numOfAgents;
         }
+        else
+        {
+            //when in editor, values are controlled from the editor
+            agentsToSpawn = numOfAgents;
+            if (spawnAgents && academy.spawnAgents)
+            {
+                if (academy.agentsPerArea != 0)
+                {
+                    Debug.Log("Agents (academy): " + academy.agentsPerArea);
+                    agentsToSpawn = academy.agentsPerArea;
+                }
+                else
+                {
+                    Debug.Log("Agents (area): " + agentsToSpawn);
+                }
+            }
+        }
+        SpawnAgents(agentsToSpawn, startPosition, Quaternion.Euler(0, 0, 0));
     }
 
     private void FixedUpdate()
@@ -97,12 +106,12 @@ public class TrainingArea : MonoBehaviour
             Debug.Log(agents);
             Debug.Log(agentPPO);
             Debug.Log(agentSAC);
-            if (agentPPO != 0 && agentSAC != 0)
+            if (agentPPO && agentSAC)
             {
                 Instantiate(agentPrefabPPO, _position, _rotation, transform.Find("Agents"));
                 Instantiate(agentPrefabSAC, _position, _rotation, transform.Find("Agents"));
             }
-            else if(agentPPO == 0)
+            else if(!agentPPO)
             {
                 Instantiate(agentPrefabSAC, _position, _rotation, transform.Find("Agents"));
             }
@@ -182,13 +191,8 @@ public class TrainingArea : MonoBehaviour
         string numofAgentsPPO;
         string numOfAgentsSAC;
         StreamReader sr;
-        if (!Application.isEditor) { 
-            sr = new StreamReader("../mainBuild/CarsML2021-main_Data/options.json");
-        }
-        else
-        {
-            sr = new StreamReader("/CarsML2021-main_Data/options.json");
-        }
+
+        sr = new StreamReader("../mainBuild/CarsML2021-main_Data/options.json");
         using (sr)
         {
             while ((line = sr.ReadLine()) != null)
@@ -200,10 +204,10 @@ public class TrainingArea : MonoBehaviour
                 numOfAgentsSAC = options.numOfAgentsSAC;
 
                 numOfAgents = Int32.Parse(numOfAgentsString);
-                agentPPO = Int32.Parse(numofAgentsPPO);
-                agentSAC = Int32.Parse(numOfAgentsSAC);
+                agentPPO = Int32.Parse(numofAgentsPPO) > 0 ? true : false;
+                agentSAC = Int32.Parse(numOfAgentsSAC) > 0 ? true : false;
             }
-        }  
+        }       
     }
 
     public void EnableCheckPoints(){

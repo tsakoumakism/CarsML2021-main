@@ -44,7 +44,7 @@ RenderSettings:
 LightmapSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 11
-  m_GIWorkflowMode: 1
+  m_GIWorkflowMode: 0
   m_GISettings:
     serializedVersion: 2
     m_BounceScale: 1
@@ -959,7 +959,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spawnAgents: 1
-  agentsPerArea: 9
+  agentsPerArea: 1
 --- !u!4 &1802661901
 Transform:
   m_ObjectHideFlags: 0
@@ -972,7 +972,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1931168373
 GameObject:
@@ -1057,6 +1057,9 @@ MonoBehaviour:
   agentPrefabSAC: {fileID: 7522652056596063935, guid: 17b4aed6fc506ce40a091a7678b27342,
     type: 3}
   spawnAgents: 1
+  agentPPO: 1
+  agentSAC: 1
+  numOfAgents: 1
   totalCheckpoints: 12
   finishLine: {fileID: 3733554567747082745, guid: 1b9a64ee16ad44b418151d511fafd43f,
     type: 3}
@@ -1091,5 +1094,5 @@ Transform:
   - {fileID: 625635672}
   - {fileID: 1135657455}
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
