@@ -57,6 +57,9 @@ public class TM_OnClickObject : MonoBehaviour
     InputField tf_collisionPenalty;
     InputField tf_idlePenalty;
     InputField tf_wrongCheckPenalty;
+    InputField tf_numOfEnvs;
+    Toggle tf_graphicsToggle;
+    Dropdown tf_deviceSelect;
 
     string txt_runID;
     string txt_timeScale;
@@ -66,6 +69,10 @@ public class TM_OnClickObject : MonoBehaviour
     string txt_collisionPenalty;
     string txt_idlePenalty;
     string txt_wrongCheckPenalty;
+    string txt_numOfEnvs;
+    bool toggle_noGraphics;
+    string txt_torchDevice;
+    
     //-----------------------------Options End Here----------------------------------
    
 
@@ -82,7 +89,6 @@ public class TM_OnClickObject : MonoBehaviour
 
         d_map = GameObject.Find("MapDropDown").GetComponent<Dropdown>();
         d_algorithm = GameObject.Find("AlgorithmDropdown").GetComponent<Dropdown>();
-
 
         mapPath = Application.persistentDataPath;
         List<string> m_mapDropOptions = new List<string>();
@@ -113,7 +119,7 @@ public class TM_OnClickObject : MonoBehaviour
         tf_hiddenUnits = GameObject.Find("HiddenUnitInputField").GetComponent<InputField>();
         tf_numOfLayers = GameObject.Find("NumOfLayersInputField").GetComponent<InputField>();
 
-        
+
         txt_epochNum = tf_epochNum.text;
         txt_epsilon = tf_epsilon.text;
         txt_lamda = tf_lamda.text;
@@ -137,6 +143,10 @@ public class TM_OnClickObject : MonoBehaviour
         tf_idlePenalty      = GameObject.Find("IdlePenaltyInputField").GetComponent<InputField>();
         tf_wrongCheckPenalty = GameObject.Find("WrongCheckpointPenaltyInputField").GetComponent<InputField>();
 
+        tf_numOfEnvs        = GameObject.Find("num_envs").GetComponent<InputField>();
+        tf_graphicsToggle = GameObject.Find("no-graphics").GetComponent<Toggle>();
+        tf_deviceSelect = GameObject.Find("TorchDevice").GetComponent<Dropdown>();
+
         txt_runID        = tf_runID.text;
         txt_timeScale    = tf_timeScale.text;
         txt_numOfAgents  = tf_numOfAgents.text;
@@ -145,8 +155,14 @@ public class TM_OnClickObject : MonoBehaviour
         txt_collisionPenalty = tf_collisionPenalty.text;
         txt_idlePenalty      = tf_idlePenalty.text;
         txt_wrongCheckPenalty = tf_wrongCheckPenalty.text;
+
+        txt_numOfEnvs       = tf_numOfEnvs.text;
+        toggle_noGraphics = tf_graphicsToggle;
+        txt_torchDevice = tf_deviceSelect.captionText.text;
+
+
         //-----------------------------Options End Here----------------------------------
-        
+
         //Fill the Hyperparameters and Options input fields with the current values
         OnSceneAwake();
     }
@@ -180,8 +196,11 @@ public class TM_OnClickObject : MonoBehaviour
         //confPath = Path.Combine(Application.dataPath, "../../") +  "/config/" + config_fileName;
         //else
         confPath = Path.Combine(Application.dataPath, "../") +  "/config/" + config_fileName;
+        string noGraphics = toggle_noGraphics ? " --no-graphics" : " ";
 
-        strCmdText = "/K mlagents-learn " + confPath + " --time-scale="+txt_timeScale+" --run-id="+txt_runID + " "+ CheckRunID(txt_runID)+" --env=" + strCmdText1 + " --width=1920 --height=1080";
+        strCmdText = "/K mlagents-learn " + confPath + " --time-scale="+txt_timeScale+" --run-id="+txt_runID + " "+ CheckRunID(txt_runID) + 
+                    " --env=" + strCmdText1 + " --width=1920 --height=1080" + " --torch-device=" + txt_torchDevice + " --num-envs=" + txt_numOfEnvs + noGraphics;
+
         //System.Diagnostics.Process.Start("CMD.exe",strCmdText1); //Start cmd process
         Debug.Log(strCmdText);
         System.Diagnostics.Process.Start("CMD.exe",strCmdText); //Start cmd process
@@ -243,7 +262,7 @@ public class TM_OnClickObject : MonoBehaviour
                         {
                             extrinsic = new Extrinsic
                             {
-                                gamma = "0.99",
+                                gamma = "0.999999",
                                 strength = "1.0"
                             }
                         }
@@ -280,7 +299,7 @@ public class TM_OnClickObject : MonoBehaviour
                         {
                             extrinsic = new Extrinsic
                             {
-                                gamma = "0.99",
+                                gamma = "0.999999",
                                 strength = "1.0"
                             }
                         }
@@ -447,7 +466,7 @@ public class TM_OnClickObject : MonoBehaviour
         txt_collisionPenalty = tf_collisionPenalty.text;
         txt_idlePenalty      = tf_idlePenalty.text;
         txt_wrongCheckPenalty = tf_wrongCheckPenalty.text;
-        txt_timeScale = tf_timeScale.text;
+        //txt_timeScale = tf_timeScale.text;
 
         txt_epochNum = tf_epochNum.text;
         txt_epsilon = tf_epsilon.text;
@@ -459,6 +478,10 @@ public class TM_OnClickObject : MonoBehaviour
         txt_beta = tf_beta.text;
         txt_hiddenUnits = tf_hiddenUnits.text;
         txt_numOfLayers = tf_numOfLayers.text;
+
+        txt_numOfEnvs = tf_numOfEnvs.text;
+        toggle_noGraphics = tf_graphicsToggle.isOn;
+        txt_torchDevice = tf_deviceSelect.captionText.text;
     }
 }
 

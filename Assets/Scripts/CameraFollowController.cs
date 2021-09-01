@@ -4,9 +4,19 @@ using UnityEngine;
 
 public class CameraFollowController : MonoBehaviour
 {
+
+    private Transform objectToFollow;
+    private CarAgent carAgent;
+    public Vector3 offset;
+    public float followSpeed = 10;
+    public float lookSpeed = 10;
+
     public void Start()
     {
         objectToFollow = GameObject.Find("Agents").transform.GetChild(0);
+        carAgent = FindObjectOfType<CarAgent>();
+        carAgent.monitorInfo = true;
+
     }
 
     public void LookAtTarget()
@@ -32,8 +42,4 @@ public class CameraFollowController : MonoBehaviour
         MoveToTarget();
     }
 
-    private Transform objectToFollow;
-    public Vector3 offset;
-    public float followSpeed = 10;
-    public float lookSpeed = 10;
 }

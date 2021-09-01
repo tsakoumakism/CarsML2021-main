@@ -12,11 +12,13 @@ public class TrainingArea : MonoBehaviour
     [Header("Training Area Settings")]
     public CarAgent agentPrefabPPO;
     public CarAgent agentPrefabSAC;
+    public CarAgent agentPrefabHeuristic;
 
 
     public bool spawnAgents = false;
     public bool agentPPO;
     public bool agentSAC;
+    public bool heuristic;
     public int numOfAgents;
     //public int agentAmount;
     public int totalCheckpoints;
@@ -30,7 +32,9 @@ public class TrainingArea : MonoBehaviour
     public float idlePenalty = -10f;
     public float wrongCheckpointPenalty = -10f;
 
-    //public TextMeshProUGUI monitorHUD;
+    public Text trainingHUD;
+    public Text drivingHUD;
+    public Text performanceHUD;
     //public TextMeshProUGUI areaMonitor;
     private Vector3 startPosition;
     private Vector3 finishLinePos;
@@ -83,6 +87,10 @@ public class TrainingArea : MonoBehaviour
                     Debug.Log("Agents (academy): " + academy.agentsPerArea);
                     agentsToSpawn = academy.agentsPerArea;
                 }
+                else if (heuristic)
+                {
+                    agentsToSpawn = 1;
+                }
                 else
                 {
                     Debug.Log("Agents (area): " + agentsToSpawn);
@@ -111,23 +119,29 @@ public class TrainingArea : MonoBehaviour
                 Instantiate(agentPrefabPPO, _position, _rotation, transform.Find("Agents"));
                 Instantiate(agentPrefabSAC, _position, _rotation, transform.Find("Agents"));
             }
-            else if(!agentPPO)
+            else if(!agentPPO && agentSAC)
             {
                 Instantiate(agentPrefabSAC, _position, _rotation, transform.Find("Agents"));
             }
-            else
+            else if (agentPPO && !agentSAC)
             {
                 Instantiate(agentPrefabPPO, _position, _rotation, transform.Find("Agents"));
-            }   
+            }
+            else
+            {
+                Instantiate(agentPrefabHeuristic, _position, _rotation, transform.Find("Agents"));
+            }    
         }
     }
 
-    public void UpdateMonitor(string text)
+    public void UpdateMonitor(string trainingText, string drivingText, string performanceText)
     {
         //areaMonitor.text = text;
-        //monitorHUD.text = text;
+        trainingHUD.text = trainingText;
+        drivingHUD.text = drivingText;
+        performanceHUD.text = performanceText;
     }
-
+    /*
     public void UpdateStats(float laptime)
     {
         if (laptime < recordLap)
@@ -136,6 +150,7 @@ public class TrainingArea : MonoBehaviour
         }
         UpdateMonitor("Best Lap: " + recordLap);
     }
+    */
 
     //useless for now
     public void ResetArea()

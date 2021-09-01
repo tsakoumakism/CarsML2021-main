@@ -46,7 +46,7 @@ public class CarController : MonoBehaviour
         SlipDetection();
         Steer();
         Brake();
-        //TransmissionControlUnit();
+        TransmissionControlUnit();
         Transmission();
 
         if (antiRoll)
@@ -73,20 +73,20 @@ public class CarController : MonoBehaviour
     {
         //determine shift logic WIP
         //will probably get scrapped because of integrating it into the RL model
-        /*
-        if (carEngine.Rpm >= carEngine.maxEngineRpm * 0.9f)
+        
+        if (carEngine.Rpm >= carEngine.maxEngineRpm * 0.9f || carEngine.Rpm >= carEngine.maxPowerRpm * 1.3f)
         {
             ShiftUp();
         }
-        else if (carEngine.Torque < 1000)
+        else if (carEngine.Rpm < 1001)
         {
             ShiftDown();
         }
-        */
+        
     }
 
     //for shift-stick
-    /*
+    
     public void ShiftUp()
     {
         if (currentGear < gear.Length)
@@ -104,7 +104,7 @@ public class CarController : MonoBehaviour
         }
         else { Debug.Log("Can't shift down"); }
     }
-    */
+    
 
     //transfers torque from engine to wheels
     private void Transmission()

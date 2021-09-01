@@ -64,6 +64,7 @@ public class CarAgent : Agent
     public void FixedUpdate()
     {
         //brake and freeze position if freshly respawned
+        //this is to avoid some issues with unity physics and entity spawning
         if (respawned)
         {
             car.HandBrake();
@@ -85,30 +86,30 @@ public class CarAgent : Agent
         {
             dejaVu = false;
         }
-        /*
+        
         if (monitorInfo)
         {
             if (maxReward < GetCumulativeReward())
             {
                 maxReward = GetCumulativeReward();
             }
-            trainingArea.UpdateMonitor("Reward: " + GetCumulativeReward().ToString("0.00") +
+            string hudTextTraining = "Reward: " + GetCumulativeReward().ToString("0.00") +
                         "\nMax Reward: " + maxReward.ToString("0.00") +
-                        "\nSpeed: " + speed.ToString("0.00") +
+                        "\nStep Count: " + StepCount;
+            string hudTextDriving = "\nSpeed: " + speed.ToString("0.00") +
                         "\nTorque: " + car.carEngine.Torque.ToString("0") +
                         "\nRPM: " + car.carEngine.Rpm.ToString("0") +
                         "\nTireRPM: " + car.frontDriverW.rpm.ToString("0") +
-                        //"\nDrift Value: " + driftValue + //
-                        "\nDrift Angle: " + driftAngle.ToString("0.0") + //
+                        "\nDrift Angle: " + driftAngle.ToString("0.0") +
                         "\nGas: " + car.GasPedalPosition.ToString("P") +
                         "\nBrake: " + car.BrakePedalPosition.ToString("P") +
                         "\nSteering Angle: " + car.SteeringAngle.ToString("0.00") +
-                        "\nGear: " + car.GetGear() +
-                        "\nLaps: " + (int)(checkpointsPassed / trainingArea.totalCheckpoints) +
-                        "\nCheckpoints Passed: " + checkpointsPassed +
-                        "\nStep Count: " + StepCount);
+                        "\nGear: " + car.GetGear();
+            string hudTextPerformance = "\nLaps: " + lapsCompleted +
+                        "\nBest Lap " + bestLap;
+           trainingArea.UpdateMonitor(hudTextTraining, hudTextDriving, hudTextPerformance);
         }
-        */
+        
     }
 
     public override void CollectObservations(VectorSensor sensor)
@@ -187,7 +188,7 @@ public class CarAgent : Agent
         if (collision.gameObject.CompareTag("wall"))
         {
             //Give up and reset
-            SetReward(trainingArea.collisionPenalty);
+            AddReward(trainingArea.collisionPenalty);
             EndEpisode();
         }
     }
@@ -237,8 +238,6 @@ public class CarAgent : Agent
             if(bestLap > lapTime)
             {
                 bestLap = lapTime;
-                trainingArea.UpdateStats(bestLap);
-
             }
             lapsCompleted = lapsCompleted + 1;
         }
