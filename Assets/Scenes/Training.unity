@@ -318,9 +318,10 @@ GameObject:
   - component: {fileID: 474509176}
   - component: {fileID: 474509178}
   - component: {fileID: 474509177}
+  - component: {fileID: 474509179}
   m_Layer: 0
-  m_Name: Camera
-  m_TagString: Untagged
+  m_Name: SpectatorCamera
+  m_TagString: camera
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -333,11 +334,11 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 474509175}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -719, y: -86, z: -8}
+  m_LocalPosition: {x: -507, y: -114, z: -677}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 1931168375}
-  m_RootOrder: 0
+  m_Father: {fileID: 0}
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!81 &474509177
 AudioListener:
@@ -390,6 +391,23 @@ Camera:
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
   m_StereoSeparation: 0.022
+--- !u!114 &474509179
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 474509175}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dfdeb7cf54775014a9a7b0a8ab7ca107, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  movementSpeed: 10
+  fastMovementSpeed: 100
+  freeLookSensitivity: 3
+  zoomSensitivity: 10
+  fastZoomSensitivity: 50
 --- !u!1 &547982921
 GameObject:
   m_ObjectHideFlags: 0
@@ -766,8 +784,8 @@ GameObject:
   - component: {fileID: 1426703575}
   - component: {fileID: 1426703578}
   m_Layer: 0
-  m_Name: Main Camera
-  m_TagString: MainCamera
+  m_Name: HUDCamera
+  m_TagString: camera
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -990,55 +1008,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1931168373
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1931168375}
-  - component: {fileID: 1931168374}
-  m_Layer: 0
-  m_Name: Spectator
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 0
---- !u!114 &1931168374
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1931168373}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dfdeb7cf54775014a9a7b0a8ab7ca107, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  movementSpeed: 10
-  fastMovementSpeed: 100
-  freeLookSensitivity: 3
-  zoomSensitivity: 10
-  fastZoomSensitivity: 50
---- !u!4 &1931168375
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1931168373}
-  m_LocalRotation: {x: 0.47212815, y: 0.51707596, z: -0.42622262, w: 0.5727667}
-  m_LocalPosition: {x: 188, y: -28, z: -669}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children:
-  - {fileID: 474509176}
-  m_Father: {fileID: 0}
-  m_RootOrder: 5
-  m_LocalEulerAnglesHint: {x: 78.997, y: 84.149, z: 0}
 --- !u!1 &1957397241
 GameObject:
   m_ObjectHideFlags: 0
@@ -1091,6 +1060,7 @@ MonoBehaviour:
   trainingHUD: {fileID: 357691190}
   drivingHUD: {fileID: 845786844}
   performanceHUD: {fileID: 39748408}
+  startPosition: {x: 0, y: 0, z: 0}
   recordLap: Infinity
   roadBuildList:
   - {fileID: 4056962299287415245, guid: 33d03df5e80730b4cadd5c9e46b3c93b, type: 3}

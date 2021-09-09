@@ -14,7 +14,6 @@ public class TrainingArea : MonoBehaviour
     public CarAgent agentPrefabSAC;
     public CarAgent agentPrefabHeuristic;
 
-
     public bool spawnAgents = false;
     public bool agentPPO;
     public bool agentSAC;
@@ -36,10 +35,13 @@ public class TrainingArea : MonoBehaviour
     public Text drivingHUD;
     public Text performanceHUD;
     //public TextMeshProUGUI areaMonitor;
-    private Vector3 startPosition;
+    public Vector3 startPosition;
     private Vector3 finishLinePos;
     private CarAgent[] agentList;
     private CarAcademy academy;
+    private GameObject[] cameraList;
+    private int currentCam;
+
 
     //performance
     public float recordLap = Mathf.Infinity;
@@ -58,11 +60,21 @@ public class TrainingArea : MonoBehaviour
         mapName = "selectedMap";
         LoadMap();
 
+        //initialize cameras (create list, find active one and store index)
+        cameraList = GameObject.FindGameObjectsWithTag("camera");
+        for (int i = 1; i < cameraList.Length; i++)
+        {
+            cameraList[i].SetActive(false);
+        }
+        currentCam = 0;
+        cameraList[0].SetActive(true);
+
         academy = GameObject.Find("Academy").GetComponent<CarAcademy>();
 
         startPosition = GameObject.Find("Track").transform.GetChild(0).GetChild(0).position; // get the first road block of the track
                                                                                              // float offsetY = startPosition.y + 10f;
                                                                                              // startPosition = new Vector3(startPosition.x, offsetY, startPosition.z);
+
         EnableCheckPoints();
 
         //create finish line
@@ -98,11 +110,20 @@ public class TrainingArea : MonoBehaviour
             }
         }
         SpawnAgents(agentsToSpawn, startPosition, Quaternion.Euler(0, 0, 0));
+
+
     }
 
-    private void FixedUpdate()
+    private void Update()
     {
-        
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            Application.Quit();
+        }
+        if (Input.GetKeyDown(KeyCode.F4))
+        {
+            ToggleView();
+        }
     }
 
     //spawn agents in an area around the specified position
@@ -257,4 +278,12 @@ public class TrainingArea : MonoBehaviour
         return regex.IsMatch(inStr);
     }
 
+    // changes camera views (currently between top down and follow camera (random agent)
+    public void ToggleView()
+    {
+        cameraList[currentCam].SetActive(false);
+        int nextCam = (currentCam + 1) % cameraList.Length;
+        cameraList[nextCam].SetActive(true); //cyclically iterate through the array
+        currentCam = nextCam;
+    }
 }

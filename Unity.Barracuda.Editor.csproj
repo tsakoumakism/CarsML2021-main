@@ -56,12 +56,12 @@
     <Analyzer Include="C:\Program Files (x86)\Microsoft Visual Studio Tools for Unity\16.0\Analyzers\Microsoft.Unity.Analyzers.dll" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Library\PackageCache\com.unity.barracuda@1.3.2-preview\Barracuda\Editor\NNModelImporter.cs" />
-    <Compile Include="Library\PackageCache\com.unity.barracuda@1.3.2-preview\Barracuda\Editor\ONNXModelImporter.cs" />
-    <Compile Include="Library\PackageCache\com.unity.barracuda@1.3.2-preview\Barracuda\Editor\ONNXModelImporterEditor.cs" />
+    <Compile Include="Library\PackageCache\com.unity.barracuda@5e321aa0db\Barracuda\Editor\NNModelImporter.cs" />
+    <Compile Include="Library\PackageCache\com.unity.barracuda@5e321aa0db\Barracuda\Editor\ONNXModelImporter.cs" />
+    <Compile Include="Library\PackageCache\com.unity.barracuda@5e321aa0db\Barracuda\Editor\ONNXModelImporterEditor.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Library\PackageCache\com.unity.barracuda@1.3.2-preview\Barracuda\Editor\Unity.Barracuda.Editor.asmdef" />
+    <None Include="Library\PackageCache\com.unity.barracuda@5e321aa0db\Barracuda\Editor\Unity.Barracuda.Editor.asmdef" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">
@@ -266,10 +266,10 @@
       <HintPath>Library\PackageCache\com.unity.analytics@3.3.5\AnalyticsStandardEvents\Unity.Analytics.StandardEvents.dll</HintPath>
     </Reference>
     <Reference Include="Google.Protobuf">
-      <HintPath>Library\PackageCache\com.unity.barracuda@1.3.2-preview\Barracuda\Runtime\Plugins\ProtoBuffer\Google.Protobuf.dll</HintPath>
+      <HintPath>Library\PackageCache\com.unity.barracuda@5e321aa0db\Barracuda\Runtime\Plugins\ProtoBuffer\Google.Protobuf.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Burst.Unsafe">
-      <HintPath>Library\PackageCache\com.unity.burst@1.3.4\Unity.Burst.Unsafe.dll</HintPath>
+      <HintPath>Library\PackageCache\com.unity.burst@1.6.0-pre.2\Unity.Burst.Unsafe.dll</HintPath>
     </Reference>
     <Reference Include="System.IO.Abstractions">
       <HintPath>E:\ml-agents-release_15\com.unity.ml-agents\Plugins\System.IO.Abstractions.dll</HintPath>
@@ -282,6 +282,18 @@
     </Reference>
     <Reference Include="System.Interactive.Async">
       <HintPath>E:\ml-agents-release_15\com.unity.ml-agents\Plugins\ProtoBuffer\System.Interactive.Async.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Burst.Cecil.Mdb">
+      <HintPath>Library\PackageCache\com.unity.burst@1.6.0-pre.2\Unity.Burst.CodeGen\Unity.Burst.Cecil.Mdb.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Burst.Cecil">
+      <HintPath>Library\PackageCache\com.unity.burst@1.6.0-pre.2\Unity.Burst.CodeGen\Unity.Burst.Cecil.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Burst.Cecil.Rocks">
+      <HintPath>Library\PackageCache\com.unity.burst@1.6.0-pre.2\Unity.Burst.CodeGen\Unity.Burst.Cecil.Rocks.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Burst.Cecil.Pdb">
+      <HintPath>Library\PackageCache\com.unity.burst@1.6.0-pre.2\Unity.Burst.CodeGen\Unity.Burst.Cecil.Pdb.dll</HintPath>
     </Reference>
     <Reference Include="nunit.framework">
       <HintPath>Library\PackageCache\com.unity.ext.nunit@1.0.6\net35\unity-custom\nunit.framework.dll</HintPath>

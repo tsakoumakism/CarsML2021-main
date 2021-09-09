@@ -7,6 +7,7 @@ TagManager:
   - wall
   - finish
   - checkpoint
+  - camera
   layers:
   - Default
   - TransparentFX

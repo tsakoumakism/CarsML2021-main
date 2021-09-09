@@ -1,0 +1,47 @@
+{
+    "name": "root",
+    "metadata": {
+        "timer_format_version": "0.1.0",
+        "start_time_seconds": "1630933417",
+        "python_version": "3.8.8 (tags/v3.8.8:024d805, Feb 19 2021, 13:18:16) [MSC v.1928 64 bit (AMD64)]",
+        "command_line_arguments": "C:\\Users\\mixal\\AppData\\Local\\Programs\\Python\\Python38\\Scripts\\mlagents-learn E:/CarsML2021-main/mainBuild/CarsML2021-main_Data\\..//config/trainer_config.yaml --time-scale=30 --run-id=123 --env=E:/CarsML2021-main/mainBuild/CarsML2021-main_Data\\../..//trainingScene/CarsML2021-main --width=1920 --height=1080 --torch-device=cpu --num-envs=1",
+        "mlagents_version": "0.25.0",
+        "mlagents_envs_version": "0.25.0",
+        "communication_protocol_version": "1.5.0",
+        "pytorch_version": "1.7.1+cu110",
+        "numpy_version": "1.20.2",
+        "end_time_seconds": "1630933436"
+    },
+    "total": 19.1901143,
+    "count": 1,
+    "self": 0.008290000000002351,
+    "children": {
+        "run_training.setup": {
+            "total": 0.09703109999999993,
+            "count": 1,
+            "self": 0.09703109999999993
+        },
+        "TrainerController.start_learning": {
+            "total": 19.0847932,
+            "count": 1,
+            "self": 0.0004099000000010733,
+            "children": {
+                "TrainerController._reset_env": {
+                    "total": 19.084298099999998,
+                    "count": 1,
+                    "self": 19.084298099999998
+                },
+                "trainer_threads": {
+                    "total": 8.999999998593466e-07,
+                    "count": 1,
+                    "self": 8.999999998593466e-07
+                },
+                "TrainerController._save_models": {
+                    "total": 8.430000000103632e-05,
+                    "count": 1,
+                    "self": 8.430000000103632e-05
+                }
+            }
+        }
+    }
+}

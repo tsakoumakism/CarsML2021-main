@@ -56,100 +56,110 @@
     <Analyzer Include="C:\Program Files (x86)\Microsoft Visual Studio Tools for Unity\16.0\Analyzers\Microsoft.Unity.Analyzers.dll" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Library\PackageCache\com.unity.barracuda@1.3.2-preview\Barracuda\Runtime\Core\AssemblyInfo.cs" />
-    <Compile Include="Library\PackageCache\com.unity.barracuda@1.3.2-preview\Barracuda\Runtime\Core\Backends\BarracudaBackends.cs" />
-    <Compile Include="Library\PackageCache\com.unity.barracuda@1.3.2-preview\Barracuda\Runtime\Core\Backends\BarracudaBackendsFactory.cs" />
-    <Compile Include="Library\PackageCache\com.unity.barracuda@1.3.2-preview\Barracuda\Runtime\Core\Backends\BarracudaBurstCPU.Core.cs" />
-    <Compile Include="Library\PackageCache\com.unity.barracuda@1.3.2-preview\Barracuda\Runtime\Core\Backends\BarracudaBurstCPU.Jobs.cs" />
-    <Compile Include="Library\PackageCache\com.unity.barracuda@1.3.2-preview\Barracuda\Runtime\Core\Backends\BarracudaBurstCPU.Ops.cs" />
-    <Compile Include="Library\PackageCache\com.unity.barracuda@1.3.2-preview\Barracuda\Runtime\Core\Backends\BarracudaCompute.cs" />
-    <Compile Include="Library\PackageCache\com.unity.barracuda@1.3.2-preview\Barracuda\Runtime\Core\Backends\BarracudaComputeDebugUtils.cs" />
-    <Compile Include="Library\PackageCache\com.unity.barracuda@1.3.2-preview\Barracuda\Runtime\Core\Backends\BarracudaPrecompiledCompute.cs" />
-    <Compile Include="Library\PackageCache\com.unity.barracuda@1.3.2-preview\Barracuda\Runtime\Core\Backends\BarracudaReferenceCPU.cs" />
-    <Compile Include="Library\PackageCache\com.unity.barracuda@1.3.2-preview\Barracuda\Runtime\Core\Backends\BarracudaReferenceCompute.cs" />
-    <Compile Include="Library\PackageCache\com.unity.barracuda@1.3.2-preview\Barracuda\Runtime\Core\Backends\BarracudaUnsafeArrayCPU.cs" />
-    <Compile Include="Library\PackageCache\com.unity.barracuda@1.3.2-preview\Barracuda\Runtime\Core\Backends\CompareOps.cs" />
-    <Compile Include="Library\PackageCache\com.unity.barracuda@1.3.2-preview\Barracuda\Runtime\Core\Backends\CompareOpsUtils.cs" />
-    <Compile Include="Library\PackageCache\com.unity.barracuda@1.3.2-preview\Barracuda\Runtime\Core\Backends\ComputeInfo.cs" />
-    <Compile Include="Library\PackageCache\com.unity.barracuda@1.3.2-preview\Barracuda\Runtime\Core\Backends\ComputeShaderSingleton.cs" />
-    <Compile Include="Library\PackageCache\com.unity.barracuda@1.3.2-preview\Barracuda\Runtime\Core\Backends\GenericWorker.cs" />
-    <Compile Include="Library\PackageCache\com.unity.barracuda@1.3.2-preview\Barracuda\Runtime\Core\Backends\LayerFusingHelper.cs" />
-    <Compile Include="Library\PackageCache\com.unity.barracuda@1.3.2-preview\Barracuda\Runtime\Core\Backends\MatrixUtils.cs" />
-    <Compile Include="Library\PackageCache\com.unity.barracuda@1.3.2-preview\Barracuda\Runtime\Core\Backends\ModelAnalyzer.cs" />
-    <Compile Include="Library\PackageCache\com.unity.barracuda@1.3.2-preview\Barracuda\Runtime\Core\Backends\ModelOptimizer.cs" />
-    <Compile Include="Library\PackageCache\com.unity.barracuda@1.3.2-preview\Barracuda\Runtime\Core\Backends\StaticOpsComplexityHelper.cs" />
-    <Compile Include="Library\PackageCache\com.unity.barracuda@1.3.2-preview\Barracuda\Runtime\Core\Backends\StatsOps.cs" />
-    <Compile Include="Library\PackageCache\com.unity.barracuda@1.3.2-preview\Barracuda\Runtime\Core\Backends\TensorAllocators.cs" />
-    <Compile Include="Library\PackageCache\com.unity.barracuda@1.3.2-preview\Barracuda\Runtime\Core\Backends\VerboseOps.cs" />
-    <Compile Include="Library\PackageCache\com.unity.barracuda@1.3.2-preview\Barracuda\Runtime\Core\BackwardsCompatibility.cs" />
-    <Compile Include="Library\PackageCache\com.unity.barracuda@1.3.2-preview\Barracuda\Runtime\Core\Barracuda.cs" />
-    <Compile Include="Library\PackageCache\com.unity.barracuda@1.3.2-preview\Barracuda\Runtime\Core\Compiler\Passes\ConcatenateTransposesPass.cs" />
-    <Compile Include="Library\PackageCache\com.unity.barracuda@1.3.2-preview\Barracuda\Runtime\Core\Compiler\Passes\ExpandOpsPass.cs" />
-    <Compile Include="Library\PackageCache\com.unity.barracuda@1.3.2-preview\Barracuda\Runtime\Core\Compiler\Passes\FuseActivationsPass.cs" />
-    <Compile Include="Library\PackageCache\com.unity.barracuda@1.3.2-preview\Barracuda\Runtime\Core\Compiler\Passes\FuseConstantsPass.cs" />
-    <Compile Include="Library\PackageCache\com.unity.barracuda@1.3.2-preview\Barracuda\Runtime\Core\Compiler\Passes\FuseLinearLayersPass.cs" />
-    <Compile Include="Library\PackageCache\com.unity.barracuda@1.3.2-preview\Barracuda\Runtime\Core\Compiler\Passes\IModelPass.cs" />
-    <Compile Include="Library\PackageCache\com.unity.barracuda@1.3.2-preview\Barracuda\Runtime\Core\Compiler\Passes\IRShapeInferenceAndConstantFusing.cs" />
-    <Compile Include="Library\PackageCache\com.unity.barracuda@1.3.2-preview\Barracuda\Runtime\Core\Compiler\Passes\IValidateModelPass.cs" />
-    <Compile Include="Library\PackageCache\com.unity.barracuda@1.3.2-preview\Barracuda\Runtime\Core\Compiler\Passes\IntermediateToRunnableNCHWPass.cs" />
-    <Compile Include="Library\PackageCache\com.unity.barracuda@1.3.2-preview\Barracuda\Runtime\Core\Compiler\Passes\IntermediateToRunnableNHWCPass.cs" />
-    <Compile Include="Library\PackageCache\com.unity.barracuda@1.3.2-preview\Barracuda\Runtime\Core\Compiler\Passes\LayoutTransposesRemovalHelper.cs" />
-    <Compile Include="Library\PackageCache\com.unity.barracuda@1.3.2-preview\Barracuda\Runtime\Core\Compiler\Passes\NCHWToNHWC\CorrectForBroadcast.cs" />
-    <Compile Include="Library\PackageCache\com.unity.barracuda@1.3.2-preview\Barracuda\Runtime\Core\Compiler\Passes\NCHWToNHWC\CorrectOutputLayoutToMatchNHWCLayout.cs" />
-    <Compile Include="Library\PackageCache\com.unity.barracuda@1.3.2-preview\Barracuda\Runtime\Core\Compiler\Passes\NCHWToNHWC\RewriterNCHWToNHWC.cs" />
-    <Compile Include="Library\PackageCache\com.unity.barracuda@1.3.2-preview\Barracuda\Runtime\Core\Compiler\Passes\NCHWToNHWC\RewriterNHWCToNHWC.cs" />
-    <Compile Include="Library\PackageCache\com.unity.barracuda@1.3.2-preview\Barracuda\Runtime\Core\Compiler\Passes\NCHWToNHWCPass.cs" />
-    <Compile Include="Library\PackageCache\com.unity.barracuda@1.3.2-preview\Barracuda\Runtime\Core\Compiler\Passes\PreserveLayersPass.cs" />
-    <Compile Include="Library\PackageCache\com.unity.barracuda@1.3.2-preview\Barracuda\Runtime\Core\Compiler\Passes\RemoveNoOpsPass.cs" />
-    <Compile Include="Library\PackageCache\com.unity.barracuda@1.3.2-preview\Barracuda\Runtime\Core\Compiler\Passes\RemoveUnusedLayersPass.cs" />
-    <Compile Include="Library\PackageCache\com.unity.barracuda@1.3.2-preview\Barracuda\Runtime\Core\Compiler\Passes\ShapeGatherContractionPass.cs" />
-    <Compile Include="Library\PackageCache\com.unity.barracuda@1.3.2-preview\Barracuda\Runtime\Core\Compiler\Passes\ShapeGatherReshapeToNHWCRemovePass.cs" />
-    <Compile Include="Library\PackageCache\com.unity.barracuda@1.3.2-preview\Barracuda\Runtime\Core\Compiler\Passes\ValidatePasses.cs" />
-    <Compile Include="Library\PackageCache\com.unity.barracuda@1.3.2-preview\Barracuda\Runtime\Core\Compiler\ShapeInference\IRRankInferenceHelper.cs" />
-    <Compile Include="Library\PackageCache\com.unity.barracuda@1.3.2-preview\Barracuda\Runtime\Core\Compiler\ShapeInference\IRShapeInferenceHelper.cs" />
-    <Compile Include="Library\PackageCache\com.unity.barracuda@1.3.2-preview\Barracuda\Runtime\Core\Internals\Debug.cs" />
-    <Compile Include="Library\PackageCache\com.unity.barracuda@1.3.2-preview\Barracuda\Runtime\Core\Internals\NNModel.cs" />
-    <Compile Include="Library\PackageCache\com.unity.barracuda@1.3.2-preview\Barracuda\Runtime\Core\Internals\NNModelData.cs" />
-    <Compile Include="Library\PackageCache\com.unity.barracuda@1.3.2-preview\Barracuda\Runtime\Core\Internals\StringCache.cs" />
-    <Compile Include="Library\PackageCache\com.unity.barracuda@1.3.2-preview\Barracuda\Runtime\Core\Internals\TestSetLoader.cs" />
-    <Compile Include="Library\PackageCache\com.unity.barracuda@1.3.2-preview\Barracuda\Runtime\Core\Model.cs" />
-    <Compile Include="Library\PackageCache\com.unity.barracuda@1.3.2-preview\Barracuda\Runtime\Core\ModelBuilder.cs" />
-    <Compile Include="Library\PackageCache\com.unity.barracuda@1.3.2-preview\Barracuda\Runtime\Core\ModelLoader.cs" />
-    <Compile Include="Library\PackageCache\com.unity.barracuda@1.3.2-preview\Barracuda\Runtime\Core\ModelWriter.cs" />
-    <Compile Include="Library\PackageCache\com.unity.barracuda@1.3.2-preview\Barracuda\Runtime\Core\PluginInterfaces.cs" />
-    <Compile Include="Library\PackageCache\com.unity.barracuda@1.3.2-preview\Barracuda\Runtime\Core\Tensor.cs" />
-    <Compile Include="Library\PackageCache\com.unity.barracuda@1.3.2-preview\Barracuda\Runtime\Core\TensorExtensions.cs" />
+    <Compile Include="Library\PackageCache\com.unity.barracuda@5e321aa0db\Barracuda\Runtime\Core\AssemblyInfo.cs" />
+    <Compile Include="Library\PackageCache\com.unity.barracuda@5e321aa0db\Barracuda\Runtime\Core\Backends\BarracudaBackends.cs" />
+    <Compile Include="Library\PackageCache\com.unity.barracuda@5e321aa0db\Barracuda\Runtime\Core\Backends\BarracudaBackendsFactory.cs" />
+    <Compile Include="Library\PackageCache\com.unity.barracuda@5e321aa0db\Barracuda\Runtime\Core\Backends\BarracudaBurstCPU.Core.cs" />
+    <Compile Include="Library\PackageCache\com.unity.barracuda@5e321aa0db\Barracuda\Runtime\Core\Backends\BarracudaBurstCPU.Helper.cs" />
+    <Compile Include="Library\PackageCache\com.unity.barracuda@5e321aa0db\Barracuda\Runtime\Core\Backends\BarracudaBurstCPU.Jobs.cs" />
+    <Compile Include="Library\PackageCache\com.unity.barracuda@5e321aa0db\Barracuda\Runtime\Core\Backends\BarracudaBurstCPU.Ops.cs" />
+    <Compile Include="Library\PackageCache\com.unity.barracuda@5e321aa0db\Barracuda\Runtime\Core\Backends\BarracudaCompute.cs" />
+    <Compile Include="Library\PackageCache\com.unity.barracuda@5e321aa0db\Barracuda\Runtime\Core\Backends\BarracudaComputeDebugUtils.cs" />
+    <Compile Include="Library\PackageCache\com.unity.barracuda@5e321aa0db\Barracuda\Runtime\Core\Backends\BarracudaPrecompiledCompute.cs" />
+    <Compile Include="Library\PackageCache\com.unity.barracuda@5e321aa0db\Barracuda\Runtime\Core\Backends\BarracudaReferenceCPU.cs" />
+    <Compile Include="Library\PackageCache\com.unity.barracuda@5e321aa0db\Barracuda\Runtime\Core\Backends\BarracudaReferenceCompute.cs" />
+    <Compile Include="Library\PackageCache\com.unity.barracuda@5e321aa0db\Barracuda\Runtime\Core\Backends\BarracudaUnsafeArrayCPU.cs" />
+    <Compile Include="Library\PackageCache\com.unity.barracuda@5e321aa0db\Barracuda\Runtime\Core\Backends\CompareOps.cs" />
+    <Compile Include="Library\PackageCache\com.unity.barracuda@5e321aa0db\Barracuda\Runtime\Core\Backends\CompareOpsUtils.cs" />
+    <Compile Include="Library\PackageCache\com.unity.barracuda@5e321aa0db\Barracuda\Runtime\Core\Backends\ComputeInfo.cs" />
+    <Compile Include="Library\PackageCache\com.unity.barracuda@5e321aa0db\Barracuda\Runtime\Core\Backends\ComputeShaderSingleton.cs" />
+    <Compile Include="Library\PackageCache\com.unity.barracuda@5e321aa0db\Barracuda\Runtime\Core\Backends\GenericWorker.cs" />
+    <Compile Include="Library\PackageCache\com.unity.barracuda@5e321aa0db\Barracuda\Runtime\Core\Backends\LayerFusingHelper.cs" />
+    <Compile Include="Library\PackageCache\com.unity.barracuda@5e321aa0db\Barracuda\Runtime\Core\Backends\MatrixUtils.cs" />
+    <Compile Include="Library\PackageCache\com.unity.barracuda@5e321aa0db\Barracuda\Runtime\Core\Backends\MemoryAndExecutionReportHelper.cs" />
+    <Compile Include="Library\PackageCache\com.unity.barracuda@5e321aa0db\Barracuda\Runtime\Core\Backends\MemorySnapshotsReport.cs" />
+    <Compile Include="Library\PackageCache\com.unity.barracuda@5e321aa0db\Barracuda\Runtime\Core\Backends\ModelAnalyzer.cs" />
+    <Compile Include="Library\PackageCache\com.unity.barracuda@5e321aa0db\Barracuda\Runtime\Core\Backends\ModelExecutionsReport.cs" />
+    <Compile Include="Library\PackageCache\com.unity.barracuda@5e321aa0db\Barracuda\Runtime\Core\Backends\ModelOptimizer.cs" />
+    <Compile Include="Library\PackageCache\com.unity.barracuda@5e321aa0db\Barracuda\Runtime\Core\Backends\OpsUtils.cs" />
+    <Compile Include="Library\PackageCache\com.unity.barracuda@5e321aa0db\Barracuda\Runtime\Core\Backends\StaticOpsComplexityHelper.cs" />
+    <Compile Include="Library\PackageCache\com.unity.barracuda@5e321aa0db\Barracuda\Runtime\Core\Backends\StatsOps.cs" />
+    <Compile Include="Library\PackageCache\com.unity.barracuda@5e321aa0db\Barracuda\Runtime\Core\Backends\TensorAllocators.cs" />
+    <Compile Include="Library\PackageCache\com.unity.barracuda@5e321aa0db\Barracuda\Runtime\Core\Backends\TensorScope.cs" />
+    <Compile Include="Library\PackageCache\com.unity.barracuda@5e321aa0db\Barracuda\Runtime\Core\Backends\VerboseOps.cs" />
+    <Compile Include="Library\PackageCache\com.unity.barracuda@5e321aa0db\Barracuda\Runtime\Core\BackwardsCompatibility.cs" />
+    <Compile Include="Library\PackageCache\com.unity.barracuda@5e321aa0db\Barracuda\Runtime\Core\Barracuda.cs" />
+    <Compile Include="Library\PackageCache\com.unity.barracuda@5e321aa0db\Barracuda\Runtime\Core\Compiler\Passes\ConcatenateTransposesPass.cs" />
+    <Compile Include="Library\PackageCache\com.unity.barracuda@5e321aa0db\Barracuda\Runtime\Core\Compiler\Passes\FuseActivationsPass.cs" />
+    <Compile Include="Library\PackageCache\com.unity.barracuda@5e321aa0db\Barracuda\Runtime\Core\Compiler\Passes\FuseConstantsPass.cs" />
+    <Compile Include="Library\PackageCache\com.unity.barracuda@5e321aa0db\Barracuda\Runtime\Core\Compiler\Passes\FuseDense3Pass.cs" />
+    <Compile Include="Library\PackageCache\com.unity.barracuda@5e321aa0db\Barracuda\Runtime\Core\Compiler\Passes\FuseLinearLayersPass.cs" />
+    <Compile Include="Library\PackageCache\com.unity.barracuda@5e321aa0db\Barracuda\Runtime\Core\Compiler\Passes\IModelPass.cs" />
+    <Compile Include="Library\PackageCache\com.unity.barracuda@5e321aa0db\Barracuda\Runtime\Core\Compiler\Passes\IRShapeInferenceAndConstantFusing.cs" />
+    <Compile Include="Library\PackageCache\com.unity.barracuda@5e321aa0db\Barracuda\Runtime\Core\Compiler\Passes\IValidateModelPass.cs" />
+    <Compile Include="Library\PackageCache\com.unity.barracuda@5e321aa0db\Barracuda\Runtime\Core\Compiler\Passes\IntermediateToRunnableNCHWPass.cs" />
+    <Compile Include="Library\PackageCache\com.unity.barracuda@5e321aa0db\Barracuda\Runtime\Core\Compiler\Passes\IntermediateToRunnableNHWCPass.cs" />
+    <Compile Include="Library\PackageCache\com.unity.barracuda@5e321aa0db\Barracuda\Runtime\Core\Compiler\Passes\LayoutTransposesRemovalHelper.cs" />
+    <Compile Include="Library\PackageCache\com.unity.barracuda@5e321aa0db\Barracuda\Runtime\Core\Compiler\Passes\NCHWToNHWC\CorrectForBroadcast.cs" />
+    <Compile Include="Library\PackageCache\com.unity.barracuda@5e321aa0db\Barracuda\Runtime\Core\Compiler\Passes\NCHWToNHWC\CorrectOutputLayoutToMatchNHWCLayout.cs" />
+    <Compile Include="Library\PackageCache\com.unity.barracuda@5e321aa0db\Barracuda\Runtime\Core\Compiler\Passes\NCHWToNHWC\RewriterNCHWToNHWC.cs" />
+    <Compile Include="Library\PackageCache\com.unity.barracuda@5e321aa0db\Barracuda\Runtime\Core\Compiler\Passes\NCHWToNHWC\RewriterNHWCToNHWC.cs" />
+    <Compile Include="Library\PackageCache\com.unity.barracuda@5e321aa0db\Barracuda\Runtime\Core\Compiler\Passes\NCHWToNHWCPass.cs" />
+    <Compile Include="Library\PackageCache\com.unity.barracuda@5e321aa0db\Barracuda\Runtime\Core\Compiler\Passes\PreserveLayersPass.cs" />
+    <Compile Include="Library\PackageCache\com.unity.barracuda@5e321aa0db\Barracuda\Runtime\Core\Compiler\Passes\RemoveNoOpsPass.cs" />
+    <Compile Include="Library\PackageCache\com.unity.barracuda@5e321aa0db\Barracuda\Runtime\Core\Compiler\Passes\RemoveUnusedLayersPass.cs" />
+    <Compile Include="Library\PackageCache\com.unity.barracuda@5e321aa0db\Barracuda\Runtime\Core\Compiler\Passes\ShapeContractionPass.cs" />
+    <Compile Include="Library\PackageCache\com.unity.barracuda@5e321aa0db\Barracuda\Runtime\Core\Compiler\Passes\ShapeGatherReshapeToNHWCRemovePass.cs" />
+    <Compile Include="Library\PackageCache\com.unity.barracuda@5e321aa0db\Barracuda\Runtime\Core\Compiler\Passes\ValidatePasses.cs" />
+    <Compile Include="Library\PackageCache\com.unity.barracuda@5e321aa0db\Barracuda\Runtime\Core\Compiler\ShapeInference\IRRankInferenceHelper.cs" />
+    <Compile Include="Library\PackageCache\com.unity.barracuda@5e321aa0db\Barracuda\Runtime\Core\Compiler\ShapeInference\IRShapeInferenceHelper.cs" />
+    <Compile Include="Library\PackageCache\com.unity.barracuda@5e321aa0db\Barracuda\Runtime\Core\Internals\Debug.cs" />
+    <Compile Include="Library\PackageCache\com.unity.barracuda@5e321aa0db\Barracuda\Runtime\Core\Internals\NNModel.cs" />
+    <Compile Include="Library\PackageCache\com.unity.barracuda@5e321aa0db\Barracuda\Runtime\Core\Internals\NNModelData.cs" />
+    <Compile Include="Library\PackageCache\com.unity.barracuda@5e321aa0db\Barracuda\Runtime\Core\Internals\StringCache.cs" />
+    <Compile Include="Library\PackageCache\com.unity.barracuda@5e321aa0db\Barracuda\Runtime\Core\Internals\TestSetLoader.cs" />
+    <Compile Include="Library\PackageCache\com.unity.barracuda@5e321aa0db\Barracuda\Runtime\Core\Model.cs" />
+    <Compile Include="Library\PackageCache\com.unity.barracuda@5e321aa0db\Barracuda\Runtime\Core\ModelBuilder.cs" />
+    <Compile Include="Library\PackageCache\com.unity.barracuda@5e321aa0db\Barracuda\Runtime\Core\ModelLoader.cs" />
+    <Compile Include="Library\PackageCache\com.unity.barracuda@5e321aa0db\Barracuda\Runtime\Core\ModelWriter.cs" />
+    <Compile Include="Library\PackageCache\com.unity.barracuda@5e321aa0db\Barracuda\Runtime\Core\PluginInterfaces.cs" />
+    <Compile Include="Library\PackageCache\com.unity.barracuda@5e321aa0db\Barracuda\Runtime\Core\Tensor.cs" />
+    <Compile Include="Library\PackageCache\com.unity.barracuda@5e321aa0db\Barracuda\Runtime\Core\TensorExtensions.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Library\PackageCache\com.unity.barracuda@1.3.2-preview\Barracuda\Runtime\Core\Resources\Barracuda\Conv2dA_NHWC.compute" />
-    <None Include="Library\PackageCache\com.unity.barracuda@1.3.2-preview\Barracuda\Runtime\Core\Resources\Barracuda\KernelDebugEnabled.cginc" />
-    <None Include="Library\PackageCache\com.unity.barracuda@1.3.2-preview\Barracuda\Runtime\Core\Resources\Barracuda\Broadcast_NHWC.compute" />
-    <None Include="Library\PackageCache\com.unity.barracuda@1.3.2-preview\Barracuda\Runtime\Core\Resources\Barracuda\ActivationB.compute" />
-    <None Include="Library\PackageCache\com.unity.barracuda@1.3.2-preview\Barracuda\Runtime\Core\Resources\Barracuda\ActivationA.compute" />
-    <None Include="Library\PackageCache\com.unity.barracuda@1.3.2-preview\Barracuda\Runtime\Core\Resources\Barracuda\Conv2dBase.compute" />
-    <None Include="Library\PackageCache\com.unity.barracuda@1.3.2-preview\Barracuda\Runtime\Core\Resources\Barracuda\Generic.compute" />
-    <None Include="Library\PackageCache\com.unity.barracuda@1.3.2-preview\Barracuda\Runtime\Core\Resources\Barracuda\Conv2d.cginc" />
-    <None Include="Library\PackageCache\com.unity.barracuda@1.3.2-preview\Barracuda\Runtime\Core\Resources\Barracuda\DebugUtils.cginc" />
-    <None Include="Library\PackageCache\com.unity.barracuda@1.3.2-preview\Barracuda\Runtime\Core\Resources\Barracuda\BarracudaReferenceImpl.compute" />
-    <None Include="Library\PackageCache\com.unity.barracuda@1.3.2-preview\Barracuda\Runtime\Core\Resources\Barracuda\Pool_NHWC.compute" />
-    <None Include="Library\PackageCache\com.unity.barracuda@1.3.2-preview\Barracuda\Runtime\Core\Resources\Barracuda\Reduce.compute" />
-    <None Include="Library\PackageCache\com.unity.barracuda@1.3.2-preview\Barracuda\Runtime\Core\Resources\Barracuda\KernelDebug.cginc" />
-    <None Include="Library\PackageCache\com.unity.barracuda@1.3.2-preview\Barracuda\Runtime\Core\Resources\Barracuda\Pool.cginc" />
-    <None Include="Library\PackageCache\com.unity.barracuda@1.3.2-preview\Barracuda\Runtime\Core\Resources\Barracuda\Tensor.cginc" />
-    <None Include="Library\PackageCache\com.unity.barracuda@1.3.2-preview\Barracuda\Runtime\Core\Resources\Barracuda\TextureUtils.compute" />
-    <None Include="Library\PackageCache\com.unity.barracuda@1.3.2-preview\Barracuda\Runtime\Core\Resources\Barracuda\Activation.cginc" />
-    <None Include="Library\PackageCache\com.unity.barracuda@1.3.2-preview\Barracuda\Runtime\Core\Resources\Barracuda\Random.cginc" />
-    <None Include="Library\PackageCache\com.unity.barracuda@1.3.2-preview\Barracuda\Runtime\Core\Resources\Barracuda\Dense.compute" />
-    <None Include="Library\PackageCache\com.unity.barracuda@1.3.2-preview\Barracuda\Runtime\Core\Unity.Barracuda.asmdef" />
-    <None Include="Library\PackageCache\com.unity.barracuda@1.3.2-preview\Barracuda\Runtime\Core\Resources\Barracuda\Pool_NCHW.compute" />
-    <None Include="Library\PackageCache\com.unity.barracuda@1.3.2-preview\Barracuda\Runtime\Core\Resources\Barracuda\Broadcast.cginc" />
-    <None Include="Library\PackageCache\com.unity.barracuda@1.3.2-preview\Barracuda\Runtime\Core\Resources\Barracuda\Conv3d.compute" />
-    <None Include="Library\PackageCache\com.unity.barracuda@1.3.2-preview\Barracuda\Runtime\Core\Resources\Barracuda\Broadcast_NCHW.compute" />
-    <None Include="Library\PackageCache\com.unity.barracuda@1.3.2-preview\Barracuda\Runtime\Core\Resources\Barracuda\Conv2dA_NCHW.compute" />
-    <None Include="Library\PackageCache\com.unity.barracuda@1.3.2-preview\Barracuda\Runtime\Core\Resources\Barracuda\ActivationBase.compute" />
-    <None Include="Library\PackageCache\com.unity.barracuda@1.3.2-preview\Barracuda\Runtime\Core\Resources\Barracuda\KernelDebugDisabled.cginc" />
-    <None Include="Library\PackageCache\com.unity.barracuda@1.3.2-preview\Barracuda\Runtime\Core\Resources\Barracuda\Pad.compute" />
-    <None Include="Library\PackageCache\com.unity.barracuda@1.3.2-preview\Barracuda\Runtime\Core\Resources\Barracuda\DenseFP16.compute" />
+    <None Include="Library\PackageCache\com.unity.barracuda@5e321aa0db\Barracuda\Runtime\Core\Resources\Barracuda\Conv2dA_NHWC.compute" />
+    <None Include="Library\PackageCache\com.unity.barracuda@5e321aa0db\Barracuda\Runtime\Core\Resources\Barracuda\KernelDebugEnabled.cginc" />
+    <None Include="Library\PackageCache\com.unity.barracuda@5e321aa0db\Barracuda\Runtime\Core\Resources\Barracuda\Broadcast_NHWC.compute" />
+    <None Include="Library\PackageCache\com.unity.barracuda@5e321aa0db\Barracuda\Runtime\Core\Resources\Barracuda\ReduceSlow.compute" />
+    <None Include="Library\PackageCache\com.unity.barracuda@5e321aa0db\Barracuda\Runtime\Core\Resources\Barracuda\ActivationB.compute" />
+    <None Include="Library\PackageCache\com.unity.barracuda@5e321aa0db\Barracuda\Runtime\Core\Resources\Barracuda\ActivationA.compute" />
+    <None Include="Library\PackageCache\com.unity.barracuda@5e321aa0db\Barracuda\Runtime\Core\Resources\Barracuda\Conv2dBase.compute" />
+    <None Include="Library\PackageCache\com.unity.barracuda@5e321aa0db\Barracuda\Runtime\Core\Resources\Barracuda\Generic.compute" />
+    <None Include="Library\PackageCache\com.unity.barracuda@5e321aa0db\Barracuda\Runtime\Core\Resources\Barracuda\Conv2d.cginc" />
+    <None Include="Library\PackageCache\com.unity.barracuda@5e321aa0db\Barracuda\Runtime\Core\Resources\Barracuda\DebugUtils.cginc" />
+    <None Include="Library\PackageCache\com.unity.barracuda@5e321aa0db\Barracuda\Runtime\Core\Resources\Barracuda\Dense3.compute" />
+    <None Include="Library\PackageCache\com.unity.barracuda@5e321aa0db\Barracuda\Runtime\Core\Resources\Barracuda\BarracudaReferenceImpl.compute" />
+    <None Include="Library\PackageCache\com.unity.barracuda@5e321aa0db\Barracuda\Runtime\Core\Resources\Barracuda\Pool_NHWC.compute" />
+    <None Include="Library\PackageCache\com.unity.barracuda@5e321aa0db\Barracuda\Runtime\Core\Resources\Barracuda\Reduce.compute" />
+    <None Include="Library\PackageCache\com.unity.barracuda@5e321aa0db\Barracuda\Runtime\Core\Resources\Barracuda\KernelDebug.cginc" />
+    <None Include="Library\PackageCache\com.unity.barracuda@5e321aa0db\Barracuda\Runtime\Core\Resources\Barracuda\Pool.cginc" />
+    <None Include="Library\PackageCache\com.unity.barracuda@5e321aa0db\Barracuda\Runtime\Core\Resources\Barracuda\Tensor.cginc" />
+    <None Include="Library\PackageCache\com.unity.barracuda@5e321aa0db\Barracuda\Runtime\Core\Resources\Barracuda\TextureUtils.compute" />
+    <None Include="Library\PackageCache\com.unity.barracuda@5e321aa0db\Barracuda\Runtime\Core\Resources\Barracuda\MatMul.compute" />
+    <None Include="Library\PackageCache\com.unity.barracuda@5e321aa0db\Barracuda\Runtime\Core\Resources\Barracuda\Activation.cginc" />
+    <None Include="Library\PackageCache\com.unity.barracuda@5e321aa0db\Barracuda\Runtime\Core\Resources\Barracuda\Random.cginc" />
+    <None Include="Library\PackageCache\com.unity.barracuda@5e321aa0db\Barracuda\Runtime\Core\Resources\Barracuda\Dense.compute" />
+    <None Include="Library\PackageCache\com.unity.barracuda@5e321aa0db\Barracuda\Runtime\Core\Unity.Barracuda.asmdef" />
+    <None Include="Library\PackageCache\com.unity.barracuda@5e321aa0db\Barracuda\Runtime\Core\Resources\Barracuda\Pool_NCHW.compute" />
+    <None Include="Library\PackageCache\com.unity.barracuda@5e321aa0db\Barracuda\Runtime\Core\Resources\Barracuda\Broadcast.cginc" />
+    <None Include="Library\PackageCache\com.unity.barracuda@5e321aa0db\Barracuda\Runtime\Core\Resources\Barracuda\Conv3d.compute" />
+    <None Include="Library\PackageCache\com.unity.barracuda@5e321aa0db\Barracuda\Runtime\Core\Resources\Barracuda\Broadcast_NCHW.compute" />
+    <None Include="Library\PackageCache\com.unity.barracuda@5e321aa0db\Barracuda\Runtime\Core\Resources\Barracuda\Transpose.compute" />
+    <None Include="Library\PackageCache\com.unity.barracuda@5e321aa0db\Barracuda\Runtime\Core\Resources\Barracuda\Conv2dA_NCHW.compute" />
+    <None Include="Library\PackageCache\com.unity.barracuda@5e321aa0db\Barracuda\Runtime\Core\Resources\Barracuda\ActivationBase.compute" />
+    <None Include="Library\PackageCache\com.unity.barracuda@5e321aa0db\Barracuda\Runtime\Core\Resources\Barracuda\KernelDebugDisabled.cginc" />
+    <None Include="Library\PackageCache\com.unity.barracuda@5e321aa0db\Barracuda\Runtime\Core\Resources\Barracuda\Pad.compute" />
+    <None Include="Library\PackageCache\com.unity.barracuda@5e321aa0db\Barracuda\Runtime\Core\Resources\Barracuda\DenseFP16.compute" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">
@@ -336,10 +346,10 @@
       <HintPath>Library\ScriptAssemblies\UnityEditor.UI.dll</HintPath>
     </Reference>
     <Reference Include="Google.Protobuf">
-      <HintPath>Library\PackageCache\com.unity.barracuda@1.3.2-preview\Barracuda\Runtime\Plugins\ProtoBuffer\Google.Protobuf.dll</HintPath>
+      <HintPath>Library\PackageCache\com.unity.barracuda@5e321aa0db\Barracuda\Runtime\Plugins\ProtoBuffer\Google.Protobuf.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Burst.Unsafe">
-      <HintPath>Library\PackageCache\com.unity.burst@1.3.4\Unity.Burst.Unsafe.dll</HintPath>
+      <HintPath>Library\PackageCache\com.unity.burst@1.6.0-pre.2\Unity.Burst.Unsafe.dll</HintPath>
     </Reference>
     <Reference Include="System.IO.Abstractions">
       <HintPath>E:\ml-agents-release_15\com.unity.ml-agents\Plugins\System.IO.Abstractions.dll</HintPath>
@@ -352,6 +362,18 @@
     </Reference>
     <Reference Include="System.Interactive.Async">
       <HintPath>E:\ml-agents-release_15\com.unity.ml-agents\Plugins\ProtoBuffer\System.Interactive.Async.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Burst.Cecil.Mdb">
+      <HintPath>Library\PackageCache\com.unity.burst@1.6.0-pre.2\Unity.Burst.CodeGen\Unity.Burst.Cecil.Mdb.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Burst.Cecil">
+      <HintPath>Library\PackageCache\com.unity.burst@1.6.0-pre.2\Unity.Burst.CodeGen\Unity.Burst.Cecil.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Burst.Cecil.Rocks">
+      <HintPath>Library\PackageCache\com.unity.burst@1.6.0-pre.2\Unity.Burst.CodeGen\Unity.Burst.Cecil.Rocks.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Burst.Cecil.Pdb">
+      <HintPath>Library\PackageCache\com.unity.burst@1.6.0-pre.2\Unity.Burst.CodeGen\Unity.Burst.Cecil.Pdb.dll</HintPath>
     </Reference>
     <Reference Include="netstandard">
       <HintPath>C:\Program Files\Unity\Hub\Editor\2019.4.28f1\Editor\Data\NetStandard\ref\2.0.0\netstandard.dll</HintPath>

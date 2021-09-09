@@ -49,6 +49,13 @@ public class FreeCam : MonoBehaviour
     /// </summary>
     private bool looking = false;
 
+    private void Awake()
+    {
+        TrainingArea trainingArea = FindObjectOfType<TrainingArea>();
+        transform.position = trainingArea.startPosition;
+        transform.eulerAngles = new Vector3(50f, 90f, 0f);
+    }
+
     void Update()
     {
         var fastMode = Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.RightShift);

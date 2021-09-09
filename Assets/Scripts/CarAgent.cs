@@ -2,6 +2,12 @@
 using Unity.MLAgents.Sensors;
 using Unity.MLAgents.Actuators;
 using UnityEngine;
+using System.Collections.Generic;
+using System;
+using System.IO;
+using Unity.Barracuda;
+using Unity.MLAgents.Policies;
+
 
 public class CarAgent : Agent
 {
@@ -36,9 +42,20 @@ public class CarAgent : Agent
 
     private bool dejaVu;
 
+    const string k_CommandLineModelOverrideFlag = "--mlagents-override-model";
+    Dictionary<string, string> m_BehaviorNameOverrides = new Dictionary<string, string>();
+    Dictionary<string, NNModel> m_CachedModels = new Dictionary<string, NNModel>();
+
     public override void Initialize()
     {
         base.Initialize();
+
+        //initiallize behaviour
+        GetAssetPathFromCommandLine();
+        if (m_BehaviorNameOverrides.Count > 0)
+        {
+            OverrideModel();
+        }
 
         gameObject.layer = 8;
         car = GetComponent<CarController>();
@@ -282,5 +299,68 @@ public class CarAgent : Agent
             Debug.Log("Setting gear: " + discreteActionsOut[0]);
         }
     }
+    void GetAssetPathFromCommandLine()
+    {
+        m_BehaviorNameOverrides.Clear();
+
+
+        var args = Environment.GetCommandLineArgs();
+        for (var i = 0; i < args.Length - 1; i++)
+        {
+            if (args[i] == k_CommandLineModelOverrideFlag && i < args.Length - 2)
+            {
+                var key = args[i + 1].Trim();
+                var value = args[i + 2].Trim();
+                m_BehaviorNameOverrides[key] = value;
+            }
+        }
+    }
+    void OverrideModel()
+    {
+        var bp = GetComponent<BehaviorParameters>();
+
+        var nnModel = GetModelForBehaviorName(bp.BehaviorName);
+        Debug.Log($"Overriding behavior {bp.BehaviorName} for agent with model {nnModel?.name}");
+        // This might give a null model; that's better because we'll fall back to the Heuristic
+        this.SetModel($"Override_{bp.BehaviorName}",nnModel);
+
+    }
+    NNModel GetModelForBehaviorName(string behaviorName)
+    {
+        if (m_CachedModels.ContainsKey(behaviorName))
+        {
+            return m_CachedModels[behaviorName];
+        }
+
+        if (!m_BehaviorNameOverrides.ContainsKey(behaviorName))
+        {
+            Debug.Log($"No override for behaviorName {behaviorName}");
+            return null;
+        }
+
+        var assetPath = m_BehaviorNameOverrides[behaviorName];
+
+        byte[] model = null;
+        try
+        {
+            model = File.ReadAllBytes(assetPath);
+        }
+        catch (IOException)
+        {
+            Debug.Log($"Couldn't load file {assetPath}", this);
+            // Cache the null so we don't repeatedly try to load a missing file
+            m_CachedModels[behaviorName] = null;
+            return null;
+        }
+
+        var asset = ScriptableObject.CreateInstance<NNModel>();
+        asset.modelData = ScriptableObject.CreateInstance<NNModelData>();
+        asset.modelData.Value = model;
+
+        asset.name = "Override - " + Path.GetFileName(assetPath);
+        m_CachedModels[behaviorName] = asset;
+        return asset;
+    }
+
 }
 
