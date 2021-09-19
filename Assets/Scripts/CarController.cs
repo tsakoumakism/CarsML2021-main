@@ -78,7 +78,7 @@ public class CarController : MonoBehaviour
         {
             ShiftUp();
         }
-        else if (carEngine.Rpm < 1001)
+        else if (carEngine.Rpm < 1001) //super weak, needs changing
         {
             ShiftDown();
         }
@@ -102,7 +102,10 @@ public class CarController : MonoBehaviour
         {
             currentGear--;
         }
-        else { Debug.Log("Can't shift down"); }
+        else
+        { 
+            //Debug.Log("Can't shift down");
+        }
     }
     
 

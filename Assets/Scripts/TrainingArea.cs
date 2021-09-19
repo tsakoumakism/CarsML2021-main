@@ -129,12 +129,9 @@ public class TrainingArea : MonoBehaviour
     //spawn agents in an area around the specified position
     public void SpawnAgents(int agents, Vector3 _position, Quaternion _rotation)
     {
-
+        Debug.Log("Spawning " + agents + " agents at " + _position + " and rotation " + _rotation);
         for (int i = 0; i < agents; i++)
         {
-            Debug.Log(agents);
-            Debug.Log(agentPPO);
-            Debug.Log(agentSAC);
             if (agentPPO && agentSAC)
             {
                 Instantiate(agentPrefabPPO, _position, _rotation, transform.Find("Agents"));

@@ -52,9 +52,11 @@ public class CarAgent : Agent
 
         //initiallize behaviour
         GetAssetPathFromCommandLine();
-        if (m_BehaviorNameOverrides.Count > 0)
+        if (m_BehaviorNameOverrides.ContainsKey(GetComponent<BehaviorParameters>().BehaviorName))
         {
+            Debug.Log("Overriding brain...");
             OverrideModel();
+            
         }
 
         gameObject.layer = 8;
@@ -314,15 +316,49 @@ public class CarAgent : Agent
                 m_BehaviorNameOverrides[key] = value;
             }
         }
+        /*
+        Debug.Log("args: ");
+        foreach (string a in args)
+        {
+            Debug.Log(a);
+        }
+        Debug.Log("behaviours: ");
+        foreach (KeyValuePair<string, string> pair in m_BehaviorNameOverrides)
+        {
+            Debug.Log("Behaviour: " + pair.Key + " -- " + pair.Value);
+        }
+        */
+        if (Application.isEditor)
+        {
+            
+            var value1 = @"E:\CarsML2021-main/mainBuild/results/pposac1\CarBrainSAC.onnx";
+            var key1 = "CarBrainSAC";
+            m_BehaviorNameOverrides[key1] = value1;
+            
+            var value2 = @"E:\CarsML2021-main/mainBuild/results/pposac1\CarBrainPPO.onnx";
+            var key2 = "CarBrainPPO";
+            m_BehaviorNameOverrides[key2] = value2;
+            
+        }
+
     }
     void OverrideModel()
     {
         var bp = GetComponent<BehaviorParameters>();
 
         var nnModel = GetModelForBehaviorName(bp.BehaviorName);
-        Debug.Log($"Overriding behavior {bp.BehaviorName} for agent with model {nnModel?.name}");
-        // This might give a null model; that's better because we'll fall back to the Heuristic
-        this.SetModel($"Override_{bp.BehaviorName}",nnModel);
+        if (m_BehaviorNameOverrides.ContainsKey(bp.BehaviorName))
+        {
+            Debug.Log($"Overriding behavior {bp.BehaviorName} for agent with model {nnModel?.name}");
+            // This might give a null model; that's better because we'll fall back to the Heuristic
+            if (nnModel.Equals(null))
+            {
+                Debug.Log("nnModel is null");
+            }
+            SetModel($"Override_{bp.BehaviorName}", nnModel);
+            Debug.Log(GetComponent<BehaviorParameters>().Model.name);
+        }
+        
 
     }
     NNModel GetModelForBehaviorName(string behaviorName)
