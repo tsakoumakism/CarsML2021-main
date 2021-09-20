@@ -317,11 +317,11 @@
     <Reference Include="UnityEditor.XR.LegacyInputHelpers">
       <HintPath>Library\ScriptAssemblies\UnityEditor.XR.LegacyInputHelpers.dll</HintPath>
     </Reference>
-    <Reference Include="Unity.ML-Agents.Editor">
-      <HintPath>Library\ScriptAssemblies\Unity.ML-Agents.Editor.dll</HintPath>
-    </Reference>
     <Reference Include="UnityEditor.UI">
       <HintPath>Library\ScriptAssemblies\UnityEditor.UI.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.ML-Agents.Editor">
+      <HintPath>Library\ScriptAssemblies\Unity.ML-Agents.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Google.Protobuf">
       <HintPath>Library\PackageCache\com.unity.barracuda@5e321aa0db\Barracuda\Runtime\Plugins\ProtoBuffer\Google.Protobuf.dll</HintPath>
@@ -329,29 +329,29 @@
     <Reference Include="Unity.Burst.Unsafe">
       <HintPath>Library\PackageCache\com.unity.burst@1.6.0-pre.2\Unity.Burst.Unsafe.dll</HintPath>
     </Reference>
-    <Reference Include="System.IO.Abstractions">
-      <HintPath>E:\ml-agents-release_15\com.unity.ml-agents\Plugins\System.IO.Abstractions.dll</HintPath>
-    </Reference>
-    <Reference Include="System.IO.Abstractions.TestingHelpers">
-      <HintPath>E:\ml-agents-release_15\com.unity.ml-agents\Plugins\System.IO.Abstractions.TestingHelpers.dll</HintPath>
-    </Reference>
-    <Reference Include="Grpc.Core">
-      <HintPath>E:\ml-agents-release_15\com.unity.ml-agents\Plugins\ProtoBuffer\Grpc.Core.dll</HintPath>
-    </Reference>
-    <Reference Include="System.Interactive.Async">
-      <HintPath>E:\ml-agents-release_15\com.unity.ml-agents\Plugins\ProtoBuffer\System.Interactive.Async.dll</HintPath>
+    <Reference Include="Unity.Burst.Cecil">
+      <HintPath>Library\PackageCache\com.unity.burst@1.6.0-pre.2\Unity.Burst.CodeGen\Unity.Burst.Cecil.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Burst.Cecil.Mdb">
       <HintPath>Library\PackageCache\com.unity.burst@1.6.0-pre.2\Unity.Burst.CodeGen\Unity.Burst.Cecil.Mdb.dll</HintPath>
     </Reference>
-    <Reference Include="Unity.Burst.Cecil">
-      <HintPath>Library\PackageCache\com.unity.burst@1.6.0-pre.2\Unity.Burst.CodeGen\Unity.Burst.Cecil.dll</HintPath>
+    <Reference Include="Unity.Burst.Cecil.Pdb">
+      <HintPath>Library\PackageCache\com.unity.burst@1.6.0-pre.2\Unity.Burst.CodeGen\Unity.Burst.Cecil.Pdb.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Burst.Cecil.Rocks">
       <HintPath>Library\PackageCache\com.unity.burst@1.6.0-pre.2\Unity.Burst.CodeGen\Unity.Burst.Cecil.Rocks.dll</HintPath>
     </Reference>
-    <Reference Include="Unity.Burst.Cecil.Pdb">
-      <HintPath>Library\PackageCache\com.unity.burst@1.6.0-pre.2\Unity.Burst.CodeGen\Unity.Burst.Cecil.Pdb.dll</HintPath>
+    <Reference Include="System.IO.Abstractions">
+      <HintPath>E:\ml-agents-release_18\com.unity.ml-agents\Plugins\System.IO.Abstractions.dll</HintPath>
+    </Reference>
+    <Reference Include="System.IO.Abstractions.TestingHelpers">
+      <HintPath>E:\ml-agents-release_18\com.unity.ml-agents\Plugins\System.IO.Abstractions.TestingHelpers.dll</HintPath>
+    </Reference>
+    <Reference Include="Grpc.Core">
+      <HintPath>E:\ml-agents-release_18\com.unity.ml-agents\Plugins\ProtoBuffer\Grpc.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Interactive.Async">
+      <HintPath>E:\ml-agents-release_18\com.unity.ml-agents\Plugins\ProtoBuffer\System.Interactive.Async.dll</HintPath>
     </Reference>
     <Reference Include="netstandard">
       <HintPath>C:\Program Files\Unity\Hub\Editor\2019.4.28f1\Editor\Data\NetStandard\ref\2.0.0\netstandard.dll</HintPath>
@@ -748,10 +748,6 @@
       <Project>{9DF24B4D-71C1-010E-2906-7B6120B32358}</Project>
       <Name>UnityEngine.XR.LegacyInputHelpers</Name>
     </ProjectReference>
-    <ProjectReference Include="Unity.ML-Agents.CommunicatorObjects.csproj">
-      <Project>{5E226769-E297-6F97-29FC-F40F0F92AE23}</Project>
-      <Name>Unity.ML-Agents.CommunicatorObjects</Name>
-    </ProjectReference>
     <ProjectReference Include="Unity.Barracuda.BurstBLAS.csproj">
       <Project>{00CC1F6E-13F0-D7E8-4006-D0726B6D79F8}</Project>
       <Name>Unity.Barracuda.BurstBLAS</Name>
@@ -768,10 +764,6 @@
       <Project>{0D9DB329-221C-4FF2-5043-457F50F36BA6}</Project>
       <Name>Unity.Analytics.DataPrivacy</Name>
     </ProjectReference>
-    <ProjectReference Include="Unity.ML-Agents.csproj">
-      <Project>{F653E54C-1A94-E3FA-1F6B-136D4A1CF106}</Project>
-      <Name>Unity.ML-Agents</Name>
-    </ProjectReference>
     <ProjectReference Include="UnityEngine.Purchasing.SecurityStub.csproj">
       <Project>{084BB747-CAC4-CCAB-4EAA-1DA60F5D853F}</Project>
       <Name>UnityEngine.Purchasing.SecurityStub</Name>
@@ -787,6 +779,14 @@
     <ProjectReference Include="YamlDotNet.csproj">
       <Project>{8F8FC72C-E984-CB60-961F-5B97C6BE48CF}</Project>
       <Name>YamlDotNet</Name>
+    </ProjectReference>
+    <ProjectReference Include="Unity.ML-Agents.CommunicatorObjects.csproj">
+      <Project>{5E226769-E297-6F97-29FC-F40F0F92AE23}</Project>
+      <Name>Unity.ML-Agents.CommunicatorObjects</Name>
+    </ProjectReference>
+    <ProjectReference Include="Unity.ML-Agents.csproj">
+      <Project>{F653E54C-1A94-E3FA-1F6B-136D4A1CF106}</Project>
+      <Name>Unity.ML-Agents</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

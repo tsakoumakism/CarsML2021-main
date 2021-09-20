@@ -56,32 +56,32 @@
     <Analyzer Include="C:\Program Files (x86)\Microsoft Visual Studio Tools for Unity\16.0\Analyzers\Microsoft.Unity.Analyzers.dll" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="E:\ml-agents-release_15\com.unity.ml-agents\Runtime\Grpc\AssemblyInfo.cs" />
-    <Compile Include="E:\ml-agents-release_15\com.unity.ml-agents\Runtime\Grpc\CommunicatorObjects\AgentAction.cs" />
-    <Compile Include="E:\ml-agents-release_15\com.unity.ml-agents\Runtime\Grpc\CommunicatorObjects\AgentInfo.cs" />
-    <Compile Include="E:\ml-agents-release_15\com.unity.ml-agents\Runtime\Grpc\CommunicatorObjects\AgentInfoActionPair.cs" />
-    <Compile Include="E:\ml-agents-release_15\com.unity.ml-agents\Runtime\Grpc\CommunicatorObjects\BrainParameters.cs" />
-    <Compile Include="E:\ml-agents-release_15\com.unity.ml-agents\Runtime\Grpc\CommunicatorObjects\Capabilities.cs" />
-    <Compile Include="E:\ml-agents-release_15\com.unity.ml-agents\Runtime\Grpc\CommunicatorObjects\Command.cs" />
-    <Compile Include="E:\ml-agents-release_15\com.unity.ml-agents\Runtime\Grpc\CommunicatorObjects\CustomResetParameters.cs" />
-    <Compile Include="E:\ml-agents-release_15\com.unity.ml-agents\Runtime\Grpc\CommunicatorObjects\DemonstrationMeta.cs" />
-    <Compile Include="E:\ml-agents-release_15\com.unity.ml-agents\Runtime\Grpc\CommunicatorObjects\EngineConfiguration.cs" />
-    <Compile Include="E:\ml-agents-release_15\com.unity.ml-agents\Runtime\Grpc\CommunicatorObjects\Header.cs" />
-    <Compile Include="E:\ml-agents-release_15\com.unity.ml-agents\Runtime\Grpc\CommunicatorObjects\Observation.cs" />
-    <Compile Include="E:\ml-agents-release_15\com.unity.ml-agents\Runtime\Grpc\CommunicatorObjects\SpaceType.cs" />
-    <Compile Include="E:\ml-agents-release_15\com.unity.ml-agents\Runtime\Grpc\CommunicatorObjects\TrainingAnalytics.cs" />
-    <Compile Include="E:\ml-agents-release_15\com.unity.ml-agents\Runtime\Grpc\CommunicatorObjects\UnityInput.cs" />
-    <Compile Include="E:\ml-agents-release_15\com.unity.ml-agents\Runtime\Grpc\CommunicatorObjects\UnityMessage.cs" />
-    <Compile Include="E:\ml-agents-release_15\com.unity.ml-agents\Runtime\Grpc\CommunicatorObjects\UnityOutput.cs" />
-    <Compile Include="E:\ml-agents-release_15\com.unity.ml-agents\Runtime\Grpc\CommunicatorObjects\UnityRlInitializationInput.cs" />
-    <Compile Include="E:\ml-agents-release_15\com.unity.ml-agents\Runtime\Grpc\CommunicatorObjects\UnityRlInitializationOutput.cs" />
-    <Compile Include="E:\ml-agents-release_15\com.unity.ml-agents\Runtime\Grpc\CommunicatorObjects\UnityRlInput.cs" />
-    <Compile Include="E:\ml-agents-release_15\com.unity.ml-agents\Runtime\Grpc\CommunicatorObjects\UnityRlOutput.cs" />
-    <Compile Include="E:\ml-agents-release_15\com.unity.ml-agents\Runtime\Grpc\CommunicatorObjects\UnityToExternal.cs" />
-    <Compile Include="E:\ml-agents-release_15\com.unity.ml-agents\Runtime\Grpc\CommunicatorObjects\UnityToExternalGrpc.cs" />
+    <Compile Include="E:\ml-agents-release_18\com.unity.ml-agents\Runtime\Grpc\AssemblyInfo.cs" />
+    <Compile Include="E:\ml-agents-release_18\com.unity.ml-agents\Runtime\Grpc\CommunicatorObjects\AgentAction.cs" />
+    <Compile Include="E:\ml-agents-release_18\com.unity.ml-agents\Runtime\Grpc\CommunicatorObjects\AgentInfo.cs" />
+    <Compile Include="E:\ml-agents-release_18\com.unity.ml-agents\Runtime\Grpc\CommunicatorObjects\AgentInfoActionPair.cs" />
+    <Compile Include="E:\ml-agents-release_18\com.unity.ml-agents\Runtime\Grpc\CommunicatorObjects\BrainParameters.cs" />
+    <Compile Include="E:\ml-agents-release_18\com.unity.ml-agents\Runtime\Grpc\CommunicatorObjects\Capabilities.cs" />
+    <Compile Include="E:\ml-agents-release_18\com.unity.ml-agents\Runtime\Grpc\CommunicatorObjects\Command.cs" />
+    <Compile Include="E:\ml-agents-release_18\com.unity.ml-agents\Runtime\Grpc\CommunicatorObjects\CustomResetParameters.cs" />
+    <Compile Include="E:\ml-agents-release_18\com.unity.ml-agents\Runtime\Grpc\CommunicatorObjects\DemonstrationMeta.cs" />
+    <Compile Include="E:\ml-agents-release_18\com.unity.ml-agents\Runtime\Grpc\CommunicatorObjects\EngineConfiguration.cs" />
+    <Compile Include="E:\ml-agents-release_18\com.unity.ml-agents\Runtime\Grpc\CommunicatorObjects\Header.cs" />
+    <Compile Include="E:\ml-agents-release_18\com.unity.ml-agents\Runtime\Grpc\CommunicatorObjects\Observation.cs" />
+    <Compile Include="E:\ml-agents-release_18\com.unity.ml-agents\Runtime\Grpc\CommunicatorObjects\SpaceType.cs" />
+    <Compile Include="E:\ml-agents-release_18\com.unity.ml-agents\Runtime\Grpc\CommunicatorObjects\TrainingAnalytics.cs" />
+    <Compile Include="E:\ml-agents-release_18\com.unity.ml-agents\Runtime\Grpc\CommunicatorObjects\UnityInput.cs" />
+    <Compile Include="E:\ml-agents-release_18\com.unity.ml-agents\Runtime\Grpc\CommunicatorObjects\UnityMessage.cs" />
+    <Compile Include="E:\ml-agents-release_18\com.unity.ml-agents\Runtime\Grpc\CommunicatorObjects\UnityOutput.cs" />
+    <Compile Include="E:\ml-agents-release_18\com.unity.ml-agents\Runtime\Grpc\CommunicatorObjects\UnityRlInitializationInput.cs" />
+    <Compile Include="E:\ml-agents-release_18\com.unity.ml-agents\Runtime\Grpc\CommunicatorObjects\UnityRlInitializationOutput.cs" />
+    <Compile Include="E:\ml-agents-release_18\com.unity.ml-agents\Runtime\Grpc\CommunicatorObjects\UnityRlInput.cs" />
+    <Compile Include="E:\ml-agents-release_18\com.unity.ml-agents\Runtime\Grpc\CommunicatorObjects\UnityRlOutput.cs" />
+    <Compile Include="E:\ml-agents-release_18\com.unity.ml-agents\Runtime\Grpc\CommunicatorObjects\UnityToExternal.cs" />
+    <Compile Include="E:\ml-agents-release_18\com.unity.ml-agents\Runtime\Grpc\CommunicatorObjects\UnityToExternalGrpc.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="E:\ml-agents-release_15\com.unity.ml-agents\Runtime\Grpc\Unity.ML-Agents.CommunicatorObjects.asmdef" />
+    <None Include="E:\ml-agents-release_18\com.unity.ml-agents\Runtime\Grpc\Unity.ML-Agents.CommunicatorObjects.asmdef" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">
@@ -291,29 +291,29 @@
     <Reference Include="Unity.Burst.Unsafe">
       <HintPath>Library\PackageCache\com.unity.burst@1.6.0-pre.2\Unity.Burst.Unsafe.dll</HintPath>
     </Reference>
-    <Reference Include="System.IO.Abstractions">
-      <HintPath>E:\ml-agents-release_15\com.unity.ml-agents\Plugins\System.IO.Abstractions.dll</HintPath>
-    </Reference>
-    <Reference Include="System.IO.Abstractions.TestingHelpers">
-      <HintPath>E:\ml-agents-release_15\com.unity.ml-agents\Plugins\System.IO.Abstractions.TestingHelpers.dll</HintPath>
-    </Reference>
-    <Reference Include="Grpc.Core">
-      <HintPath>E:\ml-agents-release_15\com.unity.ml-agents\Plugins\ProtoBuffer\Grpc.Core.dll</HintPath>
-    </Reference>
-    <Reference Include="System.Interactive.Async">
-      <HintPath>E:\ml-agents-release_15\com.unity.ml-agents\Plugins\ProtoBuffer\System.Interactive.Async.dll</HintPath>
+    <Reference Include="Unity.Burst.Cecil">
+      <HintPath>Library\PackageCache\com.unity.burst@1.6.0-pre.2\Unity.Burst.CodeGen\Unity.Burst.Cecil.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Burst.Cecil.Mdb">
       <HintPath>Library\PackageCache\com.unity.burst@1.6.0-pre.2\Unity.Burst.CodeGen\Unity.Burst.Cecil.Mdb.dll</HintPath>
     </Reference>
-    <Reference Include="Unity.Burst.Cecil">
-      <HintPath>Library\PackageCache\com.unity.burst@1.6.0-pre.2\Unity.Burst.CodeGen\Unity.Burst.Cecil.dll</HintPath>
+    <Reference Include="Unity.Burst.Cecil.Pdb">
+      <HintPath>Library\PackageCache\com.unity.burst@1.6.0-pre.2\Unity.Burst.CodeGen\Unity.Burst.Cecil.Pdb.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Burst.Cecil.Rocks">
       <HintPath>Library\PackageCache\com.unity.burst@1.6.0-pre.2\Unity.Burst.CodeGen\Unity.Burst.Cecil.Rocks.dll</HintPath>
     </Reference>
-    <Reference Include="Unity.Burst.Cecil.Pdb">
-      <HintPath>Library\PackageCache\com.unity.burst@1.6.0-pre.2\Unity.Burst.CodeGen\Unity.Burst.Cecil.Pdb.dll</HintPath>
+    <Reference Include="System.IO.Abstractions">
+      <HintPath>E:\ml-agents-release_18\com.unity.ml-agents\Plugins\System.IO.Abstractions.dll</HintPath>
+    </Reference>
+    <Reference Include="System.IO.Abstractions.TestingHelpers">
+      <HintPath>E:\ml-agents-release_18\com.unity.ml-agents\Plugins\System.IO.Abstractions.TestingHelpers.dll</HintPath>
+    </Reference>
+    <Reference Include="Grpc.Core">
+      <HintPath>E:\ml-agents-release_18\com.unity.ml-agents\Plugins\ProtoBuffer\Grpc.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Interactive.Async">
+      <HintPath>E:\ml-agents-release_18\com.unity.ml-agents\Plugins\ProtoBuffer\System.Interactive.Async.dll</HintPath>
     </Reference>
     <Reference Include="netstandard">
       <HintPath>C:\Program Files\Unity\Hub\Editor\2019.4.28f1\Editor\Data\NetStandard\ref\2.0.0\netstandard.dll</HintPath>

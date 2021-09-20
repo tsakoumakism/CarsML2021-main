@@ -48,16 +48,10 @@ public class CarAgent : Agent
 
     public override void Initialize()
     {
-        base.Initialize();
 
-        //initiallize behaviour
-        GetAssetPathFromCommandLine();
-        if (m_BehaviorNameOverrides.ContainsKey(GetComponent<BehaviorParameters>().BehaviorName))
-        {
-            Debug.Log("Overriding brain...");
-            OverrideModel();
-            
-        }
+
+
+        base.Initialize();
 
         gameObject.layer = 8;
         car = GetComponent<CarController>();
@@ -71,12 +65,23 @@ public class CarAgent : Agent
         agentRigidbody.centerOfMass = GameObject.Find("CenterOfMass").transform.localPosition;
         idleMeter = maxIdleTime;
         car.SetGear(1);
-        
+
+
+
     }
 
     public void Start()
     {
         //Debug.Log("Agent Initialized.");
+        //initiallize behaviour
+        GetAssetPathFromCommandLine();
+        if (m_BehaviorNameOverrides.ContainsKey(GetComponent<BehaviorParameters>().BehaviorName))
+        {
+            Debug.Log("Overriding brain...");
+            OverrideModel();
+
+        }
+
 
     }
 

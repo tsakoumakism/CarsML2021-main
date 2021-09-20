@@ -199,7 +199,7 @@ public class TrainingArea : MonoBehaviour
                 bd = new BlockData();
                 bd = JsonUtility.FromJson<BlockData>(line);
                 foreach(GameObject item in roadBuildList){  
-                    Debug.Log("script name" + bd.name + " || listname:" + item.name);
+                    //Debug.Log("script name" + bd.name + " || listname:" + item.name);
                     if(bd.name == item.name){
                         var go = Instantiate(item,bd.blockPosition,bd.blockRotation) as GameObject;
                         go.transform.SetParent(GameObject.Find("Track").transform);
