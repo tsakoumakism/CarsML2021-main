@@ -6,14 +6,14 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/TrainMenu.unity
-    guid: 7d3b858588df223488ea6e3343dec435
+    path: Assets/Scenes/Map Editor.unity
+    guid: 132312f69a275d1488e0a53588519cf8
   - enabled: 1
     path: Assets/Scenes/MainMenu.unity
     guid: bb7471d733a68ec4e8368b5a47eb8540
   - enabled: 1
-    path: Assets/Scenes/Map Editor.unity
-    guid: 132312f69a275d1488e0a53588519cf8
+    path: Assets/Scenes/TrainMenu.unity
+    guid: 7d3b858588df223488ea6e3343dec435
   - enabled: 1
     path: Assets/Scenes/TestModel.unity
     guid: 6e7b07367e8f2ab47a38c8017c0bbfa0

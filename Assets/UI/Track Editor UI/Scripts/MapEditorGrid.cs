@@ -1,4 +1,5 @@
 using UnityEngine;
+using System.Collections;
 using System.Collections.Generic;
 
 
@@ -31,8 +32,7 @@ public class MapEditorGrid{
     private void GenerateGrid(){
 
         //Create gridFloor  
-        gridFloor = GameObject.CreatePrimitive(PrimitiveType.Cube);
-        
+        gridFloor = GameObject.Find("GridFloor");
 
         //list of all lines that make show the grid
         List<LineDrawer> lineDrawers = new List<LineDrawer>();
@@ -54,7 +54,7 @@ public class MapEditorGrid{
         gridFloor.transform.localPosition = new Vector3(gridFloor.transform.position.x + (width*cellSize / 2), 
                                                         gridFloor.transform.position.y - 0.2f, 
                                                         gridFloor.transform.position.z + (height * cellSize/2));
-        gridFloor.GetComponent<Renderer>().material = new Material(Shader.Find("CustomShaders/BasicTransparency"));
+       // gridFloor.GetComponent<Renderer>().material = new Material(Shader.Find("CustomShaders/BasicTransparency"));
         Debug.Log("Created Grid" + ToString());
     }
 

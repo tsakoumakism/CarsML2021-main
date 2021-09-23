@@ -1,0 +1,39 @@
+{
+    "CarBrainPPO": {
+        "checkpoints": [
+            {
+                "steps": 2393,
+                "file_path": "results\\rwr3\\CarBrainPPO\\CarBrainPPO-2393.onnx",
+                "reward": 30.46086025238037,
+                "creation_time": 1630140757.9322898
+            }
+        ],
+        "final_checkpoint": {
+            "steps": 2393,
+            "file_path": "results\\rwr3\\CarBrainPPO.onnx",
+            "reward": 30.46086025238037,
+            "creation_time": 1630140757.9322898
+        }
+    },
+    "CarBrainSAC": {
+        "checkpoints": [
+            {
+                "steps": 2616,
+                "file_path": "results\\rwr3\\CarBrainSAC\\CarBrainSAC-2616.onnx",
+                "reward": null,
+                "creation_time": 1630140758.2245626
+            }
+        ],
+        "final_checkpoint": {
+            "steps": 2616,
+            "file_path": "results\\rwr3\\CarBrainSAC.onnx",
+            "reward": null,
+            "creation_time": 1630140758.2245626
+        }
+    },
+    "metadata": {
+        "stats_format_version": "0.2.0",
+        "mlagents_version": "0.25.0",
+        "torch_version": "1.7.1+cu110"
+    }
+}
