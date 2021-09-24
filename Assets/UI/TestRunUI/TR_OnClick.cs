@@ -83,8 +83,16 @@ public class TR_OnClick : MonoBehaviour
                 if (files.Length != 0 && files != null)
                 {
                     //only checking the 1st item because there's only 1 brain per algo in the folder anyway
-                    filePathsSAC.Add(Directory.GetFiles(dir, "*sac*.onnx")[0]);
-                    filePathsPPO.Add(Directory.GetFiles(dir, "*ppo*.onnx")[0]);
+                    try
+                    {
+                        filePathsSAC.Add(Directory.GetFiles(dir, "*sac*.onnx")[0]);
+                    }
+                    catch { }
+                    try {
+                        filePathsPPO.Add(Directory.GetFiles(dir, "*ppo*.onnx")[0]);
+                    }
+                    catch { }
+                    
                 }
             }
             if(filePathsSAC.Count == 0 && filePathsPPO.Count == 0)

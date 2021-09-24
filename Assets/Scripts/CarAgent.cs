@@ -24,6 +24,7 @@ public class CarAgent : Agent
     private Quaternion startingRotation;
     private float idleMeter;
     private float maxReward = 0;
+    private float maxLaps = 3;
 
     private bool respawned = false;
 
@@ -263,7 +264,13 @@ public class CarAgent : Agent
             {
                 bestLap = lapTime;
             }
-            lapsCompleted = lapsCompleted + 1;
+            lapsCompleted++;
+            if (lapsCompleted == maxLaps)
+            {
+                AddReward(trainingArea.successReward);
+                Debug.Log("Success!");
+                EndEpisode();
+            }
         }
     }
 
