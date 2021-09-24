@@ -1,0 +1,1 @@
+{"numOfAgents":"10","cpReward":"10","speedReward":"0.01","collisionPenalty":"-10","idlePenalty":"-10","wrongCheckPenalty":"-10","timescale":"30","numOfAgentsPPO":"0","numOfAgentsSAC":"10","brainOverride":""}

@@ -1,0 +1,103 @@
+Mono path[0] = 'E:/CarsML2021-main/trainingScene/CarsML2021-main_Data/Managed'
+Mono config path = 'E:/CarsML2021-main/trainingScene/MonoBleedingEdge/etc'
+PlayerConnection initialized from E:/CarsML2021-main/trainingScene/CarsML2021-main_Data (debug = 0)
+PlayerConnection initialized network socket : 0.0.0.0 55061
+Multi-casting "[IP] 192.168.178.20 [Port] 55061 [Flags] 2 [Guid] 1961354284 [EditorId] 1751488560 [Version] 1048832 [Id] WindowsPlayer(DESKTOP-MUVOSHJ) [Debug] 1 [PackageName] WindowsPlayer [ProjectName] CarsML2021-main" to [225.0.0.222:54997]...
+Started listening to [0.0.0.0:55061]
+Starting managed debugger on port 56284
+Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=0.0.0.0:56284
+PlayerConnection already initialized - listening to [0.0.0.0:55061]
+Initialize engine version: 2019.4.28f1 (1381962e9d08)
+[Subsystems] Discovering subsystems at path E:/CarsML2021-main/trainingScene/CarsML2021-main_Data/UnitySubsystems
+Forcing GfxDevice: Null
+GfxDevice: creating device client; threaded=0
+NullGfxDevice:
+    Version:  NULL 1.0 [1.0]
+    Renderer: Null Device
+    Vendor:   Unity Technologies
+Begin MonoManager ReloadAssembly
+- Completed reload, in  2.800 seconds
+Microsoft Media Foundation video decoding to texture disabled: graphics device is Null, only Direct3D 11 and Direct3D 12 (only on desktop) are supported.
+The referenced script on this Behaviour (Game Object 'Monitor1') is missing! 
+(Filename: C:\buildslave\unity\build\Runtime/Mono/ManagedMonoBehaviourRef.cpp Line: 334)
+
+UnloadTime: 0.758800 ms
+Loaded Successfully
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:Log (object)
+TrainingArea:LoadMap () (at E:/CarsML2021-main/Assets/Scripts/TrainingArea.cs:217)
+TrainingArea:Awake () (at E:/CarsML2021-main/Assets/Scripts/TrainingArea.cs:61)
+ 
+(Filename: E:/CarsML2021-main/Assets/Scripts/TrainingArea.cs Line: 217)
+
+Track (UnityEngine.GameObject)
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:Log (object)
+TrainingArea:EnableCheckPoints () (at E:/CarsML2021-main/Assets/Scripts/TrainingArea.cs:261)
+TrainingArea:Awake () (at E:/CarsML2021-main/Assets/Scripts/TrainingArea.cs:78)
+ 
+(Filename: E:/CarsML2021-main/Assets/Scripts/TrainingArea.cs Line: 261)
+
+Training Start
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:Log (object)
+TrainingArea:Awake () (at E:/CarsML2021-main/Assets/Scripts/TrainingArea.cs:84)
+ 
+(Filename: E:/CarsML2021-main/Assets/Scripts/TrainingArea.cs Line: 84)
+
+Spawning 10 agents at (20.9, -96.2, 23.5) and rotation (0.0, 0.0, 0.0, 1.0)
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:Log (object)
+TrainingArea:SpawnAgents (int,UnityEngine.Vector3,UnityEngine.Quaternion) (at E:/CarsML2021-main/Assets/Scripts/TrainingArea.cs:132)
+TrainingArea:Awake () (at E:/CarsML2021-main/Assets/Scripts/TrainingArea.cs:112)
+ 
+(Filename: E:/CarsML2021-main/Assets/Scripts/TrainingArea.cs Line: 132)
+
+Fallback handler could not load library E:/CarsML2021-main/trainingScene/CarsML2021-main_Data/Mono/libcoreclr.so
+Fallback handler could not load library E:/CarsML2021-main/trainingScene/CarsML2021-main_Data/Mono/libcoreclr.so.dll
+Fallback handler could not load library E:/CarsML2021-main/trainingScene/CarsML2021-main_Data/Mono/libcoreclr.so
+Fallback handler could not load library E:/CarsML2021-main/trainingScene/CarsML2021-main_Data/Mono/libdl.so
+Fallback handler could not load library E:/CarsML2021-main/trainingScene/CarsML2021-main_Data/Mono/libdl.so.dll
+Fallback handler could not load library E:/CarsML2021-main/trainingScene/CarsML2021-main_Data/Mono/libdl.so
+Fallback handler could not load library E:/CarsML2021-main/trainingScene/CarsML2021-main_Data/Mono/libSystem.dylib
+Fallback handler could not load library E:/CarsML2021-main/trainingScene/CarsML2021-main_Data/Mono/libSystem.dylib.dll
+Fallback handler could not load library E:/CarsML2021-main/trainingScene/CarsML2021-main_Data/Mono/libSystem.dylib
+Fallback handler could not load library E:/CarsML2021-main/trainingScene/CarsML2021-main_Data/Mono/libcoreclr.so
+Fallback handler could not load library E:/CarsML2021-main/trainingScene/CarsML2021-main_Data/Mono/libcoreclr.so.dll
+Fallback handler could not load library E:/CarsML2021-main/trainingScene/CarsML2021-main_Data/Mono/libcoreclr.so
+Fallback handler could not load library E:/CarsML2021-main/trainingScene/CarsML2021-main_Data/Mono/libdl.so
+Fallback handler could not load library E:/CarsML2021-main/trainingScene/CarsML2021-main_Data/Mono/libdl.so.dll
+Fallback handler could not load library E:/CarsML2021-main/trainingScene/CarsML2021-main_Data/Mono/libdl.so
+Fallback handler could not load library E:/CarsML2021-main/trainingScene/CarsML2021-main_Data/Mono/libSystem.dylib
+Fallback handler could not load library E:/CarsML2021-main/trainingScene/CarsML2021-main_Data/Mono/libSystem.dylib.dll
+Fallback handler could not load library E:/CarsML2021-main/trainingScene/CarsML2021-main_Data/Mono/libSystem.dylib
+Unable to save timers to file E:/CarsML2021-main/trainingScene/CarsML2021-main_Data\ML-Agents\Timers\Training_timers.json
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:LogWarning (object)
+Unity.MLAgents.TimerStack:SaveJsonTimers (string) (at E:/ml-agents-release_18/com.unity.ml-agents/Runtime/Timer.cs:483)
+Unity.MLAgents.Academy:Dispose () (at E:/ml-agents-release_18/com.unity.ml-agents/Runtime/Academy.cs:659)
+UnityEngine.Application:Internal_ApplicationQuit ()
+ 
+(Filename: E:/ml-agents-release_18/com.unity.ml-agents/Runtime/Timer.cs Line: 483)
+
+Setting up 8 worker threads for Enlighten.
+  Thread -> id: 9278 -> priority: 1 
+  Thread -> id: 7714 -> priority: 1 
+  Thread -> id: 5918 -> priority: 1 
+  Thread -> id: 9874 -> priority: 1 
+  Thread -> id: 98f0 -> priority: 1 
+  Thread -> id: 3548 -> priority: 1 
+  Thread -> id: 9a10 -> priority: 1 
+  Thread -> id: 2b4c -> priority: 1 
+debugger-agent: Unable to listen on 976
+##utp:{"type":"MemoryLeaks","version":2,"phase":"Immediate","time":1632378215667,"processId":31396,"allocatedMemory":677627,"memoryLabels":[{"Permanent":40},{"NewDelete":6896},{"Thread":72},{"Manager":2128},{"GfxDevice":64},{"Physics":32},{"Serialization":666056},{"String":555},{"PoolAlloc":112},{"GI":296},{"VR":2040},{"Subsystems":-664}]}

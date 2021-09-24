@@ -1,0 +1,65 @@
+{
+    "CarBrainSAC": {
+        "checkpoints": [
+            {
+                "steps": 1499978,
+                "file_path": "results\\sactest1\\CarBrainSAC\\CarBrainSAC-1499978.onnx",
+                "reward": null,
+                "creation_time": 1632355896.020451,
+                "auxillary_file_paths": [
+                    "results\\sactest1\\CarBrainSAC\\CarBrainSAC-1499978.pt"
+                ]
+            },
+            {
+                "steps": 1999982,
+                "file_path": "results\\sactest1\\CarBrainSAC\\CarBrainSAC-1999982.onnx",
+                "reward": null,
+                "creation_time": 1632363214.0885732,
+                "auxillary_file_paths": [
+                    "results\\sactest1\\CarBrainSAC\\CarBrainSAC-1999982.pt"
+                ]
+            },
+            {
+                "steps": 2499969,
+                "file_path": "results\\sactest1\\CarBrainSAC\\CarBrainSAC-2499969.onnx",
+                "reward": null,
+                "creation_time": 1632370524.020771,
+                "auxillary_file_paths": [
+                    "results\\sactest1\\CarBrainSAC\\CarBrainSAC-2499969.pt"
+                ]
+            },
+            {
+                "steps": 2999910,
+                "file_path": "results\\sactest1\\CarBrainSAC\\CarBrainSAC-2999910.onnx",
+                "reward": null,
+                "creation_time": 1632377846.2757323,
+                "auxillary_file_paths": [
+                    "results\\sactest1\\CarBrainSAC\\CarBrainSAC-2999910.pt"
+                ]
+            },
+            {
+                "steps": 3025025,
+                "file_path": "results\\sactest1\\CarBrainSAC\\CarBrainSAC-3025025.onnx",
+                "reward": null,
+                "creation_time": 1632378215.6605475,
+                "auxillary_file_paths": [
+                    "results\\sactest1\\CarBrainSAC\\CarBrainSAC-3025025.pt"
+                ]
+            }
+        ],
+        "final_checkpoint": {
+            "steps": 3025025,
+            "file_path": "results\\sactest1\\CarBrainSAC.onnx",
+            "reward": null,
+            "creation_time": 1632378215.6605475,
+            "auxillary_file_paths": [
+                "results\\sactest1\\CarBrainSAC\\CarBrainSAC-3025025.pt"
+            ]
+        }
+    },
+    "metadata": {
+        "stats_format_version": "0.3.0",
+        "mlagents_version": "0.27.0",
+        "torch_version": "1.7.1+cu110"
+    }
+}
