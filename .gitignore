@@ -72,3 +72,5 @@ crashlytics-build.properties
 
 #training results
 results/*
+mainBuild/*
+trainingScene/*
