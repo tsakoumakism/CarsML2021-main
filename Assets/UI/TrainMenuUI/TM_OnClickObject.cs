@@ -345,6 +345,8 @@ public class TM_OnClickObject : MonoBehaviour
                 options.numOfAgentsPPO = numOfAgents;
                 options.numOfAgentsSAC = numOfAgents;
             }
+
+            
            
             string opt = JsonUtility.ToJson(options);
             sw.WriteLine(opt);
@@ -354,6 +356,17 @@ public class TM_OnClickObject : MonoBehaviour
             string txt_checks = checks.text;
             sw.WriteLine(txt_checks);
         }
+
+        using (StreamWriter sw = new StreamWriter(Application.dataPath + "/isTraining.json"))
+        {
+            TrainingType options = new TrainingType();
+            options.training = "true";
+            string opt = JsonUtility.ToJson(options);
+            sw.WriteLine(opt);
+        }
+
+
+
         
     }
 

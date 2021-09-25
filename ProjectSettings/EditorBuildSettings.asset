@@ -6,6 +6,9 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 0
+    path: Assets/Scenes/TestModel.unity
+    guid: 6e7b07367e8f2ab47a38c8017c0bbfa0
+  - enabled: 0
     path: Assets/Scenes/Map Editor.unity
     guid: 132312f69a275d1488e0a53588519cf8
   - enabled: 0
@@ -14,9 +17,6 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/TrainMenu.unity
     guid: 7d3b858588df223488ea6e3343dec435
-  - enabled: 0
-    path: Assets/Scenes/TestModel.unity
-    guid: 6e7b07367e8f2ab47a38c8017c0bbfa0
   - enabled: 0
     path: Assets/Scenes/TestModelArena.unity
     guid: 7c2de58eaebe12744be296c21feec4fb

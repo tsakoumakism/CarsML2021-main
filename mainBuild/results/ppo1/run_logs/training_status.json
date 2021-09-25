@@ -1,0 +1,23 @@
+{
+    "CarBrainPPO": {
+        "checkpoints": [
+            {
+                "steps": 2083,
+                "file_path": "results\\ppo1\\CarBrainPPO\\CarBrainPPO-2083.onnx",
+                "reward": 43.77212142944336,
+                "creation_time": 1632496572.7125795
+            }
+        ],
+        "final_checkpoint": {
+            "steps": 2083,
+            "file_path": "results\\ppo1\\CarBrainPPO.onnx",
+            "reward": 43.77212142944336,
+            "creation_time": 1632496572.7125795
+        }
+    },
+    "metadata": {
+        "stats_format_version": "0.2.0",
+        "mlagents_version": "0.25.0",
+        "torch_version": "1.7.1+cu110"
+    }
+}

@@ -53,6 +53,8 @@ public class TrainingArea : MonoBehaviour
 
     [SerializeField] private BlockData bd;
 
+    bool isTraining, inferPPO, inferSAC;
+
 
     void Awake()
     {
@@ -76,43 +78,63 @@ public class TrainingArea : MonoBehaviour
                                                                                              // startPosition = new Vector3(startPosition.x, offsetY, startPosition.z);
 
         EnableCheckPoints();
+        CheckTraining();
 
-        //create finish line
-        finishLinePos = new Vector3(startPosition.x, startPosition.y + 1.5f, startPosition.z - 3f);
-        Instantiate(finishLine, finishLinePos, Quaternion.Euler(0, 0, 0), transform.Find("Track"));
 
-        Debug.Log("Training Start");
-        int agentsToSpawn;
-        if (!Application.isEditor)
-        {
-            ReadNumOfAgents();
-            agentsToSpawn = numOfAgents;
-        }
-        else
-        {
-            //when in editor, values are controlled from the editor
-            agentsToSpawn = numOfAgents;
-            if (spawnAgents && academy.spawnAgents)
+         //create finish line
+         finishLinePos = new Vector3(startPosition.x, startPosition.y + 1.5f, startPosition.z - 3f);
+            Instantiate(finishLine, finishLinePos, Quaternion.Euler(0, 0, 0), transform.Find("Track"));
+
+            Debug.Log("Training Start");
+            int agentsToSpawn;
+            if (!Application.isEditor)
             {
-                if (academy.agentsPerArea != 0)
+                if (isTraining)
                 {
-                    Debug.Log("Agents (academy): " + academy.agentsPerArea);
-                    agentsToSpawn = academy.agentsPerArea;
-                }
-                else if (heuristic)
-                {
-                    agentsToSpawn = 1;
+                    ReadNumOfAgents();
+                    agentsToSpawn = numOfAgents;
+    
                 }
                 else
                 {
-                    Debug.Log("Agents (area): " + agentsToSpawn);
+                    agentsToSpawn = 1;
+                    CheckInferneceOptions();
+                    agentPPO = inferPPO;
+                    agentSAC = inferSAC;
+
+                }
+
+            }
+            else
+            {
+                //when in editor, values are controlled from the editor
+                agentsToSpawn = numOfAgents;
+                if (spawnAgents && academy.spawnAgents)
+                {
+                    if (academy.agentsPerArea != 0)
+                    {
+                        Debug.Log("Agents (academy): " + academy.agentsPerArea);
+                        agentsToSpawn = academy.agentsPerArea;
+                    }
+                    else if (heuristic)
+                    {
+                        agentsToSpawn = 1;
+                    }
+                    else
+                    {
+                        Debug.Log("Agents (area): " + agentsToSpawn);
+                    }
                 }
             }
+
+        Debug.Log(agentPPO);
+        Debug.Log(agentSAC);
+            SpawnAgents(agentsToSpawn, startPosition, Quaternion.Euler(0, 0, 0));
+
         }
-        SpawnAgents(agentsToSpawn, startPosition, Quaternion.Euler(0, 0, 0));
 
 
-    }
+
 
     private void Update()
     {
@@ -125,6 +147,7 @@ public class TrainingArea : MonoBehaviour
             ToggleView();
         }
     }
+    
 
     //spawn agents in an area around the specified position
     public void SpawnAgents(int agents, Vector3 _position, Quaternion _rotation)
@@ -241,6 +264,38 @@ public class TrainingArea : MonoBehaviour
                 agentSAC = Int32.Parse(numOfAgentsSAC) > 0 ? true : false;
             }
         }       
+    }
+
+    private void CheckTraining()
+    {
+        string line;
+        StreamReader sr;
+
+        sr = new StreamReader("../mainBuild/CarsML2021-main_Data/isTraining.json");
+        using (sr) {
+            line = sr.ReadLine();
+            TrainingType train = new TrainingType();
+            train = JsonUtility.FromJson<TrainingType>(line);
+            isTraining = (train.training == "true") ? true : false;
+        }
+    }
+
+    private void CheckInferneceOptions()
+    {
+        string line;
+        StreamReader sr;
+
+        sr = new StreamReader("../mainBuild/CarsML2021-main_Data/InferenceOptions.json");
+        using (sr)
+        {
+            line = sr.ReadLine();
+            InferenceOptions infer = new InferenceOptions();
+            infer = JsonUtility.FromJson<InferenceOptions>(line);
+
+            inferPPO = (infer.testPPO != "none") ? true : false;
+            inferSAC = (infer.testSAC != "none") ? true : false;
+            
+        }
     }
 
     public void EnableCheckPoints(){

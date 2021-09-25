@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using System.IO;
 using UnityEngine.SceneManagement;
+using System.Text.RegularExpressions;
 
 public class TR_OnClick : MonoBehaviour
 {
@@ -15,12 +16,19 @@ public class TR_OnClick : MonoBehaviour
     Text m_ModelTextPPO;
     Text m_MapText;
 
+    string options_path;
+    string isTraining_path;
     string config_fileName;
 
     List<string> filePathsSAC = new List<string>();
     List<string> filePathsPPO = new List<string>();
+    List<string> fileNameSAC = new List<string>();
+    List<string> fileNamePPO = new List<string>();
 
     void Awake(){
+
+        options_path = Application.dataPath + "/InferenceOptions.json";
+        isTraining_path = Application.dataPath + "/isTraining.json";
 
         d_model_SAC = GameObject.Find("ModelDropdownSAC").GetComponent<Dropdown>();
         d_model_PPO = GameObject.Find("ModelDropdownPPO").GetComponent<Dropdown>();
@@ -31,53 +39,59 @@ public class TR_OnClick : MonoBehaviour
         m_MapText = GameObject.Find("MapLabel").GetComponent<Text>();
 
         string path = Path.Combine(Application.dataPath, "../") + "/models/";
-        List<string> m_modelDropOptionsSAC = new List<string>(); 
-        List<string> m_modelDropOptionsPPO = new List<string>();
+
 
         GetBrainFiles();
 
-        m_modelDropOptionsSAC = filePathsSAC;
-        m_modelDropOptionsPPO = filePathsPPO;
 
-        //path = Application.persistentDataPath;
-        //List<string> m_mapDropOptions = new List<string>();
-        /* temporarily disabled
+
+        path = Application.persistentDataPath;
+        List<string> m_mapDropOptions = new List<string>();
+        //List<string> m_modelDropOptionsSAC = new List<string>();
+        //List<string> m_modelDropOptionsPPO = new List<string>();
+
+
         foreach(var f in Directory.GetFiles(path,"*.json")){
             var filename = new FileInfo(f).Name;
            m_mapDropOptions.Add(filename);
         }
         d_map.AddOptions(m_mapDropOptions);
-        */
-        if (m_modelDropOptionsSAC != null)
+
+
+
+        if (filePathsSAC != null)
         {
-            d_model_SAC.AddOptions(m_modelDropOptionsSAC);
+            d_model_SAC.AddOptions(fileNameSAC);
         }
-        if (m_modelDropOptionsPPO != null)
+        if (filePathsPPO != null)
         {
-            d_model_PPO.AddOptions(m_modelDropOptionsPPO);
+            d_model_PPO.AddOptions(fileNamePPO);
         }
 
 
     }
+
     private void GetBrainFiles()
     {
+
+
         string path;
         if (Application.isEditor)
         {
-            path = Directory.GetParent(Application.dataPath) + "/mainbuild/results/";
+            path = Directory.GetParent(Application.dataPath) + "/mainBuild/results/";
         }
         else
         {
             path = Directory.GetParent(Application.dataPath) + "/results/";
         }
-        
+
         string[] directories = Directory.GetDirectories(path);
-        string[] fileNames;  //TODO make it so just names are displayed instead of paths, but the path is used as the value (prob with dictionary?)
+        string[] fileNames;
 
 
-        if (directories.Length>0)
+        if (directories.Length > 0)
         {
-            foreach(string dir in directories)
+            foreach (string dir in directories)
             {
                 string[] files = Directory.GetFiles(dir, "*.onnx");
                 if (files.Length != 0 && files != null)
@@ -85,43 +99,71 @@ public class TR_OnClick : MonoBehaviour
                     //only checking the 1st item because there's only 1 brain per algo in the folder anyway
                     try
                     {
+                        string filename = Directory.GetFiles(dir, "*sac*.onnx")[0];
+                        filename = CompileString(filename);
+
                         filePathsSAC.Add(Directory.GetFiles(dir, "*sac*.onnx")[0]);
+                        fileNameSAC.Add(filename);
                     }
                     catch { }
-                    try {
+                    try
+                    {
+                        string filename = Directory.GetFiles(dir, "*ppo*.onnx")[0];
+                        filename = CompileString(filename);
+
                         filePathsPPO.Add(Directory.GetFiles(dir, "*ppo*.onnx")[0]);
+                        fileNamePPO.Add(filename);
+
                     }
                     catch { }
-                    
+
                 }
             }
-            if(filePathsSAC.Count == 0 && filePathsPPO.Count == 0)
+            if (filePathsSAC.Count == 0 && filePathsPPO.Count == 0)
             {
                 Debug.Log("No brain/model files were found.");
             }
         }
-        else 
+        else
         {
             Debug.Log("No result directories found");
-            
+
         }
 
     }
 
+    public string CompileString(string filename)
+    {
+        Regex r = new Regex(@"\/([a-z]\w+)\\", RegexOptions.Compiled | RegexOptions.IgnoreCase);
+        MatchCollection matches = r.Matches(filename);
+
+        return r.Match(filename).Groups[1].Value;
+    }
 
     public void OnClickRun(){
 
         int modelValSAC = d_model_SAC.value;
-        m_ModelTextSAC.text = d_model_SAC.options[modelValSAC].text;
+        string modelSac;
+        if (modelValSAC != 0)
+            modelSac = filePathsSAC[modelValSAC - 1];
+        else modelSac = "none";
 
+
+        string modelPpo;
         int modelValPPO = d_model_PPO.value;
-        m_ModelTextPPO.text = d_model_PPO.options[modelValPPO].text;
+        if (modelValPPO != 0)
+            modelPpo = filePathsPPO[modelValPPO - 1];
+        else modelPpo = "none";
+        
+        
+        int mapVal = d_map.value;
+        m_MapText.text = d_map.options[mapVal].text;
 
-        //int mapVal = d_map.value;
-        //m_MapText.text = d_map.options[mapVal].text;
+        OverwriteOptions(modelPpo, modelSac, m_MapText.text);
+        
 
-        DontDestroyOnLoad(m_ModelTextSAC);
-        DontDestroyOnLoad(m_ModelTextPPO);
+        //DontDestroyOnLoad(m_ModelTextSAC);
+        //DontDestroyOnLoad(m_ModelTextPPO);
         //DontDestroyOnLoad(m_MapText);
 
 
@@ -136,7 +178,7 @@ public class TR_OnClick : MonoBehaviour
         else
             envPath = Path.Combine(Application.dataPath, "../") + "/trainingScene/";
         //strCmdText = "/K mlagents-learn --inference" + " --env = " + envPath + sceneName + " --width=1920 --height=1080" + " --mlagents-override-model=" + m_ModelText.text;
-        strCmdText = "/C " + sceneName + " --mlagents-override-model CarBrainSAC "+ m_ModelTextSAC.text + " CarBrainPPO " + m_ModelTextPPO.text;
+        strCmdText = "/K " + sceneName + " --mlagents-override-model CarBrainSAC "+ modelSac + " CarBrainPPO " + modelPpo;
 
         Debug.Log(strCmdText);
         var proc = new System.Diagnostics.ProcessStartInfo();
@@ -151,4 +193,33 @@ public class TR_OnClick : MonoBehaviour
     public void OnClickBack(){
         SceneManager.LoadScene("MainMenu", LoadSceneMode.Single);
     }
+
+
+
+    public void OverwriteOptions(string hasPPO, string hasSAC, string mapSelected)
+    {
+        using (StreamWriter sw = new StreamWriter(options_path))
+        {
+            //write all options in JSON format
+            InferenceOptions options = new InferenceOptions();
+            options.testPPO = hasPPO;
+            options.testSAC = hasSAC;
+            options.selectedMap = mapSelected;
+
+            string opt = JsonUtility.ToJson(options);
+            sw.WriteLine(opt);
+        }
+
+        using (StreamWriter sw = new StreamWriter(isTraining_path))
+        {
+            //write all options in JSON format
+            TrainingType options = new TrainingType();
+            options.training = "false";
+            string opt = JsonUtility.ToJson(options);
+            sw.WriteLine(opt);
+        }
+
+    }
 }
+
+

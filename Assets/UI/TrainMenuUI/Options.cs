@@ -8,3 +8,15 @@ public class Options
 public string numOfAgents, cpReward,  speedReward,  collisionPenalty,  idlePenalty,  wrongCheckPenalty, timescale,numOfAgentsPPO, numOfAgentsSAC, brainOverride;
 
 }
+
+[System.Serializable]
+public class InferenceOptions
+{
+    public string testPPO, testSAC, selectedMap;
+}
+
+[System.Serializable]
+public class TrainingType
+{
+    public string training;
+}
