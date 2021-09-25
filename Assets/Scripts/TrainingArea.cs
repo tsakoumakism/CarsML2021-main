@@ -89,9 +89,9 @@ public class TrainingArea : MonoBehaviour
         CheckTraining();
 
 
-         //create finish line
-         finishLinePos = new Vector3(startPosition.x, startPosition.y + 1.5f, startPosition.z - 3f);
-         Instantiate(finishLine, finishLinePos, Quaternion.Euler(0, 0, 0), transform.Find("Track"));
+        //create finish line
+        finishLinePos = new Vector3(startPosition.x, startPosition.y + 1.5f, startPosition.z - 3f);
+        Instantiate(finishLine, finishLinePos, Quaternion.Euler(0, 0, 0), transform.Find("Track"));
 
 
         //initialize cameras (create list, find active one and store index)

@@ -165,7 +165,8 @@ public class TR_OnClick : MonoBehaviour
         bool heuristic = t_heuristic.isOn;
 
         OverwriteOptions(modelPpo, modelSac, m_MapText.text, heuristic);
-        
+        string mapPath = Application.persistentDataPath;
+        File.Copy(Path.Combine(mapPath, m_MapText.text), Path.Combine(mapPath, "selectedMap.json"), true);
 
         //DontDestroyOnLoad(m_ModelTextSAC);
         //DontDestroyOnLoad(m_ModelTextPPO);

@@ -1145,7 +1145,7 @@ MonoBehaviour:
   spawnAgents: 1
   agentPPO: 1
   agentSAC: 1
-  heuristic: 0
+  heuristic: 1
   numOfAgents: 1
   totalCheckpoints: 12
   finishLine: {fileID: 3733554567747082745, guid: 1b9a64ee16ad44b418151d511fafd43f,
