@@ -11,6 +11,7 @@ public class TR_OnClick : MonoBehaviour
     Dropdown d_model_SAC;
     Dropdown d_model_PPO;
     Dropdown d_map;
+    Toggle t_heuristic;
 
     Text m_ModelTextSAC;
     Text m_ModelTextPPO;
@@ -37,6 +38,8 @@ public class TR_OnClick : MonoBehaviour
         m_ModelTextSAC = GameObject.Find("ModelLabelSAC").GetComponent<Text>();
         m_ModelTextPPO = GameObject.Find("ModelLabelPPO").GetComponent<Text>();
         m_MapText = GameObject.Find("MapLabel").GetComponent<Text>();
+
+        t_heuristic = GameObject.Find("HeuristicToggle").GetComponent<Toggle>();
 
         string path = Path.Combine(Application.dataPath, "../") + "/models/";
 
@@ -159,7 +162,9 @@ public class TR_OnClick : MonoBehaviour
         int mapVal = d_map.value;
         m_MapText.text = d_map.options[mapVal].text;
 
-        OverwriteOptions(modelPpo, modelSac, m_MapText.text);
+        bool heuristic = t_heuristic.isOn;
+
+        OverwriteOptions(modelPpo, modelSac, m_MapText.text, heuristic);
         
 
         //DontDestroyOnLoad(m_ModelTextSAC);
@@ -196,7 +201,7 @@ public class TR_OnClick : MonoBehaviour
 
 
 
-    public void OverwriteOptions(string hasPPO, string hasSAC, string mapSelected)
+    public void OverwriteOptions(string hasPPO, string hasSAC, string mapSelected,bool heuristic)
     {
         using (StreamWriter sw = new StreamWriter(options_path))
         {
@@ -205,7 +210,7 @@ public class TR_OnClick : MonoBehaviour
             options.testPPO = hasPPO;
             options.testSAC = hasSAC;
             options.selectedMap = mapSelected;
-
+            options.heuristic = (heuristic) ? "true" : "false";
             string opt = JsonUtility.ToJson(options);
             sw.WriteLine(opt);
         }

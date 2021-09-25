@@ -12,7 +12,7 @@ public string numOfAgents, cpReward,  speedReward,  collisionPenalty,  idlePenal
 [System.Serializable]
 public class InferenceOptions
 {
-    public string testPPO, testSAC, selectedMap;
+    public string testPPO, testSAC, heuristic, selectedMap;
 }
 
 [System.Serializable]

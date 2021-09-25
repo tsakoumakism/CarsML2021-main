@@ -437,7 +437,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!81 &474509177
 AudioListener:
@@ -953,7 +953,7 @@ Transform:
   m_Children:
   - {fileID: 885756315}
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1426703578
 MonoBehaviour:
@@ -1220,7 +1220,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: -5.0999756, y: -14.5}
+  m_AnchoredPosition: {x: 62, y: -15}
   m_SizeDelta: {x: 757.3961, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2011034148
@@ -1255,8 +1255,8 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: F1 to switch between spectator View, F4 in camera mode to switch camera,
-    F5 to enable Heuristic
+  m_Text: F1 to switch between spectator View                                                          
+    F4 in camera mode to switch camera
 --- !u!222 &2011034149
 CanvasRenderer:
   m_ObjectHideFlags: 0

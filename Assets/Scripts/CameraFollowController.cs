@@ -12,15 +12,25 @@ public class CameraFollowController : MonoBehaviour
     public float followSpeed = 10;
     public float lookSpeed = 10;
 
-
+    private bool isHeuristicEnabled;
     private int currentObjectToFollow;
 
 
     public void Start()
     {
-        objectsToFollow = GameObject.FindGameObjectsWithTag("Player");
-        objectToFollow = objectsToFollow[0].transform;
-        currentObjectToFollow = 0 ;
+        isHeuristicEnabled = GameObject.Find("TrainingArea").GetComponent<TrainingArea>().heuristic;
+        if (!isHeuristicEnabled)
+        {
+            objectsToFollow = GameObject.FindGameObjectsWithTag("Player");
+            objectToFollow = objectsToFollow[0].transform;
+            currentObjectToFollow = 0;
+            
+        }
+        else
+        {
+            objectToFollow = GameObject.Find("CarAgentHeuristic(Clone)").transform;
+        }
+
         carAgent = FindObjectOfType<CarAgent>();
         carAgent.monitorInfo = true;
 
@@ -58,11 +68,7 @@ public class CameraFollowController : MonoBehaviour
         {
             ToggleView();
         }
-        if (Input.GetKeyUp(KeyCode.F5))
-        {
-            //we enable/disable heuristic so we need to reevaluate our agents
-            objectsToFollow = GameObject.FindGameObjectsWithTag("Player");
-        }
+
         LookAtTarget();
         MoveToTarget();
     }

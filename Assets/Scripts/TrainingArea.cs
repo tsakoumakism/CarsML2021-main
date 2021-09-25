@@ -63,9 +63,9 @@ public class TrainingArea : MonoBehaviour
     {
         if (!Application.isEditor)
         {
-            options_path = Path.Combine(Application.dataPath, "../") + "/ options.json";
-            inference_options_path = Path.Combine(Application.dataPath, "../") + "/InferenceOptions.json";
-            training_type_path = Path.Combine(Application.dataPath, "../") + "/isTraining.json";
+            options_path = Path.Combine(Application.dataPath, "../../mainBuild/CarsML2021-main_Data") + "/options.json";
+            inference_options_path = Path.Combine(Application.dataPath, "../../mainBuild/CarsML2021-main_Data") + "/InferenceOptions.json";
+            training_type_path = Path.Combine(Application.dataPath, "../../mainBuild/CarsML2021-main_Data") + "/isTraining.json";
         }
         else
         {
@@ -78,14 +78,6 @@ public class TrainingArea : MonoBehaviour
         mapName = "selectedMap";
         LoadMap();
 
-        //initialize cameras (create list, find active one and store index)
-        cameraList = GameObject.FindGameObjectsWithTag("camera");
-        for (int i = 1; i < cameraList.Length; i++)
-        {
-            cameraList[i].SetActive(false);
-        }
-        currentCam = 0;
-        cameraList[0].SetActive(true);
 
         academy = GameObject.Find("Academy").GetComponent<CarAcademy>();
 
@@ -100,6 +92,26 @@ public class TrainingArea : MonoBehaviour
          //create finish line
          finishLinePos = new Vector3(startPosition.x, startPosition.y + 1.5f, startPosition.z - 3f);
          Instantiate(finishLine, finishLinePos, Quaternion.Euler(0, 0, 0), transform.Find("Track"));
+
+
+        //initialize cameras (create list, find active one and store index)
+        cameraList = GameObject.FindGameObjectsWithTag("camera");
+        for (int i = 0; i < cameraList.Length; i++)
+        {
+            cameraList[i].SetActive(false);
+        }
+
+        if (!heuristic)
+        {
+            currentCam = 0;
+            cameraList[0].SetActive(true);
+        }
+        else
+        {
+            currentCam = 1;
+            cameraList[1].SetActive(true);
+        }
+        
 
          Debug.Log("Training Start");
          int agentsToSpawn;
@@ -164,10 +176,7 @@ public class TrainingArea : MonoBehaviour
         {
             ToggleView();
         }
-        if (Input.GetKeyDown(KeyCode.F5))
-        {
-            //enable/disable heuristic
-        }
+      
     }
     
 
@@ -190,7 +199,7 @@ public class TrainingArea : MonoBehaviour
             {
                 Instantiate(agentPrefabPPO, _position, _rotation, transform.Find("Agents"));
             }
-            else
+            if (heuristic) 
             {
                 Instantiate(agentPrefabHeuristic, _position, _rotation, transform.Find("Agents"));
             }    
@@ -319,6 +328,7 @@ public class TrainingArea : MonoBehaviour
 
             inferPPO = (infer.testPPO != "none") ? true : false;
             inferSAC = (infer.testSAC != "none") ? true : false;
+            heuristic = (infer.heuristic == "true") ? true : false;
             
         }
     }
