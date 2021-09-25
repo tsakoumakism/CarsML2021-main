@@ -380,7 +380,7 @@ public class TM_OnClickObject : MonoBehaviour
     }
 
     string GetLatestModel(){
-        string path = Path.Combine(Application.dataPath, "../") + "/models/";
+        string path = Path.Combine(Application.dataPath, "../") + "/results/";
         var dirName = new DirectoryInfo(path).GetDirectories()
                        .OrderByDescending(d=>d.LastWriteTimeUtc).First();
         return dirName.Name;
