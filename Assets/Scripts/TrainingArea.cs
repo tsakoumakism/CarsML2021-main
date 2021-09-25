@@ -40,6 +40,7 @@ public class TrainingArea : MonoBehaviour
     private CarAgent[] agentList;
     private CarAcademy academy;
     private GameObject[] cameraList;
+
     private int currentCam;
 
 
@@ -55,9 +56,24 @@ public class TrainingArea : MonoBehaviour
 
     bool isTraining, inferPPO, inferSAC;
 
+    private string options_path, inference_options_path, training_type_path;
+
 
     void Awake()
     {
+        if (!Application.isEditor)
+        {
+            options_path = Path.Combine(Application.dataPath, "../") + "/ options.json";
+            inference_options_path = Path.Combine(Application.dataPath, "../") + "/InferenceOptions.json";
+            training_type_path = Path.Combine(Application.dataPath, "../") + "/isTraining.json";
+        }
+        else
+        {
+            options_path = Application.dataPath + "/ options.json";
+            inference_options_path = Application.dataPath + "/InferenceOptions.json";
+            training_type_path = Application.dataPath + "/isTraining.json";
+        }
+
 
         mapName = "selectedMap";
         LoadMap();
@@ -83,26 +99,26 @@ public class TrainingArea : MonoBehaviour
 
          //create finish line
          finishLinePos = new Vector3(startPosition.x, startPosition.y + 1.5f, startPosition.z - 3f);
-            Instantiate(finishLine, finishLinePos, Quaternion.Euler(0, 0, 0), transform.Find("Track"));
+         Instantiate(finishLine, finishLinePos, Quaternion.Euler(0, 0, 0), transform.Find("Track"));
 
-            Debug.Log("Training Start");
-            int agentsToSpawn;
-            if (!Application.isEditor)
+         Debug.Log("Training Start");
+         int agentsToSpawn;
+         if (!Application.isEditor)
+         {
+            if (isTraining)
             {
-                if (isTraining)
-                {
-                    ReadNumOfAgents();
-                    agentsToSpawn = numOfAgents;
+                 ReadNumOfAgents();
+                 agentsToSpawn = numOfAgents;
     
-                }
-                else
-                {
-                    agentsToSpawn = 1;
-                    CheckInferneceOptions();
-                    agentPPO = inferPPO;
-                    agentSAC = inferSAC;
+            }
+            else
+            {
+                agentsToSpawn = 1;
+                CheckInferneceOptions();
+                agentPPO = inferPPO;
+                agentSAC = inferSAC;
 
-                }
+            }
 
             }
             else
@@ -127,11 +143,13 @@ public class TrainingArea : MonoBehaviour
                 }
             }
 
-        Debug.Log(agentPPO);
-        Debug.Log(agentSAC);
-            SpawnAgents(agentsToSpawn, startPosition, Quaternion.Euler(0, 0, 0));
+        
+        
+        SpawnAgents(agentsToSpawn, startPosition, Quaternion.Euler(0, 0, 0));
 
-        }
+
+
+    }
 
 
 
@@ -142,9 +160,13 @@ public class TrainingArea : MonoBehaviour
         {
             Application.Quit();
         }
-        if (Input.GetKeyDown(KeyCode.F4))
+        if (Input.GetKeyDown(KeyCode.F1))
         {
             ToggleView();
+        }
+        if (Input.GetKeyDown(KeyCode.F5))
+        {
+            //enable/disable heuristic
         }
     }
     
@@ -162,7 +184,7 @@ public class TrainingArea : MonoBehaviour
             }
             else if(!agentPPO && agentSAC)
             {
-                Instantiate(agentPrefabSAC, _position, _rotation, transform.Find("Agents"));
+               Instantiate(agentPrefabSAC, _position, _rotation, transform.Find("Agents"));
             }
             else if (agentPPO && !agentSAC)
             {
@@ -173,6 +195,9 @@ public class TrainingArea : MonoBehaviour
                 Instantiate(agentPrefabHeuristic, _position, _rotation, transform.Find("Agents"));
             }    
         }
+
+   
+        
     }
 
     public void UpdateMonitor(string trainingText, string drivingText, string performanceText)
@@ -248,7 +273,7 @@ public class TrainingArea : MonoBehaviour
         string numOfAgentsSAC;
         StreamReader sr;
 
-        sr = new StreamReader("../mainBuild/CarsML2021-main_Data/options.json");
+        sr = new StreamReader(options_path);
         using (sr)
         {
             while ((line = sr.ReadLine()) != null)
@@ -271,7 +296,7 @@ public class TrainingArea : MonoBehaviour
         string line;
         StreamReader sr;
 
-        sr = new StreamReader("../mainBuild/CarsML2021-main_Data/isTraining.json");
+        sr = new StreamReader(training_type_path);
         using (sr) {
             line = sr.ReadLine();
             TrainingType train = new TrainingType();
@@ -285,7 +310,7 @@ public class TrainingArea : MonoBehaviour
         string line;
         StreamReader sr;
 
-        sr = new StreamReader("../mainBuild/CarsML2021-main_Data/InferenceOptions.json");
+        sr = new StreamReader(inference_options_path);
         using (sr)
         {
             line = sr.ReadLine();
