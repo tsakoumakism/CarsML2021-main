@@ -5,7 +5,7 @@ using UnityEngine;
 [System.Serializable]
 public class Options 
 {
-public string numOfAgents, cpReward,  speedReward,  collisionPenalty,  idlePenalty,  wrongCheckPenalty, timescale,numOfAgentsPPO, numOfAgentsSAC, brainOverride;
+public string numOfAgents,successReward, cpReward,  speedReward,  collisionPenalty,  idlePenalty,  wrongCheckPenalty, timescale,numOfAgentsPPO, numOfAgentsSAC, brainOverride;
 
 }
 

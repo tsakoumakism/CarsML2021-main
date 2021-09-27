@@ -93,7 +93,7 @@ engine_settings:
   no_graphics: true
 environment_parameters: null
 checkpoint_settings:
-  run_id: ppoTest1
+  run_id: ppotest1
   initialize_from: null
   load_model: false
   resume: true

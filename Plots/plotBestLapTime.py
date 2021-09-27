@@ -121,16 +121,19 @@ plt.show()
 #=================Plot all in one====================
 fig, ax = plt.subplots()
 ax.plot(indicesPPO,arrayPPO)
-ax.legend(['PPO Agent'])
+ax.plot(indicesSAC,arraySAC)
+
+ax.legend(['PPO Agent','SAC Agent'])
 
 #new_list = range(math.floor(min(indicesPPO)), math.ceil(max(indicesPPO))+1)
 
-ax.plot(indicesSAC,arraySAC)
-ax.legend(['SAC Agent'])
+ax.set(xlabel='Episode', ylabel='Best Lap Time(s)',
+       title="Best Lap Times per Episode")
 
 new_list = range(math.floor(min(indicesSAC)), math.ceil(max(indicesSAC))+1)
 plt.xticks(new_list)
 
+ax.grid()
 
 fig.savefig("combinedResults.png")
 plt.show()

@@ -33,7 +33,7 @@ behaviors:
       init_entcoef: 1.0
       save_replay_buffer: false
       tau: 0.005
-      steps_per_update: 10
+      steps_per_update: 1
     network_settings:
       normalize: true
       hidden_units: 512

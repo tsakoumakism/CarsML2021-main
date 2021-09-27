@@ -52,6 +52,7 @@ public class TM_OnClickObject : MonoBehaviour
     InputField tf_runID;
     InputField tf_timeScale;
     InputField tf_numOfAgents;
+    InputField tf_successReward;
     InputField tf_cpReward;
     InputField tf_speedReward;
     InputField tf_collisionPenalty;
@@ -64,6 +65,7 @@ public class TM_OnClickObject : MonoBehaviour
     string txt_runID;
     string txt_timeScale;
     string txt_numOfAgents;
+    string txt_successReward;
     string txt_cpReward;
     string txt_speedReward;
     string txt_collisionPenalty;
@@ -137,6 +139,7 @@ public class TM_OnClickObject : MonoBehaviour
         tf_runID            = GameObject.Find("RunIDInputField").GetComponent<InputField>();
         tf_timeScale        = GameObject.Find("TimeScaleInputField").GetComponent<InputField>();
         tf_numOfAgents      = GameObject.Find("NumberOfAgentsInputField").GetComponent<InputField>();
+        tf_successReward    = GameObject.Find("SuccessInputField").GetComponent<InputField>();
         tf_cpReward         = GameObject.Find("CheckpointRewardInputField").GetComponent<InputField>();
         tf_speedReward      = GameObject.Find("SpeedRewardInputField").GetComponent<InputField>();
         tf_collisionPenalty = GameObject.Find("CollisionPenaltyInputField").GetComponent<InputField>();
@@ -150,6 +153,7 @@ public class TM_OnClickObject : MonoBehaviour
         txt_runID        = tf_runID.text;
         txt_timeScale    = tf_timeScale.text;
         txt_numOfAgents  = tf_numOfAgents.text;
+        txt_successReward = tf_successReward.text;
         txt_cpReward     = tf_cpReward.text;
         txt_speedReward  = tf_speedReward.text;
         txt_collisionPenalty = tf_collisionPenalty.text;
@@ -176,7 +180,7 @@ public class TM_OnClickObject : MonoBehaviour
         OverwriteHyperParameters(txt_epochNum,txt_epsilon,txt_lamda,txt_LR,txt_LRS,txt_batchSize,txt_bufferSize,txt_beta,txt_hiddenUnits,txt_numOfLayers);
 
         //save options to a json (except runid and timescale)
-        OverwriteOptions(txt_numOfAgents, txt_cpReward, txt_speedReward, txt_collisionPenalty, txt_idlePenalty, txt_wrongCheckPenalty, txt_timeScale);
+        OverwriteOptions(txt_numOfAgents,txt_successReward, txt_cpReward, txt_speedReward, txt_collisionPenalty, txt_idlePenalty, txt_wrongCheckPenalty, txt_timeScale);
 
         //CHECK IF RUNID FILENAME ALREADY EXISTS, if it exists add --resume to the command below
         //run command "/C mlagents-learn" + config_path + " --train --time-scale=" + txt_timeScale + " --run-id=" + txt_runID + " --env=" + env + " " + CheckRunID(txt_runID);
@@ -319,11 +323,12 @@ public class TM_OnClickObject : MonoBehaviour
     }
 
     //save options to options_path
-    public void OverwriteOptions(string numOfAgents, string cpReward, string speedReward, string collisionPenalty, string idlePenalty, string wrongCheckPenalty, string timescale){
+    public void OverwriteOptions(string numOfAgents,string successReward ,string cpReward, string speedReward, string collisionPenalty, string idlePenalty, string wrongCheckPenalty, string timescale){
         using(StreamWriter sw = new StreamWriter(options_path)){
             //write all options in JSON format
             Options options = new Options();
             options.numOfAgents = numOfAgents;
+            options.successReward = successReward;
             options.cpReward = cpReward;
             options.speedReward = speedReward;
             options.collisionPenalty = collisionPenalty;
@@ -446,6 +451,7 @@ public class TM_OnClickObject : MonoBehaviour
                     Options options = new Options();
                     options = JsonUtility.FromJson<Options>(line);
                     txt_numOfAgents = options.numOfAgents;
+                    txt_successReward = options.successReward;
                     txt_cpReward = options.cpReward;
                     txt_speedReward = options.speedReward;
                     txt_collisionPenalty = options.collisionPenalty;
@@ -455,6 +461,7 @@ public class TM_OnClickObject : MonoBehaviour
                     
 
                     tf_numOfAgents.GetComponent<InputField>().text = txt_numOfAgents;
+                    tf_successReward.GetComponent<InputField>().text = txt_successReward;
                     tf_cpReward.GetComponent<InputField>().text = txt_cpReward;
                     tf_speedReward.GetComponent<InputField>().text = txt_speedReward;
                     tf_collisionPenalty.GetComponent<InputField>().text = txt_collisionPenalty;
@@ -473,12 +480,13 @@ public class TM_OnClickObject : MonoBehaviour
         txt_runID        = tf_runID.text;
         txt_timeScale    = tf_timeScale.text;
         txt_numOfAgents  = tf_numOfAgents.text;
+        txt_successReward = tf_successReward.text;
         txt_cpReward     = tf_cpReward.text;
         txt_speedReward  = tf_speedReward.text;
         txt_collisionPenalty = tf_collisionPenalty.text;
         txt_idlePenalty      = tf_idlePenalty.text;
         txt_wrongCheckPenalty = tf_wrongCheckPenalty.text;
-        //txt_timeScale = tf_timeScale.text;
+
 
         txt_epochNum = tf_epochNum.text;
         txt_epsilon = tf_epsilon.text;

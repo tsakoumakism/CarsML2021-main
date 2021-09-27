@@ -78,6 +78,8 @@ public class TrainingArea : MonoBehaviour
 
         mapName = "selectedMap";
         LoadMap();
+        LoadOptionsForTraining();
+
 
 
         academy = GameObject.Find("Academy").GetComponent<CarAcademy>();
@@ -299,6 +301,28 @@ public class TrainingArea : MonoBehaviour
                 agentSAC = Int32.Parse(numOfAgentsSAC) > 0 ? true : false;
             }
         }       
+    }
+
+    private void LoadOptionsForTraining()
+    {
+        string line;
+        StreamReader sr;
+
+        sr = new StreamReader(options_path);
+        using (sr)
+        {
+            while ((line = sr.ReadLine()) != null)
+            {  //is while necessary? probably not, it's probably making a lot of junk objects like this, but will i dare change it? nah.
+                Options options = new Options();
+                options = JsonUtility.FromJson<Options>(line);
+                successReward = float.Parse(options.successReward);
+                checkpointReward = float.Parse(options.cpReward);
+                speedReward = float.Parse(options.speedReward);
+                collisionPenalty = (-1) * float.Parse(options.collisionPenalty);
+                idlePenalty = (-1) * float.Parse(options.idlePenalty);
+                wrongCheckpointPenalty = (-1) * float.Parse(options.wrongCheckPenalty);
+            }
+        }
     }
 
     private void CheckTraining()
