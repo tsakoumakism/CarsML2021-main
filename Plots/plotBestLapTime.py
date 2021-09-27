@@ -99,8 +99,9 @@ fig, ax = plt.subplots()
 ax.plot(range(1,len(meanLapTimePPO) + 1), meanLapTimePPO)
 ax.set(xlabel='Episode', ylabel='Best Lap Time(s)',
        title="PPO's Agent Mean Lap Times for each Episode")
-fig.savefig("ResultsAgents/resultsPPO-Mean.png")
 ax.grid()
+fig.savefig("ResultsAgents/resultsPPO-Mean.png")
+
 plt.show()
 
 #=================End of PPO================
@@ -121,8 +122,9 @@ fig, ax = plt.subplots()
 ax.plot(range(1,len(meanLapTimeSAC) + 1), meanLapTimeSAC)
 ax.set(xlabel='Episode', ylabel='Best Lap Time(s)',
        title="SAC's Agent Mean Lap Times for each Episode")
-fig.savefig("ResultsAgents/resultsSAC-Mean.png")
+
 ax.grid()
+fig.savefig("ResultsAgents/resultsSAC-Mean.png")
 plt.show()
 # #=================End of SAC================
 
