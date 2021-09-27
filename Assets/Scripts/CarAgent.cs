@@ -40,6 +40,7 @@ public class CarAgent : Agent
     public int mostLaps;
     //public float totalTime;
     private float spawnTime;
+    private float meanLapTime;
 
     private bool dejaVu;
 
@@ -48,6 +49,8 @@ public class CarAgent : Agent
     Dictionary<string, NNModel> m_CachedModels = new Dictionary<string, NNModel>();
 
     List<float> bestLapTimes = new List<float>();
+    List<float> meanLapTimes = new List<float>();
+
 
     public override void Initialize()
     {
@@ -264,6 +267,7 @@ public class CarAgent : Agent
         {
             lapTime = spawnTime - prevLapTime;
             prevLapTime = lapTime;
+            meanLapTime += lapTime;
             if(bestLap < lapTime)
             {
                 bestLap = lapTime;
@@ -273,7 +277,9 @@ public class CarAgent : Agent
             {
                 AddReward(trainingArea.successReward);
                 bestLapTimes.Add(bestLap);
+                meanLapTimes.Add(meanLapTime / 3.0f);
                 bestLap = 0f;
+                meanLapTime = 0f;
                 Debug.Log("Success!");
                 EndEpisode();
             }
@@ -428,7 +434,16 @@ public class CarAgent : Agent
                 csv.AppendLine(bestLapTimes[i].ToString());
             }
 
-            File.WriteAllText(Application.persistentDataPath + "/" + gameObject.name + ".csv", csv.ToString());
+            File.WriteAllText(Application.persistentDataPath + "/" + gameObject.name + "-BestLapTimes.csv", csv.ToString());
+
+            csv = new StringBuilder();
+
+            for(int i = 0; i < meanLapTimes.Count; i++)
+            {
+                csv.AppendLine(meanLapTimes[i].ToString());
+            }
+
+            File.WriteAllText(Application.persistentDataPath + "/" + gameObject.name + "-MeanLapTimes.csv", csv.ToString());
         }
         else if (trainingArea.heuristic) //it would be testing anyway
         {
@@ -443,7 +458,17 @@ public class CarAgent : Agent
                 csv.AppendLine(bestLapTimes[i].ToString());
             }
 
-            File.WriteAllText(path + "/" + gameObject.name + ".csv", csv.ToString());
+            File.WriteAllText(path + "/" + gameObject.name + "-BestLapTimes.csv", csv.ToString());
+
+            csv = new StringBuilder();
+
+            for (int i = 0; i < meanLapTimes.Count; i++)
+            {
+                csv.AppendLine(meanLapTimes[i].ToString());
+            }
+
+            File.WriteAllText(path + "/" + gameObject.name + "-MeanLapTimes.csv", csv.ToString());
+
         }
 
     }

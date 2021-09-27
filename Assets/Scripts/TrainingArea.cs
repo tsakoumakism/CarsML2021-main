@@ -60,6 +60,9 @@ public class TrainingArea : MonoBehaviour
     private string options_path, inference_options_path, training_type_path;
 
 
+   
+
+
     void Awake()
     {
         if (!Application.isEditor)
