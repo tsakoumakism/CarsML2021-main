@@ -239,7 +239,7 @@ public class TM_OnClickObject : MonoBehaviour
                     {
                         trainer_type = "ppo",
                         time_horizon = "128",
-                        max_steps = "1.0e8",
+                        max_steps = "1.0e3",
                         summary_freq = "10000",
                         threaded = "false",
  
@@ -266,7 +266,7 @@ public class TM_OnClickObject : MonoBehaviour
                         {
                             extrinsic = new Extrinsic
                             {
-                                gamma = "0.999999",
+                                gamma = "0.999",
                                 strength = "1.0"
                             }
                         }
@@ -277,7 +277,7 @@ public class TM_OnClickObject : MonoBehaviour
                         trainer_type = "sac",
 
                         time_horizon = "128",
-                        max_steps = "1.0e8",
+                        max_steps = "1.0e3",
                         summary_freq = "10000",
                         threaded = "false",
 
@@ -303,7 +303,7 @@ public class TM_OnClickObject : MonoBehaviour
                         {
                             extrinsic = new Extrinsic
                             {
-                                gamma = "0.999999",
+                                gamma = "0.999",
                                 strength = "1.0"
                             }
                         }
