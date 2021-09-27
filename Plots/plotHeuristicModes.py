@@ -67,6 +67,7 @@ for ax in axs.flat:
     i = i + 1
     ax.set(xlabel='Episode', ylabel='Best Lap Time(s)',title="Tester " + str(i+1))
     ax.grid()
+fig.savefig("resultsSideBySide.png")
 plt.show()
 
 #==============================================================
