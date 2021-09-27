@@ -23,6 +23,7 @@ public class CameraFollowController : MonoBehaviour
         {
             objectsToFollow = GameObject.FindGameObjectsWithTag("Player");
             objectToFollow = objectsToFollow[0].transform;
+            objectToFollow.GetComponent<CarAgent>().monitorInfo = true;
             currentObjectToFollow = 0;
             
         }
@@ -30,10 +31,8 @@ public class CameraFollowController : MonoBehaviour
         {
             objectToFollow = GameObject.Find("CarAgentHeuristic(Clone)").transform;
         }
-
-        carAgent = FindObjectOfType<CarAgent>();
-        carAgent.monitorInfo = true;
-
+        
+      
     }
 
     public void LookAtTarget()
@@ -56,9 +55,11 @@ public class CameraFollowController : MonoBehaviour
     // changes camera views (currently between top down and follow camera (random agent)
     public void ToggleView()
     {
+        objectToFollow.GetComponent<CarAgent>().monitorInfo = false;
         int nextObject = (currentObjectToFollow + 1) % objectsToFollow.Length;
         Debug.Log(currentObjectToFollow + " + 1 %" + objectsToFollow.Length + " = " + nextObject);
         objectToFollow = objectsToFollow[nextObject].transform;
+        objectToFollow.GetComponent<CarAgent>().monitorInfo = true;
         currentObjectToFollow = nextObject;
     }
 
@@ -67,6 +68,7 @@ public class CameraFollowController : MonoBehaviour
         if (Input.GetKeyUp(KeyCode.F4))
         {
             ToggleView();
+           
         }
 
         LookAtTarget();

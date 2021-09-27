@@ -54,7 +54,8 @@ public class TrainingArea : MonoBehaviour
 
     [SerializeField] private BlockData bd;
 
-    bool isTraining, inferPPO, inferSAC;
+    [HideInInspector]
+    public bool isTraining, inferPPO, inferSAC;
 
     private string options_path, inference_options_path, training_type_path;
 

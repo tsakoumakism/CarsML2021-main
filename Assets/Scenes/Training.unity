@@ -1145,7 +1145,7 @@ MonoBehaviour:
   spawnAgents: 1
   agentPPO: 1
   agentSAC: 1
-  heuristic: 1
+  heuristic: 0
   numOfAgents: 1
   totalCheckpoints: 12
   finishLine: {fileID: 3733554567747082745, guid: 1b9a64ee16ad44b418151d511fafd43f,
@@ -1169,6 +1169,9 @@ MonoBehaviour:
     blockPosition: {x: 0, y: 0, z: 0}
     blockRotation: {x: 0, y: 0, z: 0, w: 0}
     name: 
+  isTraining: 0
+  inferPPO: 0
+  inferSAC: 0
 --- !u!4 &1957397243
 Transform:
   m_ObjectHideFlags: 0

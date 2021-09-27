@@ -7,7 +7,7 @@ using System;
 using System.IO;
 using Unity.Barracuda;
 using Unity.MLAgents.Policies;
-
+using System.Text;
 
 public class CarAgent : Agent
 {
@@ -46,6 +46,8 @@ public class CarAgent : Agent
     const string k_CommandLineModelOverrideFlag = "--mlagents-override-model";
     Dictionary<string, string> m_BehaviorNameOverrides = new Dictionary<string, string>();
     Dictionary<string, NNModel> m_CachedModels = new Dictionary<string, NNModel>();
+
+    List<float> bestLapTimes = new List<float>();
 
     public override void Initialize()
     {
@@ -88,6 +90,7 @@ public class CarAgent : Agent
 
     public void FixedUpdate()
     {
+        spawnTime += Time.deltaTime;
         //brake and freeze position if freshly respawned
         //this is to avoid some issues with unity physics and entity spawning
         if (respawned)
@@ -95,6 +98,7 @@ public class CarAgent : Agent
             car.HandBrake();
             agentRigidbody.isKinematic = true;
             respawned = false;
+            spawnTime = 0f;
         }
         else
         {
@@ -112,8 +116,7 @@ public class CarAgent : Agent
             dejaVu = false;
         }
         
-        if (monitorInfo)
-        {
+       
             if (maxReward < GetCumulativeReward())
             {
                 maxReward = GetCumulativeReward();
@@ -132,8 +135,9 @@ public class CarAgent : Agent
                         "\nGear: " + car.GetGear();
             string hudTextPerformance = "\nLaps: " + lapsCompleted +
                         "\nBest Lap " + bestLap;
+        if(monitorInfo)
            trainingArea.UpdateMonitor(hudTextTraining, hudTextDriving, hudTextPerformance);
-        }
+        
         
     }
 
@@ -202,7 +206,7 @@ public class CarAgent : Agent
         idleMeter = maxIdleTime;
         respawned = true; //flag as "just respawned" to help reset speed and position
 
-        spawnTime = Time.time;
+        spawnTime = 0f;
         prevLapTime = 0f;
         checkpointsPassed = 0;
         lapsCompleted = 0;
@@ -258,9 +262,9 @@ public class CarAgent : Agent
         //passing the finish line
         if (col.gameObject.CompareTag("finish"))
         {
-            lapTime = Time.time - prevLapTime;
+            lapTime = spawnTime - prevLapTime;
             prevLapTime = lapTime;
-            if(bestLap > lapTime)
+            if(bestLap < lapTime)
             {
                 bestLap = lapTime;
             }
@@ -268,6 +272,8 @@ public class CarAgent : Agent
             if (lapsCompleted == maxLaps)
             {
                 AddReward(trainingArea.successReward);
+                bestLapTimes.Add(bestLap);
+                bestLap = 0f;
                 Debug.Log("Success!");
                 EndEpisode();
             }
@@ -408,6 +414,38 @@ public class CarAgent : Agent
         asset.name = "Override - " + Path.GetFileName(assetPath);
         m_CachedModels[behaviorName] = asset;
         return asset;
+    }
+
+    void OnApplicationQuit()
+    {
+        //if we are testing models write their performance in csv files
+        if (!trainingArea.isTraining && !trainingArea.heuristic)
+        {
+            var csv = new StringBuilder();
+
+            for (int i = 0; i < bestLapTimes.Count; i++)
+            {
+                csv.AppendLine(bestLapTimes[i].ToString());
+            }
+
+            File.WriteAllText(Application.persistentDataPath + "/" + gameObject.name + ".csv", csv.ToString());
+        }
+        else if (trainingArea.heuristic) //it would be testing anyway
+        {
+            string path = Application.persistentDataPath + "/Heuristic-" + DateTime.Now.ToString("yyyy'-'MM'-'dd'T'HH'-'mm'-'ss");
+            DirectoryInfo di = Directory.CreateDirectory(Application.persistentDataPath + "/Heuristic-" + DateTime.Now.ToString("yyyy'-'MM'-'dd'T'HH'-'mm'-'ss"));
+            Console.WriteLine("The directory was created successfully at {0}.", Directory.GetCreationTime(path));
+
+            var csv = new StringBuilder();
+
+            for (int i = 0; i < bestLapTimes.Count; i++)
+            {
+                csv.AppendLine(bestLapTimes[i].ToString());
+            }
+
+            File.WriteAllText(path + "/" + gameObject.name + ".csv", csv.ToString());
+        }
+
     }
 
 }
