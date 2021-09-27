@@ -3,138 +3,235 @@ import csv
 import math
 import numpy as np
 import os, glob
+from datetime import datetime
 
 # THIS IS SAC AND PPO ONLY
 
-arrayPPO = []
-arraySAC =[] 
-arrayHeuristic = []
-indicesPPO = [] 
-indicesSAC = [] 
-indicesHeuristic = []
+bestLapTimePPO = []
+meanLapTimePPO = []
+
+bestLapTimeSAC = [] 
+meanLapTimeSAC = []
+
 
 path = os.getenv('LOCALAPPDATA')
 
 path = path + "\..\LocalLow\DefaultCompany\CarsML2021-main"
+
+try:
+       os.mkdir(path + "\ResultsAgents")
+except OSError as error:
+              print(error)
+
+
 print (path )
 os.chdir(path)
 
 csvCounter = len(glob.glob1(path,"*.csv")) #make sure we know how many csv files we have
 
 
-#Create data for PPO
-for file in glob.glob("*PPO*.csv"):
+#Create data for PPO BestLapTimes
+for file in glob.glob("*PPO*-BestLapTimes.csv"):
     print(file)
     i = 0
     with open(file, 'r') as csvfile:
         plots = csv.reader(csvfile)
 
         for row in plots:
-            arrayPPO.append(float(row[0]))
-            i=i + 1
-            indicesPPO.append(i)
-#Create data for PPO
-for file in glob.glob("*SAC*.csv"):
+            bestLapTimePPO.append(float(row[0]))
+
+print(bestLapTimePPO)
+
+#Create data for PPO meanLapTimes
+for file in glob.glob("*PPO*-MeanLapTimes.csv"):
     print(file)
     i = 0
     with open(file, 'r') as csvfile:
         plots = csv.reader(csvfile)
 
         for row in plots:
-            arraySAC.append(float(row[0]))
-            i=i + 1
-            indicesSAC.append(i)
-# #if csvCounter is 3 then it means we also have heuristic data
-# if(csvCounter  == 3):
-#     #Create data for Heuristic
-#     for file in glob.glob("*Heuristic*.csv"):
-#         print(file)
-#         i = 0
-#         with open(file, 'r') as csvfile:
-#             plots = csv.reader(csvfile)
+            meanLapTimePPO.append(float(row[0]))
 
-#             for row in plots:
-#                 arrayHeuristic.append(float(row[0]))
-#                 i=i + 1
-#                 indicesHeuristic.append(i)
+print(meanLapTimePPO)
+
+
+#Create data for SAC BestlapTimes
+for file in glob.glob("*SAC*-BestLapTimes.csv"):
+    print(file)
+    i = 0
+    with open(file, 'r') as csvfile:
+        plots = csv.reader(csvfile)
+
+        for row in plots:
+            bestLapTimeSAC.append(float(row[0]))
+
+print(bestLapTimeSAC)
+
+#Create data for SAC BestlapTimes
+for file in glob.glob("*SAC*-MeanLapTimes.csv"):
+    print(file)
+    i = 0
+    with open(file, 'r') as csvfile:
+        plots = csv.reader(csvfile)
+
+        for row in plots:
+            meanLapTimeSAC.append(float(row[0]))
+
+print(meanLapTimeSAC)
+
             
             
 
 # Plot each of them in different plots
 # ==================PPO=====================
 fig, ax = plt.subplots()
-ax.plot(indicesPPO,arrayPPO)
-
-new_list = range(math.floor(min(indicesPPO)), math.ceil(max(indicesPPO))+1)
-plt.xticks(new_list)
-
+ax.plot(range(1,len(bestLapTimePPO) + 1), bestLapTimePPO)
+#ax.legend(['Best Lap Times', 'Mean Lap Times'])
 ax.set(xlabel='Episode', ylabel='Best Lap Time(s)',
-       title="PPO's agent best of lap times each Episode")
+       title="PPO's Agent Best Lap Times for each Episode")
 ax.grid()
 
-fig.savefig("resultsPPO.png")
+fig.savefig("ResultsAgents/resultsPPO-Best.png")
+plt.show()
+
+
+fig, ax = plt.subplots()
+ax.plot(range(1,len(meanLapTimePPO) + 1), meanLapTimePPO)
+ax.set(xlabel='Episode', ylabel='Best Lap Time(s)',
+       title="PPO's Agent Mean Lap Times for each Episode")
+fig.savefig("ResultsAgents/resultsPPO-Mean.png")
+ax.grid()
 plt.show()
 
 #=================End of PPO================
 
-#===================SAC=====================
+# #===================SAC=====================
 fig, ax = plt.subplots()
-ax.plot(indicesSAC,arraySAC)
-
-new_list = range(math.floor(min(indicesSAC)), math.ceil(max(indicesSAC))+1)
-plt.xticks(new_list)
-
+ax.plot(range(1,len(bestLapTimeSAC) + 1), bestLapTimeSAC)
+#ax.legend(['Best Lap Times', 'Mean Lap Times'])
 ax.set(xlabel='Episode', ylabel='Best Lap Time(s)',
-       title="SAC's agent best of lap times each Episode")
+       title="SAC's Agent Best Lap Times for each Episode")
 ax.grid()
 
-fig.savefig("resultsSAC.png")
+fig.savefig("ResultsAgents/resultsSAC-Best.png")
 plt.show()
 
-#=================End of SAC================
 
-# Plot each of them in the same plot with shared Y axis, in a row
+fig, ax = plt.subplots()
+ax.plot(range(1,len(meanLapTimeSAC) + 1), meanLapTimeSAC)
+ax.set(xlabel='Episode', ylabel='Best Lap Time(s)',
+       title="SAC's Agent Mean Lap Times for each Episode")
+fig.savefig("ResultsAgents/resultsSAC-Mean.png")
+ax.grid()
+plt.show()
+# #=================End of SAC================
+
+# # Plot each of them in the same plot with shared Y axis, in a row
 fig2, (ax,ax2) =  plt.subplots(ncols=2, sharex = True, sharey=True)
 
-ax.plot(indicesPPO, arrayPPO)
-ax2.plot(indicesSAC, arraySAC)
+
+ax.plot(range(1,len(meanLapTimePPO) + 1), meanLapTimePPO)
+ax2.plot(range(1,len(meanLapTimeSAC) + 1), meanLapTimeSAC)
+
 
 ax.set(xlabel='Episode', ylabel='Best Lap Time(s)',
-       title="PPO Agent")
+       title="PPO Agent Mean Lap Times")
+
+
 
 ax2.set(xlabel='Episode', ylabel='Best Lap Time(s)',
-       title="SAC Agent")
+       title="SAC Agent Mean Lap Times")
 
-
-
-new_list = range(math.floor(min(indicesSAC)), math.ceil(max(indicesSAC))+1)
-plt.xticks(new_list)
 
 ax.grid()
 ax2.grid()
 
-fig2.savefig("sidebysideResults.png")
+fig2.savefig("ResultsAgents/sidebysideResults-Mean.png")
 
 plt.show()
-#=================End of Share Y Axis================
+# #=================End of Share Y Axis================
 
-#=================Plot all in one====================
+
+# # Plot each of them in the same plot with shared Y axis, in a row
+fig2, (ax,ax2) =  plt.subplots(ncols=2, sharex = True, sharey=True)
+
+ax.plot(range(1,len(bestLapTimePPO) + 1), bestLapTimePPO)
+ax2.plot(range(1,len(bestLapTimeSAC) + 1), bestLapTimeSAC)
+
+
+
+ax.set(xlabel='Episode', ylabel='Best Lap Time(s)',
+       title="PPO Agent Best Lap Times")
+
+
+
+ax2.set(xlabel='Episode', ylabel='Best Lap Time(s)',
+       title="SAC Agent Best Lap Times")
+
+
+ax.grid()
+ax2.grid()
+
+fig2.savefig("ResultsAgents/sidebysideResults-Best.png")
+
+plt.show()
+# #=================End of Share Y Axis================
+
+# #=================Plot all in one====================
 fig, ax = plt.subplots()
-ax.plot(indicesPPO,arrayPPO)
-ax.plot(indicesSAC,arraySAC)
 
-ax.legend(['PPO Agent','SAC Agent'])
+ax.plot(range(1,len(bestLapTimePPO) + 1), bestLapTimePPO)
+ax.plot(range(1,len(bestLapTimeSAC) + 1), bestLapTimeSAC)
+
+ax.legend(['PPO Agent Best','SAC Agent Best'])
+
+ax.set(xlabel='Episode', ylabel='Best Lap Time(s)',
+       title="Best Lap Times per Episode")
+
+ax.grid()
+
+fig.savefig("ResultsAgents/combinedResults-Best.png")
+plt.show()
+# #=============End of Plot all in one===============
+
+# #=================Plot all in one====================
+fig, ax = plt.subplots()
+
+
+ax.plot(range(1,len(meanLapTimePPO) + 1), meanLapTimePPO)
+ax.plot(range(1,len(meanLapTimeSAC) + 1), meanLapTimeSAC)
+
+ax.legend(['PPO Agent Best','PPO Agent Mean'])
+
+
+
+ax.set(xlabel='Episode', ylabel='Mean Lap Time(s)',
+       title="Mean Lap Times per Episode")
+
+ax.grid()
+
+fig.savefig("ResultsAgents/combinedResults-Mean.png")
+plt.show()
+# #=============End of Plot all in one===============
+
+# #=================Plot all in one====================
+fig, ax = plt.subplots()
+
+ax.plot(range(1,len(bestLapTimePPO) + 1), bestLapTimePPO)
+ax.plot(range(1,len(meanLapTimePPO) + 1), meanLapTimePPO)
+
+ax.plot(range(1,len(bestLapTimeSAC) + 1), bestLapTimeSAC)
+ax.plot(range(1,len(meanLapTimeSAC) + 1), meanLapTimeSAC)
+
+ax.legend(['PPO Agent Best','PPO Agent Mean','SAC Agent Best','SAC Agent Mean'])
 
 #new_list = range(math.floor(min(indicesPPO)), math.ceil(max(indicesPPO))+1)
 
 ax.set(xlabel='Episode', ylabel='Best Lap Time(s)',
        title="Best Lap Times per Episode")
 
-new_list = range(math.floor(min(indicesSAC)), math.ceil(max(indicesSAC))+1)
-plt.xticks(new_list)
-
 ax.grid()
 
-fig.savefig("combinedResults.png")
+fig.savefig("ResultsAgents/combinedResults-Mixed.png")
 plt.show()
-#=============End of Plot all in one===============
+# #=============End of Plot all in one===============

@@ -211,6 +211,8 @@ public class CarAgent : Agent
 
         spawnTime = 0f;
         prevLapTime = 0f;
+        bestLap = Mathf.Infinity;
+        meanLapTime = 0;
         checkpointsPassed = 0;
         lapsCompleted = 0;
     }
@@ -224,7 +226,7 @@ public class CarAgent : Agent
             EndEpisode();
         }
     }
-
+    
     private void OnTriggerEnter(Collider col)
     {
         //check if a checkpoint is passed
@@ -268,7 +270,7 @@ public class CarAgent : Agent
             lapTime = spawnTime - prevLapTime;
             prevLapTime = lapTime;
             meanLapTime += lapTime;
-            if(bestLap < lapTime)
+            if(bestLap > lapTime)
             {
                 bestLap = lapTime;
             }
@@ -278,7 +280,7 @@ public class CarAgent : Agent
                 AddReward(trainingArea.successReward);
                 bestLapTimes.Add(bestLap);
                 meanLapTimes.Add(meanLapTime / 3.0f);
-                bestLap = 0f;
+                bestLap = Mathf.Infinity;
                 meanLapTime = 0f;
                 Debug.Log("Success!");
                 EndEpisode();
