@@ -4,19 +4,6 @@ import math
 import numpy as np
 import os, glob
 
-
-# TODO
-# Make a script that finds all 'heuristic' directories and takes csv data with 'heuristic' in it
-
-# Plot each of them in different plots
-# Plot each of them in the same plot with shared Y axis, in a row
-# Plot all of them in one plot with different colors and a legend
-# Find the mean best lap time of each agent
-
-
-#exw thn entypwsh oti mporei na einai la8os ta best lap times opws einai twra prepei na to checkarw
-
-
 # THIS IS SAC AND PPO ONLY
 
 arrayPPO = []
@@ -134,16 +121,14 @@ plt.show()
 #=================Plot all in one====================
 fig, ax = plt.subplots()
 ax.plot(indicesPPO,arrayPPO)
+ax.legend(['PPO Agent'])
 
-
+#new_list = range(math.floor(min(indicesPPO)), math.ceil(max(indicesPPO))+1)
 
 ax.plot(indicesSAC,arraySAC)
-ax.legend(['PPO Agent','SAC Agent'])
+ax.legend(['SAC Agent'])
 
-ax.grid()
-
-maxIndexArray = indicesPPO if max(indicesPPO) > max(indicesSAC) else indicesSAC
-new_list = range(math.floor(min(maxIndexArray)), math.ceil(max(maxIndexArray))+1)
+new_list = range(math.floor(min(indicesSAC)), math.ceil(max(indicesSAC))+1)
 plt.xticks(new_list)
 
 
