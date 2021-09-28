@@ -45,9 +45,7 @@ public class CarAgent : Agent
 
     private bool dejaVu;
 
-    const string k_CommandLineModelOverrideFlag = "--mlagents-override-model";
-    Dictionary<string, string> m_BehaviorNameOverrides = new Dictionary<string, string>();
-    Dictionary<string, NNModel> m_CachedModels = new Dictionary<string, NNModel>();
+
 
     List<float> bestLapTimes = new List<float>();
     List<float> meanLapTimes = new List<float>();
@@ -55,9 +53,6 @@ public class CarAgent : Agent
 
     public override void Initialize()
     {
-
-
-
         base.Initialize();
 
         gameObject.layer = 8;
@@ -72,7 +67,7 @@ public class CarAgent : Agent
         agentRigidbody.centerOfMass = GameObject.Find("CenterOfMass").transform.localPosition;
         idleMeter = maxIdleTime;
         car.SetGear(1);
-        if(GetComponent<BehaviorParameters>().Model == null)
+        if (GetComponent<BehaviorParameters>().Model == null)
         Debug.Log("Model Name Before : " +"null");
         else
         {
@@ -84,8 +79,8 @@ public class CarAgent : Agent
     {
         //Debug.Log("Agent Initialized.");
         //initiallize behaviour
-        GetAssetPathFromCommandLine();
-        if (m_BehaviorNameOverrides.ContainsKey(GetComponent<BehaviorParameters>().BehaviorName))
+
+        if (trainingArea.m_BehaviorNameOverrides.ContainsKey(GetComponent<BehaviorParameters>().BehaviorName))
         {
             Debug.Log("Overriding brain...");
             OverrideModel();
@@ -337,69 +332,18 @@ public class CarAgent : Agent
             Debug.Log("Setting gear: " + discreteActionsOut[0]);
         }
     }
-    void GetAssetPathFromCommandLine()
-    {
-        m_BehaviorNameOverrides.Clear();
-
-
-        var args = Environment.GetCommandLineArgs();
-        for (var i = 0; i < args.Length - 1; i++)
-        {
-            if (args[i] == k_CommandLineModelOverrideFlag && i < args.Length - 2)
-            {
-                var key = args[i + 1].Trim();
-                var value = args[i + 2].Trim();
-                m_BehaviorNameOverrides[key] = value;
-            }
-            
-        }
-
-
-        Debug.Log("args: ");
-        foreach (string a in args)
-        {
-            Debug.Log(a);
-
-            //Regex r = new Regex(@"(CarBrainSAC) ([^ ]+.onnx) (CarBrainPPO) ([^ ]+.onnx)", RegexOptions.Compiled | RegexOptions.IgnoreCase);
-            //MatchCollection matches = r.Matches(args);
-
-            //return r.Match(filename).Groups[1].Value;
-        }
-        Debug.Log("behaviours: ");
-        foreach (KeyValuePair<string, string> pair in m_BehaviorNameOverrides)
-        {
-            Debug.Log("Behaviour: " + pair.Key + " -- " + pair.Value);
-        }
-
-        //if (Application.isEditor)
-        //{
-
-        //    var value1 = @"E:\CarsML2021-main/mainBuild/results/pposac1\CarBrainSAC.onnx";
-        //    var key1 = "CarBrainSAC";
-        //    m_BehaviorNameOverrides[key1] = value1;
-
-        //    var value2 = @"E:\CarsML2021-main/mainBuild/results/pposac1\CarBrainPPO.onnx";
-        //    var key2 = "CarBrainPPO";
-        //    m_BehaviorNameOverrides[key2] = value2;
-
-        //}
-
-    }
+    
     void OverrideModel()
     {
         var bp = GetComponent<BehaviorParameters>();
 
         var nnModel = GetModelForBehaviorName(bp.BehaviorName);
-        if (m_BehaviorNameOverrides.ContainsKey(bp.BehaviorName))
+        if (trainingArea.m_BehaviorNameOverrides.ContainsKey(bp.BehaviorName))
         {
             Debug.Log($"Overriding behavior {bp.BehaviorName} for agent with model {nnModel?.name}");
             // This might give a null model; that's better because we'll fall back to the Heuristic
-            //if (nnModel.Equals(null))
-            //{
-            //    Debug.Log("nnModel is null");
-            //}
             SetModel($"Override_{bp.BehaviorName}", nnModel);
-            Debug.Log(GetComponent<BehaviorParameters>().Model.name);
+            Debug.Log("Model Set: " + GetComponent<BehaviorParameters>().Model.name);
         }
         
 
@@ -407,18 +351,18 @@ public class CarAgent : Agent
     NNModel GetModelForBehaviorName(string behaviorName)
     {
         
-        if (m_CachedModels.ContainsKey(behaviorName))
+        if (trainingArea.m_CachedModels.ContainsKey(behaviorName))
         {
-            return m_CachedModels[behaviorName];
+            return trainingArea.m_CachedModels[behaviorName];
         }
 
-        if (!m_BehaviorNameOverrides.ContainsKey(behaviorName))
+        if (!trainingArea.m_BehaviorNameOverrides.ContainsKey(behaviorName))
         {
             Debug.Log($"No override for behaviorName {behaviorName}");
             return null;
         }
 
-        var assetPath = m_BehaviorNameOverrides[behaviorName];
+        var assetPath = trainingArea.m_BehaviorNameOverrides[behaviorName];
         Debug.Log("Behaviour Name " + behaviorName + " Asset Path " + assetPath);
         byte[] model = null;
         try
@@ -429,7 +373,7 @@ public class CarAgent : Agent
         {
             Debug.Log($"Couldn't load file {assetPath}", this);
             // Cache the null so we don't repeatedly try to load a missing file
-            m_CachedModels[behaviorName] = null;
+            trainingArea.m_CachedModels[behaviorName] = null;
             return null;
         }
 
@@ -438,7 +382,7 @@ public class CarAgent : Agent
         asset.modelData.Value = model;
 
         asset.name = "Override - " + Path.GetFileName(assetPath);
-        m_CachedModels[behaviorName] = asset;
+        trainingArea.m_CachedModels[behaviorName] = asset;
         return asset;
     }
 

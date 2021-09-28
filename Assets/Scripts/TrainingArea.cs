@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections;
 using System.IO;
 using System.Text.RegularExpressions;
+using Unity.Barracuda;
 
 public class TrainingArea : MonoBehaviour
 {
@@ -58,9 +59,9 @@ public class TrainingArea : MonoBehaviour
 
     private string options_path, inference_options_path, training_type_path;
 
-
-   
-
+    const string k_CommandLineModelOverrideFlag = "--mlagents-override-model";
+    public Dictionary<string, string> m_BehaviorNameOverrides = new Dictionary<string, string>();
+    public Dictionary<string, NNModel> m_CachedModels = new Dictionary<string, NNModel>();
 
     void Awake()
     {
@@ -89,6 +90,9 @@ public class TrainingArea : MonoBehaviour
             inference_options_path = Application.dataPath + "/InferenceOptions.json";
             //training_type_path = Application.dataPath + "/isTraining.json";
         }
+
+        //read args to load models
+        GetAssetPathFromCommandLine();
 
 
         mapName = "selectedMap";
@@ -194,6 +198,54 @@ public class TrainingArea : MonoBehaviour
 
     }
 
+    void GetAssetPathFromCommandLine()
+    {
+        m_BehaviorNameOverrides.Clear();
+
+
+        var args = Environment.GetCommandLineArgs();
+        for (var i = 0; i < args.Length - 1; i++)
+        {
+            if (args[i] == k_CommandLineModelOverrideFlag && i < args.Length - 2)
+            {
+                var key = args[i + 1].Trim();
+                var value = args[i + 2].Trim();
+                m_BehaviorNameOverrides[key] = value;
+            }
+
+        }
+
+
+        Debug.Log("args: ");
+        foreach (string a in args)
+        {
+            Debug.Log(a);
+
+            //Regex r = new Regex(@"(CarBrainSAC) ([^ ]+.onnx) (CarBrainPPO) ([^ ]+.onnx)", RegexOptions.Compiled | RegexOptions.IgnoreCase);
+            //MatchCollection matches = r.Matches(args);
+
+            //return r.Match(filename).Groups[1].Value;
+        }
+        Debug.Log("behaviours: ");
+        foreach (KeyValuePair<string, string> pair in m_BehaviorNameOverrides)
+        {
+            Debug.Log("Behaviour: " + pair.Key + " -- " + pair.Value);
+        }
+
+        //if (Application.isEditor)
+        //{
+
+        //    var value1 = @"E:\CarsML2021-main/mainBuild/results/pposac1\CarBrainSAC.onnx";
+        //    var key1 = "CarBrainSAC";
+        //    m_BehaviorNameOverrides[key1] = value1;
+
+        //    var value2 = @"E:\CarsML2021-main/mainBuild/results/pposac1\CarBrainPPO.onnx";
+        //    var key2 = "CarBrainPPO";
+        //    m_BehaviorNameOverrides[key2] = value2;
+
+        //}
+
+    }
 
 
 
