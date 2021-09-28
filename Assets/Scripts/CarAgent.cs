@@ -439,3 +439,103 @@ public class CarAgent : Agent
 
 }
 
+    //void GetAssetPathFromCommandLine()
+    //{
+    //    m_BehaviorNameOverrides.Clear();
+
+
+    //    var args = Environment.GetCommandLineArgs();
+    //    string arg = "";
+    //    foreach(string a in args)
+    //    {
+    //        arg += a + " ";
+    //    }
+
+    //    Debug.Log("ARGUMENT STRING" + arg);
+
+    //    if (!Application.isEditor)
+    //    {
+
+    //        /*
+    //         *    Argument Looks like this : 
+    //         * /UnityProjects/GitHub/CarsML2021-main/mainBuild/CarsML2021-main_Data\../..//trainingScene/CarsML2021-main.exe 
+    //         * --mlagents-override-model CarBrainSAC E:\UnityProjects\GitHub\CarsML2021-main\mainBuild/results/pposac2\CarBrainSAC.onnx 
+    //         * --mlagents-override-model CarBrainPPO E:\UnityProjects\GitHub\CarsML2021-main\mainBuild/results/ppo1\CarBrainPPO.onnx  
+    //         */
+
+    //        Regex r = new Regex(@"--mlagents-override-model (\w+) ([^ ]+CarBrainSAC.onnx) --mlagents-override-model (\w+) ([^ ]+CarBrainPPO.onnx)", RegexOptions.Compiled | RegexOptions.IgnoreCase);
+    //        MatchCollection matches = r.Matches(arg);
+
+    //        GroupCollection groups = matches[0].Groups;
+    //        var sacName = groups[1].Value;
+    //        var pathSAC = @"" + groups[2].Value;
+
+    //        var ppoName = groups[3].Value;
+    //        var pathPPO = @"" + groups[4].Value;
+
+    //        Debug.Log("SHOW ME KEYS" + sacName + " " + ppoName);
+    //        Debug.Log("SHOW ME PATHS" + pathSAC + " || " + pathPPO);
+
+    //        if(GetComponent<BehaviorParameters>().BehaviorName == sacName) //check if this agent is ppo or sac
+    //            NewOverrideModel(sacName, pathSAC);
+    //        else
+    //            NewOverrideModel(ppoName, pathPPO);
+
+
+    //    }
+
+    //    else
+    //    {
+    //        var value1 = @""+ Path.Combine(Application.dataPath, "../../mainBuild/results/sactest1/CarBrainSAC.onnx");
+    //        Debug.Log(value1);
+    //        var key1 = "CarBrainSAC";
+    //        m_BehaviorNameOverrides[key1] = value1;
+
+    //        var value2 = @"" + Path.Combine(Application.dataPath, "../../mainBuild/results/ppo1/CarBrainPPO.onnx");
+    //        var key2 = "CarBrainPPO";
+    //        Debug.Log(value2);
+    //        m_BehaviorNameOverrides[key2] = value2;
+    //    }
+    //}
+
+
+
+    //void NewOverrideModel(string behaviorName, string path)
+    //{
+    //    Debug.Log("Overriding... " + path + " " + behaviorName);
+
+    //    this.LazyInitialize();
+
+
+    //    var nnModel = CustomGetModelForBehaviorName(behaviorName, path);
+    //    SetModel(behaviorName, nnModel);
+    //    Debug.Log("IM DONE SETTING AND : " + GetComponent<BehaviorParameters>().BehaviorName + " " + GetComponent<BehaviorParameters>().Model.name);
+    //}
+
+    //NNModel CustomGetModelForBehaviorName(string behaviorName,string path){
+
+
+    //    byte[] model = null;
+        
+
+
+    //    try
+    //    {
+    //        model = File.ReadAllBytes(path);
+    //    }
+    //    catch (IOException)
+    //    {
+    //        Debug.Log($"Couldn't Load file {path}", this);
+    //        return null;
+    //    }
+
+    //    var asset = ScriptableObject.CreateInstance<NNModel>();
+    //    asset.modelData = ScriptableObject.CreateInstance<NNModelData>();
+    //    asset.modelData.Value = model;
+
+    //    asset.name = Path.GetFileName(path);
+    //    Debug.Log("THIS IS THE NEW MODEL? : " + asset.name + " " + asset.modelData.name + "  " + asset.modelData.Value +  " ");
+    //    return asset;
+
+    //}
+
