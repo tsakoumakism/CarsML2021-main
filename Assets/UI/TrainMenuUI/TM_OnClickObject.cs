@@ -33,6 +33,8 @@ public class TM_OnClickObject : MonoBehaviour
     InputField tf_beta;
     InputField tf_hiddenUnits;
     InputField tf_numOfLayers;
+    InputField tf_gamma;
+    InputField tf_maxSteps;
 
     
     string txt_epochNum;
@@ -45,6 +47,8 @@ public class TM_OnClickObject : MonoBehaviour
     string txt_beta;
     string txt_hiddenUnits;
     string txt_numOfLayers;
+    string txt_gamma;
+    string txt_maxSteps;
     //-----------------------------HyperParameters End Here------------------------------
 
     //All the TextFields of Options
@@ -120,7 +124,8 @@ public class TM_OnClickObject : MonoBehaviour
         tf_beta = GameObject.Find("BetaInputField").GetComponent<InputField>();
         tf_hiddenUnits = GameObject.Find("HiddenUnitInputField").GetComponent<InputField>();
         tf_numOfLayers = GameObject.Find("NumOfLayersInputField").GetComponent<InputField>();
-
+        tf_gamma = GameObject.Find("GammaInputField").GetComponent<InputField>();
+        tf_maxSteps = GameObject.Find("MaxStepInputField").GetComponent<InputField>();
 
         txt_epochNum = tf_epochNum.text;
         txt_epsilon = tf_epsilon.text;
@@ -132,6 +137,8 @@ public class TM_OnClickObject : MonoBehaviour
         txt_beta = tf_beta.text;
         txt_hiddenUnits = tf_hiddenUnits.text;
         txt_numOfLayers = tf_numOfLayers.text;
+        txt_gamma = tf_gamma.text;
+        txt_maxSteps = tf_maxSteps.text;
         //-----------------------------HyperParameters End Here------------------------------
         
         //All the TextFields of Options Initializations
@@ -177,7 +184,7 @@ public class TM_OnClickObject : MonoBehaviour
         getTextFromFields();
 
         //save hyper parameters to config_path
-        OverwriteHyperParameters(txt_epochNum,txt_epsilon,txt_lamda,txt_LR,txt_LRS,txt_batchSize,txt_bufferSize,txt_beta,txt_hiddenUnits,txt_numOfLayers);
+        OverwriteHyperParameters(txt_epochNum,txt_epsilon,txt_lamda,txt_LR,txt_LRS,txt_batchSize,txt_bufferSize,txt_beta,txt_hiddenUnits,txt_numOfLayers,txt_gamma, txt_maxSteps);
 
         //save options to a json (except runid and timescale)
         OverwriteOptions(txt_numOfAgents,txt_successReward, txt_cpReward, txt_speedReward, txt_collisionPenalty, txt_idlePenalty, txt_wrongCheckPenalty, txt_timeScale);
@@ -227,7 +234,7 @@ public class TM_OnClickObject : MonoBehaviour
 
 
     //save hyper parameters to config_path
-    public void OverwriteHyperParameters(string epochNum, string epsilon, string lamda, string LR, string LRS, string batchSize, string bufferSize, string beta, string hiddenUnits, string numOfLayers){
+    public void OverwriteHyperParameters(string epochNum, string epsilon, string lamda, string LR, string LRS, string batchSize, string bufferSize, string beta, string hiddenUnits, string numOfLayers,string gam, string maxSteps){
         using(StreamWriter sw = new StreamWriter(config_path)){
             //write all hyperparamaters in YAML format
 
@@ -239,10 +246,10 @@ public class TM_OnClickObject : MonoBehaviour
                     {
                         trainer_type = "ppo",
                         time_horizon = "128",
-                        max_steps = "1.0e3",
+                        max_steps = txt_maxSteps,
                         summary_freq = "10000",
                         threaded = "false",
- 
+
                         hyperparameters = new Hyperparameters
                         {
                             num_epoch = txt_epochNum,
@@ -266,7 +273,7 @@ public class TM_OnClickObject : MonoBehaviour
                         {
                             extrinsic = new Extrinsic
                             {
-                                gamma = "0.999",
+                                gamma = txt_gamma,
                                 strength = "1.0"
                             }
                         }
@@ -277,7 +284,7 @@ public class TM_OnClickObject : MonoBehaviour
                         trainer_type = "sac",
 
                         time_horizon = "128",
-                        max_steps = "1.0e3",
+                        max_steps = txt_maxSteps,
                         summary_freq = "10000",
                         threaded = "false",
 
@@ -303,7 +310,7 @@ public class TM_OnClickObject : MonoBehaviour
                         {
                             extrinsic = new Extrinsic
                             {
-                                gamma = "0.999",
+                                gamma = txt_gamma,
                                 strength = "1.0"
                             }
                         }
@@ -422,7 +429,8 @@ public class TM_OnClickObject : MonoBehaviour
                     txt_beta = yam.behaviors.CarBrainPPO.hyperparameters.beta;
                     txt_hiddenUnits = yam.behaviors.CarBrainPPO.network_settings.hidden_units;
                     txt_numOfLayers = yam.behaviors.CarBrainPPO.network_settings.num_layers;
-
+                    txt_gamma = yam.behaviors.CarBrainPPO.reward_signals.extrinsic.gamma;
+                    txt_maxSteps = yam.behaviors.CarBrainPPO.max_steps;
 
 
                     tf_epochNum.GetComponent<InputField>().text = txt_epochNum;
@@ -436,7 +444,8 @@ public class TM_OnClickObject : MonoBehaviour
                     tf_beta.GetComponent<InputField>().text = txt_beta;
                     tf_hiddenUnits.GetComponent<InputField>().text = txt_hiddenUnits;
                     tf_numOfLayers.GetComponent<InputField>().text = txt_numOfLayers;
-
+                    tf_gamma.GetComponent<InputField>().text = txt_gamma;
+                    tf_maxSteps.GetComponent<InputField>().text = txt_maxSteps;
 
 
                 //}
@@ -498,6 +507,8 @@ public class TM_OnClickObject : MonoBehaviour
         txt_beta = tf_beta.text;
         txt_hiddenUnits = tf_hiddenUnits.text;
         txt_numOfLayers = tf_numOfLayers.text;
+        txt_gamma = tf_gamma.text;
+        txt_maxSteps = tf_maxSteps.text;
 
         txt_numOfEnvs = tf_numOfEnvs.text;
         toggle_noGraphics = tf_graphicsToggle.isOn;
