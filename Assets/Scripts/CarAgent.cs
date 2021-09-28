@@ -8,6 +8,7 @@ using System.IO;
 using Unity.Barracuda;
 using Unity.MLAgents.Policies;
 using System.Text;
+using System.Text.RegularExpressions;
 
 public class CarAgent : Agent
 {
@@ -71,9 +72,12 @@ public class CarAgent : Agent
         agentRigidbody.centerOfMass = GameObject.Find("CenterOfMass").transform.localPosition;
         idleMeter = maxIdleTime;
         car.SetGear(1);
-
-
-
+        if(GetComponent<BehaviorParameters>().Model == null)
+        Debug.Log("Model Name Before : " +"null");
+        else
+        {
+            Debug.Log("Model Name Before : " + GetComponent<BehaviorParameters>().Model.ToString());
+        }
     }
 
     public void Start()
@@ -87,7 +91,12 @@ public class CarAgent : Agent
             OverrideModel();
 
         }
-        Debug.Log("Behaviour Name " + GetComponent<BehaviorParameters>().BehaviorName);
+        if (GetComponent<BehaviorParameters>().Model == null)
+            Debug.Log("Model Name After : " + "null");
+        else
+        {
+            Debug.Log("Model Name After : " + GetComponent<BehaviorParameters>().Model.ToString());
+        }
 
 
     }
@@ -342,13 +351,19 @@ public class CarAgent : Agent
                 var value = args[i + 2].Trim();
                 m_BehaviorNameOverrides[key] = value;
             }
-
+            
         }
+
 
         Debug.Log("args: ");
         foreach (string a in args)
         {
             Debug.Log(a);
+
+            //Regex r = new Regex(@"(CarBrainSAC) ([^ ]+.onnx) (CarBrainPPO) ([^ ]+.onnx)", RegexOptions.Compiled | RegexOptions.IgnoreCase);
+            //MatchCollection matches = r.Matches(args);
+
+            //return r.Match(filename).Groups[1].Value;
         }
         Debug.Log("behaviours: ");
         foreach (KeyValuePair<string, string> pair in m_BehaviorNameOverrides)

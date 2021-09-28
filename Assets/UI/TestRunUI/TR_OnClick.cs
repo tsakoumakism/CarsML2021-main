@@ -184,7 +184,7 @@ public class TR_OnClick : MonoBehaviour
         else
             envPath = Path.Combine(Application.dataPath, "../") + "/trainingScene/CarsML2021-main.exe";
         //strCmdText = "/K mlagents-learn --inference" + " --env = " + envPath + sceneName + " --width=1920 --height=1080" + " --mlagents-override-model=" + m_ModelText.text;
-        strCmdText = "/K " + envPath + " --mlagents-override-model CarBrainSAC "+ modelSac + " CarBrainPPO " + modelPpo;
+        strCmdText = "/K " + envPath + " --mlagents-override-model CarBrainSAC "+ modelSac + " --mlagents-override-model CarBrainPPO " + modelPpo;
 
         Debug.Log(strCmdText);
 

@@ -54,7 +54,6 @@ public class TrainingArea : MonoBehaviour
 
     [SerializeField] private BlockData bd;
 
-    [HideInInspector]
     public bool isTraining, inferPPO, inferSAC;
 
     private string options_path, inference_options_path, training_type_path;
@@ -65,12 +64,11 @@ public class TrainingArea : MonoBehaviour
 
     void Awake()
     {
-        training_type_path = Path.Combine(Application.dataPath, "../../mainBuild/CarsML2021-main_Data") + "/isTraining.json";
-        CheckTraining();
-        
 
         if (!Application.isEditor)
         {
+            training_type_path = Path.Combine(Application.dataPath, "../../mainBuild/CarsML2021-main_Data") + "/isTraining.json";
+            CheckTraining();
             if (isTraining) {
                 options_path = Path.Combine(Application.dataPath, "../../mainBuild/CarsML2021-main_Data") + "/options.json";
             }
@@ -83,6 +81,8 @@ public class TrainingArea : MonoBehaviour
         }
         else
         {
+            training_type_path = Application.dataPath + "/isTraining.json";
+            CheckTraining();
             if (isTraining) 
             options_path = Application.dataPath + "/options.json";
             else

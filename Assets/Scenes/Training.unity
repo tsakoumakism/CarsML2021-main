@@ -1169,7 +1169,7 @@ MonoBehaviour:
     blockPosition: {x: 0, y: 0, z: 0}
     blockRotation: {x: 0, y: 0, z: 0, w: 0}
     name: 
-  isTraining: 0
+  isTraining: 1
   inferPPO: 0
   inferSAC: 0
 --- !u!4 &1957397243
