@@ -87,6 +87,7 @@ public class CarAgent : Agent
             OverrideModel();
 
         }
+        Debug.Log("Behaviour Name " + GetComponent<BehaviorParameters>().BehaviorName);
 
 
     }
@@ -341,8 +342,9 @@ public class CarAgent : Agent
                 var value = args[i + 2].Trim();
                 m_BehaviorNameOverrides[key] = value;
             }
+
         }
-        /*
+
         Debug.Log("args: ");
         foreach (string a in args)
         {
@@ -353,18 +355,18 @@ public class CarAgent : Agent
         {
             Debug.Log("Behaviour: " + pair.Key + " -- " + pair.Value);
         }
-        */
+
         //if (Application.isEditor)
         //{
-            
+
         //    var value1 = @"E:\CarsML2021-main/mainBuild/results/pposac1\CarBrainSAC.onnx";
         //    var key1 = "CarBrainSAC";
         //    m_BehaviorNameOverrides[key1] = value1;
-            
+
         //    var value2 = @"E:\CarsML2021-main/mainBuild/results/pposac1\CarBrainPPO.onnx";
         //    var key2 = "CarBrainPPO";
         //    m_BehaviorNameOverrides[key2] = value2;
-            
+
         //}
 
     }
@@ -377,10 +379,10 @@ public class CarAgent : Agent
         {
             Debug.Log($"Overriding behavior {bp.BehaviorName} for agent with model {nnModel?.name}");
             // This might give a null model; that's better because we'll fall back to the Heuristic
-            if (nnModel.Equals(null))
-            {
-                Debug.Log("nnModel is null");
-            }
+            //if (nnModel.Equals(null))
+            //{
+            //    Debug.Log("nnModel is null");
+            //}
             SetModel($"Override_{bp.BehaviorName}", nnModel);
             Debug.Log(GetComponent<BehaviorParameters>().Model.name);
         }
@@ -389,6 +391,7 @@ public class CarAgent : Agent
     }
     NNModel GetModelForBehaviorName(string behaviorName)
     {
+        
         if (m_CachedModels.ContainsKey(behaviorName))
         {
             return m_CachedModels[behaviorName];
@@ -401,7 +404,7 @@ public class CarAgent : Agent
         }
 
         var assetPath = m_BehaviorNameOverrides[behaviorName];
-
+        Debug.Log("Behaviour Name " + behaviorName + " Asset Path " + assetPath);
         byte[] model = null;
         try
         {

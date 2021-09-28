@@ -180,20 +180,23 @@ public class TR_OnClick : MonoBehaviour
         string envPath;
         string sceneName = "CarsML2021-main.exe";
         if (!Application.isEditor)
-            envPath = Path.Combine(Application.dataPath, "../../") + "/trainingScene/";
+            envPath = Path.Combine(Application.dataPath, "../../") + "/trainingScene/CarsML2021-main.exe";
         else
-            envPath = Path.Combine(Application.dataPath, "../") + "/trainingScene/";
+            envPath = Path.Combine(Application.dataPath, "../") + "/trainingScene/CarsML2021-main.exe";
         //strCmdText = "/K mlagents-learn --inference" + " --env = " + envPath + sceneName + " --width=1920 --height=1080" + " --mlagents-override-model=" + m_ModelText.text;
-        strCmdText = "/K " + sceneName + " --mlagents-override-model CarBrainSAC "+ modelSac + " CarBrainPPO " + modelPpo;
+        strCmdText = "/K " + envPath + " --mlagents-override-model CarBrainSAC "+ modelSac + " CarBrainPPO " + modelPpo;
 
         Debug.Log(strCmdText);
-        var proc = new System.Diagnostics.ProcessStartInfo();
-        proc.FileName = "cmd.exe";
-        proc.WorkingDirectory = envPath;
-        proc.Arguments = @strCmdText;
+
+        m_MapText.text = strCmdText;
+       // var proc = new System.Diagnostics.ProcessStartInfo();
+        //proc.FileName = "cmd.exe";
+        //proc.WorkingDirectory = envPath;
+       // proc.Arguments = @strCmdText;
         //proc.WindowStyle = System.Diagnostics.ProcessWindowStyle.Hidden; 
-        System.Diagnostics.Process.Start(proc); //Start cmd process
-        Debug.Log(proc);
+        //System.Diagnostics.Process.Start("CMD.exe",); //Start cmd process
+        System.Diagnostics.Process.Start("CMD.exe", strCmdText);
+      //  Debug.Log(strCmdText);
     }
 
     public void OnClickBack(){

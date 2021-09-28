@@ -65,22 +65,37 @@ public class TrainingArea : MonoBehaviour
 
     void Awake()
     {
+        training_type_path = Path.Combine(Application.dataPath, "../../mainBuild/CarsML2021-main_Data") + "/isTraining.json";
+        CheckTraining();
+        
+
         if (!Application.isEditor)
         {
-            options_path = Path.Combine(Application.dataPath, "../../mainBuild/CarsML2021-main_Data") + "/options.json";
-            inference_options_path = Path.Combine(Application.dataPath, "../../mainBuild/CarsML2021-main_Data") + "/InferenceOptions.json";
-            training_type_path = Path.Combine(Application.dataPath, "../../mainBuild/CarsML2021-main_Data") + "/isTraining.json";
+            if (isTraining) {
+                options_path = Path.Combine(Application.dataPath, "../../mainBuild/CarsML2021-main_Data") + "/options.json";
+            }
+            else
+            {
+                inference_options_path = Path.Combine(Application.dataPath, "../../mainBuild/CarsML2021-main_Data") + "/InferenceOptions.json";
+            }
+            
+            //training_type_path = Path.Combine(Application.dataPath, "../../mainBuild/CarsML2021-main_Data") + "/isTraining.json";
         }
         else
         {
+            if (isTraining) 
             options_path = Application.dataPath + "/options.json";
+            else
             inference_options_path = Application.dataPath + "/InferenceOptions.json";
-            training_type_path = Application.dataPath + "/isTraining.json";
+            //training_type_path = Application.dataPath + "/isTraining.json";
         }
 
 
         mapName = "selectedMap";
         LoadMap();
+
+
+        if(isTraining)
         LoadOptionsForTraining();
 
 
@@ -92,7 +107,7 @@ public class TrainingArea : MonoBehaviour
                                                                                              // startPosition = new Vector3(startPosition.x, offsetY, startPosition.z);
 
         EnableCheckPoints();
-        CheckTraining();
+        
 
 
         //create finish line
@@ -106,6 +121,7 @@ public class TrainingArea : MonoBehaviour
         {
             cameraList[i].SetActive(false);
         }
+        
 
         if (!heuristic)
         {
@@ -141,29 +157,38 @@ public class TrainingArea : MonoBehaviour
             }
             else
             {
-                //when in editor, values are controlled from the editor
-                agentsToSpawn = numOfAgents;
-                if (spawnAgents && academy.spawnAgents)
+                if (isTraining)
                 {
-                    if (academy.agentsPerArea != 0)
+                    //when in editor, values are controlled from the editor
+                    agentsToSpawn = numOfAgents;
+                    if (spawnAgents && academy.spawnAgents)
                     {
-                        Debug.Log("Agents (academy): " + academy.agentsPerArea);
-                        agentsToSpawn = academy.agentsPerArea;
+                        if (academy.agentsPerArea != 0)
+                        {
+                            Debug.Log("Agents (academy): " + academy.agentsPerArea);
+                            agentsToSpawn = academy.agentsPerArea;
+                        }
+                        else
+                        {
+                            Debug.Log("Agents (area): " + agentsToSpawn);
+                        }
                     }
-                    else if (heuristic)
-                    {
-                        agentsToSpawn = 1;
-                    }
-                    else
-                    {
-                        Debug.Log("Agents (area): " + agentsToSpawn);
-                    }
-                }
-            }
+                
 
-        
-        
+                }
+                else
+                {
+                    agentsToSpawn = 1;
+                    CheckInferneceOptions();
+                    agentPPO = inferPPO;
+                    agentSAC = inferSAC;
+
+                }
+
+        }
         SpawnAgents(agentsToSpawn, startPosition, Quaternion.Euler(0, 0, 0));
+
+
 
 
 
@@ -192,27 +217,37 @@ public class TrainingArea : MonoBehaviour
         Debug.Log("Spawning " + agents + " agents at " + _position + " and rotation " + _rotation);
         for (int i = 0; i < agents; i++)
         {
-            if (agentPPO && agentSAC)
-            {
+
+            if(agentPPO)
                 Instantiate(agentPrefabPPO, _position, _rotation, transform.Find("Agents"));
+            if(agentSAC)
                 Instantiate(agentPrefabSAC, _position, _rotation, transform.Find("Agents"));
-            }
-            else if(!agentPPO && agentSAC)
-            {
-               Instantiate(agentPrefabSAC, _position, _rotation, transform.Find("Agents"));
-            }
-            else if (agentPPO && !agentSAC)
-            {
-                Instantiate(agentPrefabPPO, _position, _rotation, transform.Find("Agents"));
-            }
-            if (heuristic) 
-            {
-                Instantiate(agentPrefabHeuristic, _position, _rotation, transform.Find("Agents"));
-            }    
+            
+           
+            //if (agentPPO && agentSAC)
+            //{
+            //    Instantiate(agentPrefabPPO, _position, _rotation, transform.Find("Agents"));
+            //    Instantiate(agentPrefabSAC, _position, _rotation, transform.Find("Agents"));
+            //}
+            //else if(!agentPPO && agentSAC)
+            //{
+            //   Instantiate(agentPrefabSAC, _position, _rotation, transform.Find("Agents"));
+            //}
+            //else if (agentPPO && !agentSAC)
+            //{
+            //    Instantiate(agentPrefabPPO, _position, _rotation, transform.Find("Agents"));
+            //}
+            //if (heuristic) 
+            //{
+            //    Instantiate(agentPrefabHeuristic, _position, _rotation, transform.Find("Agents"));
+            //}    
         }
 
-   
-        
+        if (heuristic)
+            Instantiate(agentPrefabHeuristic, _position, _rotation, transform.Find("Agents"));
+
+
+
     }
 
     public void UpdateMonitor(string trainingText, string drivingText, string performanceText)
