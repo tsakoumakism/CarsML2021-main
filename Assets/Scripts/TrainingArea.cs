@@ -73,7 +73,7 @@ public class TrainingArea : MonoBehaviour
         }
         else
         {
-            options_path = Application.dataPath + "/ options.json";
+            options_path = Application.dataPath + "/options.json";
             inference_options_path = Application.dataPath + "/InferenceOptions.json";
             training_type_path = Application.dataPath + "/isTraining.json";
         }

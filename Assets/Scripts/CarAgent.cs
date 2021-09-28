@@ -354,18 +354,18 @@ public class CarAgent : Agent
             Debug.Log("Behaviour: " + pair.Key + " -- " + pair.Value);
         }
         */
-        if (Application.isEditor)
-        {
+        //if (Application.isEditor)
+        //{
             
-            var value1 = @"E:\CarsML2021-main/mainBuild/results/pposac1\CarBrainSAC.onnx";
-            var key1 = "CarBrainSAC";
-            m_BehaviorNameOverrides[key1] = value1;
+        //    var value1 = @"E:\CarsML2021-main/mainBuild/results/pposac1\CarBrainSAC.onnx";
+        //    var key1 = "CarBrainSAC";
+        //    m_BehaviorNameOverrides[key1] = value1;
             
-            var value2 = @"E:\CarsML2021-main/mainBuild/results/pposac1\CarBrainPPO.onnx";
-            var key2 = "CarBrainPPO";
-            m_BehaviorNameOverrides[key2] = value2;
+        //    var value2 = @"E:\CarsML2021-main/mainBuild/results/pposac1\CarBrainPPO.onnx";
+        //    var key2 = "CarBrainPPO";
+        //    m_BehaviorNameOverrides[key2] = value2;
             
-        }
+        //}
 
     }
     void OverrideModel()

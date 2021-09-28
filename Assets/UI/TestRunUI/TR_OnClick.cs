@@ -191,7 +191,7 @@ public class TR_OnClick : MonoBehaviour
         proc.FileName = "cmd.exe";
         proc.WorkingDirectory = envPath;
         proc.Arguments = @strCmdText;
-        proc.WindowStyle = System.Diagnostics.ProcessWindowStyle.Hidden; 
+        //proc.WindowStyle = System.Diagnostics.ProcessWindowStyle.Hidden; 
         System.Diagnostics.Process.Start(proc); //Start cmd process
         Debug.Log(proc);
     }
