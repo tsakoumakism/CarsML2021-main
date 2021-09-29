@@ -15,10 +15,14 @@ public class TrainingArea : MonoBehaviour
     public CarAgent agentPrefabSAC;
     public CarAgent agentPrefabHeuristic;
 
+    public string mapName = "selectedMap";
+
+    public bool isTraining;
     public bool spawnAgents = false;
     public bool agentPPO;
     public bool agentSAC;
     public bool heuristic;
+    public bool inferPPO, inferSAC;
     public int numOfAgents;
     //public int agentAmount;
     public int totalCheckpoints;
@@ -50,12 +54,10 @@ public class TrainingArea : MonoBehaviour
 
     public List<GameObject> roadBuildList = new List<GameObject>();
 
-    string mapName;
     string modelName;
 
     [SerializeField] private BlockData bd;
 
-    public bool isTraining, inferPPO, inferSAC;
 
     private string options_path, inference_options_path, training_type_path;
 
@@ -82,8 +84,9 @@ public class TrainingArea : MonoBehaviour
         }
         else
         {
-            training_type_path = Application.dataPath + "/isTraining.json";
-            CheckTraining();
+            //training_type_path = Application.dataPath + "/isTraining.json";
+           // CheckTraining();
+           //Just use the editor values if you are in editor.
             if (isTraining) 
             options_path = Application.dataPath + "/options.json";
             else
@@ -93,9 +96,6 @@ public class TrainingArea : MonoBehaviour
 
         //read args to load models
         GetAssetPathFromCommandLine();
-
-
-        mapName = "selectedMap";
         LoadMap();
 
 
@@ -183,7 +183,7 @@ public class TrainingArea : MonoBehaviour
                 else
                 {
                     agentsToSpawn = 1;
-                    CheckInferneceOptions();
+                    //CheckInferneceOptions();
                     agentPPO = inferPPO;
                     agentSAC = inferSAC;
 

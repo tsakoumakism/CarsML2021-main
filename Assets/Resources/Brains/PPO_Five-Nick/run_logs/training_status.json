@@ -1,0 +1,65 @@
+{
+    "CarBrainPPO": {
+        "checkpoints": [
+            {
+                "steps": 4999937,
+                "file_path": "results\\RunPPO\\CarBrainPPO\\CarBrainPPO-4999937.onnx",
+                "reward": 171.99919548034669,
+                "creation_time": 1632881341.712328,
+                "auxillary_file_paths": [
+                    "results\\RunPPO\\CarBrainPPO\\CarBrainPPO-4999937.pt"
+                ]
+            },
+            {
+                "steps": 5499887,
+                "file_path": "results\\RunPPO\\CarBrainPPO\\CarBrainPPO-5499887.onnx",
+                "reward": 170.0758319430881,
+                "creation_time": 1632882824.2594523,
+                "auxillary_file_paths": [
+                    "results\\RunPPO\\CarBrainPPO\\CarBrainPPO-5499887.pt"
+                ]
+            },
+            {
+                "steps": 5999904,
+                "file_path": "results\\RunPPO\\CarBrainPPO\\CarBrainPPO-5999904.onnx",
+                "reward": 165.25843267440797,
+                "creation_time": 1632884126.525105,
+                "auxillary_file_paths": [
+                    "results\\RunPPO\\CarBrainPPO\\CarBrainPPO-5999904.pt"
+                ]
+            },
+            {
+                "steps": 6499952,
+                "file_path": "results\\RunPPO\\CarBrainPPO\\CarBrainPPO-6499952.onnx",
+                "reward": 172.47193336486816,
+                "creation_time": 1632885525.8941267,
+                "auxillary_file_paths": [
+                    "results\\RunPPO\\CarBrainPPO\\CarBrainPPO-6499952.pt"
+                ]
+            },
+            {
+                "steps": 6916817,
+                "file_path": "results\\RunPPO\\CarBrainPPO\\CarBrainPPO-6916817.onnx",
+                "reward": 175.0199112759696,
+                "creation_time": 1632886625.6773217,
+                "auxillary_file_paths": [
+                    "results\\RunPPO\\CarBrainPPO\\CarBrainPPO-6916817.pt"
+                ]
+            }
+        ],
+        "final_checkpoint": {
+            "steps": 6916817,
+            "file_path": "results\\RunPPO\\CarBrainPPO.onnx",
+            "reward": 175.0199112759696,
+            "creation_time": 1632886625.6773217,
+            "auxillary_file_paths": [
+                "results\\RunPPO\\CarBrainPPO\\CarBrainPPO-6916817.pt"
+            ]
+        }
+    },
+    "metadata": {
+        "stats_format_version": "0.3.0",
+        "mlagents_version": "0.27.0",
+        "torch_version": "1.7.1+cu110"
+    }
+}

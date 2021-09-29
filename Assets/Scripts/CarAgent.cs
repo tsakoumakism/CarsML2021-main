@@ -49,12 +49,14 @@ public class CarAgent : Agent
 
     List<float> bestLapTimes = new List<float>();
     List<float> meanLapTimes = new List<float>();
-
+    List<int> errorCounts = new List<int>();
+    int setsCompleted;
+    int errorCount;
 
     public override void Initialize()
     {
         base.Initialize();
-
+        
         gameObject.layer = 8;
         car = GetComponent<CarController>();
         carEngine = GetComponent<Engine>();
@@ -77,20 +79,23 @@ public class CarAgent : Agent
 
     public void Start()
     {
+        setsCompleted = 0;
         //Debug.Log("Agent Initialized.");
         //initiallize behaviour
-
-        if (trainingArea.m_BehaviorNameOverrides.ContainsKey(GetComponent<BehaviorParameters>().BehaviorName))
+        if (!Application.isEditor)
         {
-            Debug.Log("Overriding brain...");
-            OverrideModel();
+            if (trainingArea.m_BehaviorNameOverrides.ContainsKey(GetComponent<BehaviorParameters>().BehaviorName))
+            {
+                Debug.Log("Overriding brain...");
+                OverrideModel();
 
-        }
-        if (GetComponent<BehaviorParameters>().Model == null)
-            Debug.Log("Model Name After : " + "null");
-        else
-        {
-            Debug.Log("Model Name After : " + GetComponent<BehaviorParameters>().Model.ToString());
+            }
+            if (GetComponent<BehaviorParameters>().Model == null)
+                Debug.Log("Model Name After : " + "null");
+            else
+            {
+                Debug.Log("Model Name After : " + GetComponent<BehaviorParameters>().Model.ToString());
+            }
         }
 
 
@@ -141,8 +146,8 @@ public class CarAgent : Agent
                         "\nBrake: " + car.BrakePedalPosition.ToString("P") +
                         "\nSteering Angle: " + car.SteeringAngle.ToString("0.00") +
                         "\nGear: " + car.GetGear();
-            string hudTextPerformance = "\nLaps: " + lapsCompleted +
-                        "\nBest Lap " + bestLap;
+            string hudTextPerformance = "\nSets: " + setsCompleted + "\nLaps: " + lapsCompleted +
+                        "\nBest Lap " + bestLap + "\nErrors: " + errorCount;
         if(monitorInfo)
            trainingArea.UpdateMonitor(hudTextTraining, hudTextDriving, hudTextPerformance);
         
@@ -196,6 +201,7 @@ public class CarAgent : Agent
         if (idleMeter <= 0)
         {
             AddReward(trainingArea.idlePenalty);
+            errorCount++;
             EndEpisode();
         }
         else
@@ -220,6 +226,7 @@ public class CarAgent : Agent
         meanLapTime = 0;
         checkpointsPassed = 0;
         lapsCompleted = 0;
+        
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -228,6 +235,7 @@ public class CarAgent : Agent
         {
             //Give up and reset
             AddReward(trainingArea.collisionPenalty);
+            errorCount++;
             EndEpisode();
         }
     }
@@ -265,6 +273,7 @@ public class CarAgent : Agent
             {
                 //Give up and reset if agent went backwards
                 //SetReward(trainingArea.wrongCheckpointPenalty);
+                errorCount++;
                 EndEpisode();
             }
         }
@@ -285,8 +294,11 @@ public class CarAgent : Agent
                 AddReward(trainingArea.successReward);
                 bestLapTimes.Add(bestLap);
                 meanLapTimes.Add(meanLapTime / 3.0f);
+                errorCounts.Add(errorCount);
+                errorCount = 0;
                 bestLap = Mathf.Infinity;
                 meanLapTime = 0f;
+                setsCompleted++;
                 Debug.Log("Success!");
                 EndEpisode();
             }
@@ -388,6 +400,7 @@ public class CarAgent : Agent
 
     void OnApplicationQuit()
     {
+        Debug.Log("Im Quiting");
         //if we are testing models write their performance in csv files
         if (!trainingArea.isTraining && !trainingArea.heuristic)
         {
@@ -408,6 +421,13 @@ public class CarAgent : Agent
             }
 
             File.WriteAllText(Application.persistentDataPath + "/" + gameObject.name + "-MeanLapTimes.csv", csv.ToString());
+
+            csv = new StringBuilder();
+            for (int i = 0; i < errorCounts.Count; i++)
+            {
+                csv.AppendLine(errorCounts[i].ToString());
+            };
+            File.WriteAllText(Application.persistentDataPath + "/" + gameObject.name + "-ErrorCount.csv", csv.ToString());
         }
         else if (trainingArea.heuristic) //it would be testing anyway
         {
