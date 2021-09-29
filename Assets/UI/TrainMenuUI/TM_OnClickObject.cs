@@ -245,7 +245,7 @@ public class TM_OnClickObject : MonoBehaviour
                     CarBrainPPO = new CarBrainPPO
                     {
                         trainer_type = "ppo",
-                        time_horizon = "128",
+                        time_horizon = "2048",
                         max_steps = txt_maxSteps,
                         summary_freq = "10000",
                         threaded = "false",
@@ -283,7 +283,7 @@ public class TM_OnClickObject : MonoBehaviour
                     {
                         trainer_type = "sac",
 
-                        time_horizon = "128",
+                        time_horizon = "2048",
                         max_steps = txt_maxSteps,
                         summary_freq = "10000",
                         threaded = "false",
@@ -294,11 +294,11 @@ public class TM_OnClickObject : MonoBehaviour
                             init_entcoef = "1.0",
                             save_replay_buffer = "false",
                             tau = "0.005",
-                            steps_per_update = txt_numOfAgents,
-                            learning_rate = "1e-4",
-                            learning_rate_schedule = "linear",
-                            batch_size = "512",
-                            buffer_size = "5120",
+                            steps_per_update = "1",
+                            learning_rate = txt_LR,
+                            learning_rate_schedule = txt_LRS,
+                            batch_size = txt_batchSize,
+                            buffer_size = txt_bufferSize
                         },
                         network_settings = new NetworkSettings
                         {
