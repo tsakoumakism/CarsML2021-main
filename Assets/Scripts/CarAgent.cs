@@ -247,7 +247,7 @@ public class CarAgent : Agent
             {
                 checkpointsPassed++;
                 //reward function
-                float reward = trainingArea.checkpointReward * (cPTimeMax - (cPTime - prevCPTime));
+                float reward = trainingArea.checkpointReward * (1 / (cPTime - prevCPTime));
                 AddReward(reward);
                 prevCPTime = cPTime;
                 idleMeter = maxIdleTime;
