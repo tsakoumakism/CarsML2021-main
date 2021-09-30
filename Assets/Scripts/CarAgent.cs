@@ -20,10 +20,13 @@ public class CarAgent : Agent
     private Engine carEngine;
     private Rigidbody agentRigidbody;
     private TrainingArea trainingArea;
-    private int checkpointsPassed = 0;
+    private int checkpointsPassed;
     private Vector3 startingPosition;
     private Quaternion startingRotation;
     private float idleMeter;
+    private float cPTime = 0f;
+    private float prevCPTime = 0f;
+    private float cPTimeMax = 3f;
     private float maxReward = 0;
     private float maxLaps = 3;
 
@@ -96,6 +99,7 @@ public class CarAgent : Agent
     public void FixedUpdate()
     {
         spawnTime += Time.deltaTime;
+        cPTime += Time.deltaTime;
         //brake and freeze position if freshly respawned
         //this is to avoid some issues with unity physics and entity spawning
         if (respawned)
@@ -186,8 +190,8 @@ public class CarAgent : Agent
 
         //reward forward speed to encourage movement
         //speed = Mathf.Sqrt(Mathf.Pow(localVelocity.x, 2) + Mathf.Pow(localVelocity.z, 2));
-        speed = localVelocity.magnitude;
-        AddReward(speed * trainingArea.speedReward);
+        //speed = localVelocity.magnitude;
+        //AddReward(speed * trainingArea.speedReward);
 
         //Give up and reset if agent stays idle for too long
         if (idleMeter <= 0)
@@ -214,6 +218,8 @@ public class CarAgent : Agent
 
         spawnTime = 0f;
         prevLapTime = 0f;
+        cPTime = 0f;
+        prevCPTime = 0f;
         bestLap = Mathf.Infinity;
         meanLapTime = 0;
         checkpointsPassed = 0;
@@ -237,34 +243,19 @@ public class CarAgent : Agent
         //check if a checkpoint is passed
         if (col.gameObject.CompareTag("checkpoint"))
         {
-            //check if agent passed the correct checkpoint (ie. didnt go backwards)
-            int checkpointNumber = col.gameObject.GetComponent<Checkpoint>().checkpointNumber;
-
-            //if (checkpointsPassed % trainingArea.totalCheckpoints == checkpointNumber - 1)
             if (true)
             {
                 checkpointsPassed++;
-                /************disabled for infinite laps********************
-                //check it's the last checkpoint(ie the finish line)
-                if (checkpointsPassed == trainingArea.totalCheckpoints)
-                {
-                    AddReward(trainingArea.successReward);
-                    Debug.Log("Success!");
-                    Done();
-                }
-                else
-                {
-                    AddReward(trainingArea.checkpointReward);
-                    idleMeter = maxIdleTime;
-                }
-                **********************************************************/
-                AddReward(trainingArea.checkpointReward);
+                //reward function
+                float reward = trainingArea.checkpointReward * (cPTimeMax - (cPTime - prevCPTime));
+                AddReward(reward);
+                prevCPTime = cPTime;
                 idleMeter = maxIdleTime;
             }
             else
             {
                 //Give up and reset if agent went backwards
-                //SetReward(trainingArea.wrongCheckpointPenalty);
+                AddReward(trainingArea.wrongCheckpointPenalty);
                 errorCount++;
                 EndEpisode();
             }
@@ -283,7 +274,7 @@ public class CarAgent : Agent
             lapsCompleted++;
             if (lapsCompleted == maxLaps)
             {
-                AddReward(trainingArea.successReward);
+                //AddReward(trainingArea.successReward);
                 bestLapTimes.Add(bestLap);
                 meanLapTimes.Add(meanLapTime / 3.0f);
                 errorCounts.Add(errorCount);

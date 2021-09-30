@@ -2,7 +2,7 @@ behaviors:
   CarBrainPPO:
     trainer_type: ppo
     hyperparameters:
-      num_epoch: 3
+      num_epoch: 2
       epsilon: 0.1
       lambd: 0.95
       learning_rate: 1e-4
@@ -12,13 +12,13 @@ behaviors:
       beta: 1.0e-2
     network_settings:
       normalize: true
-      hidden_units: 512
+      hidden_units: 256
       num_layers: 2
     reward_signals:
       extrinsic:
         gamma: 0.999
         strength: 1.0
-    time_horizon: 128
+    time_horizon: 2048
     max_steps: 1.0e8
     summary_freq: 10000
     threaded: false
@@ -27,22 +27,22 @@ behaviors:
     hyperparameters:
       learning_rate: 1e-4
       learning_rate_schedule: linear
-      batch_size: 512
-      buffer_size: 5120
+      batch_size: 1024
+      buffer_size: 10240
       buffer_init_steps: 1000
       init_entcoef: 1.0
       save_replay_buffer: false
       tau: 0.005
-      steps_per_update: 5
+      steps_per_update: 1
     network_settings:
       normalize: true
-      hidden_units: 512
+      hidden_units: 256
       num_layers: 2
     reward_signals:
       extrinsic:
         gamma: 0.999
         strength: 1.0
-    time_horizon: 128
+    time_horizon: 2048
     max_steps: 1.0e8
     summary_freq: 10000
     threaded: false

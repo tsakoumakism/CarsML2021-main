@@ -1142,7 +1142,7 @@ MonoBehaviour:
     type: 3}
   agentPrefabHeuristic: {fileID: 5475440274307165838, guid: 6d07e68016edae143a60631b5d480c85,
     type: 3}
-  mapName: Map3
+  mapName: simple2
   isTraining: 1
   spawnAgents: 1
   agentPPO: 0
