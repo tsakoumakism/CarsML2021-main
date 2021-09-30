@@ -64,12 +64,15 @@ public void OnClickSaveButton(){
     if(parentObj.transform.childCount > 0){
         var textField = GameObject.Find("FileNameInputField").transform.GetChild(2);
         string fileName = textField.GetComponent<Text>().text;
+        string name = "";
         using(StreamWriter sw = new StreamWriter(Application.persistentDataPath + "/" + fileName + ".json")){
         foreach(Transform child in parentObj.transform){
             bd = new BlockData();
             bd.blockPosition = child.transform.localPosition;
             bd.blockRotation = child.transform.localRotation;
-            string name = child.transform.name.Replace("(Clone)(Clone)", "");
+                    if (child.transform.name.EndsWith("(Clone)(Clone)"))
+                        name = child.transform.name.Replace("(Clone)(Clone)", "");
+                    else name = child.transform.name;
             bd.name = name;
             string block = JsonUtility.ToJson(bd);
             sw.WriteLine(block);

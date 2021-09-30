@@ -69,34 +69,26 @@ public class CarAgent : Agent
         agentRigidbody.centerOfMass = GameObject.Find("CenterOfMass").transform.localPosition;
         idleMeter = maxIdleTime;
         car.SetGear(1);
-        if (GetComponent<BehaviorParameters>().Model == null)
-        Debug.Log("Model Name Before : " +"null");
-        else
-        {
-            Debug.Log("Model Name Before : " + GetComponent<BehaviorParameters>().Model.ToString());
-        }
     }
 
     public void Start()
     {
-        setsCompleted = 0;
-        //Debug.Log("Agent Initialized.");
-        //initiallize behaviour
-        if (!Application.isEditor)
-        {
-            if (trainingArea.m_BehaviorNameOverrides.ContainsKey(GetComponent<BehaviorParameters>().BehaviorName))
-            {
-                Debug.Log("Overriding brain...");
-                OverrideModel();
+        //setsCompleted = 0;
+        //if (!Application.isEditor)
+        //{
+        //    if (trainingArea.m_BehaviorNameOverrides.ContainsKey(GetComponent<BehaviorParameters>().BehaviorName))
+        //    {
+        //        Debug.Log("Overriding brain...");
+        //        OverrideModel();
 
-            }
-            if (GetComponent<BehaviorParameters>().Model == null)
-                Debug.Log("Model Name After : " + "null");
-            else
-            {
-                Debug.Log("Model Name After : " + GetComponent<BehaviorParameters>().Model.ToString());
-            }
-        }
+        //    }
+        //    if (GetComponent<BehaviorParameters>().Model == null)
+        //        Debug.Log("Model Name After : " + "null");
+        //    else
+        //    {
+        //        Debug.Log("Model Name After : " + GetComponent<BehaviorParameters>().Model.ToString());
+        //    }
+        //}
 
 
     }

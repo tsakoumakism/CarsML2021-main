@@ -994,6 +994,8 @@ MonoBehaviour:
   - {fileID: 4056962299287415245, guid: 33d03df5e80730b4cadd5c9e46b3c93b, type: 3}
   - {fileID: 1872531552629456207, guid: c8f5e31c120104b48a3e81dc0ca0c9f4, type: 3}
   - {fileID: 3230038037554478139, guid: a1436d2df5909ff4b9400cfac73a2570, type: 3}
+  - {fileID: 4326807469211228263, guid: 847e0a3a183685441964377a0dd31bfd, type: 3}
+  - {fileID: 9159255839602904131, guid: c17e7c146f2ec034f8ad7af72284365c, type: 3}
   bd:
     blockPosition: {x: 0, y: 0, z: 0}
     blockRotation: {x: 0, y: 0, z: 0, w: 0}

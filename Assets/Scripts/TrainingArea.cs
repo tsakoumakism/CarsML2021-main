@@ -84,6 +84,7 @@ public class TrainingArea : MonoBehaviour
         }
         else
         {
+            //if we are in editor we use our inspector values
             //training_type_path = Application.dataPath + "/isTraining.json";
            // CheckTraining();
            //Just use the editor values if you are in editor.
@@ -94,11 +95,13 @@ public class TrainingArea : MonoBehaviour
             //training_type_path = Application.dataPath + "/isTraining.json";
         }
 
-        //read args to load models
+        //read args to load models, make sure it's training and in the app
+        if(!isTraining && !Application.isEditor)
         GetAssetPathFromCommandLine();
+
         LoadMap();
 
-
+        Debug.Log("Continue");
         if(isTraining)
         LoadOptionsForTraining();
 
@@ -153,12 +156,10 @@ public class TrainingArea : MonoBehaviour
             {
                 agentsToSpawn = 1;
                 CheckInferneceOptions();
-                agentPPO = inferPPO;
-                agentSAC = inferSAC;
 
             }
 
-            }
+           }
             else
             {
                 if (isTraining)
@@ -184,8 +185,8 @@ public class TrainingArea : MonoBehaviour
                 {
                     agentsToSpawn = 1;
                     //CheckInferneceOptions();
-                    agentPPO = inferPPO;
-                    agentSAC = inferSAC;
+                    //agentPPO = inferPPO;
+                    //agentSAC = inferSAC;
 
                 }
 
@@ -221,10 +222,6 @@ public class TrainingArea : MonoBehaviour
         {
             Debug.Log(a);
 
-            //Regex r = new Regex(@"(CarBrainSAC) ([^ ]+.onnx) (CarBrainPPO) ([^ ]+.onnx)", RegexOptions.Compiled | RegexOptions.IgnoreCase);
-            //MatchCollection matches = r.Matches(args);
-
-            //return r.Match(filename).Groups[1].Value;
         }
         Debug.Log("behaviours: ");
         foreach (KeyValuePair<string, string> pair in m_BehaviorNameOverrides)
@@ -266,37 +263,34 @@ public class TrainingArea : MonoBehaviour
     //spawn agents in an area around the specified position
     public void SpawnAgents(int agents, Vector3 _position, Quaternion _rotation)
     {
-        Debug.Log("Spawning " + agents + " agents at " + _position + " and rotation " + _rotation);
-        for (int i = 0; i < agents; i++)
-        {
-
-            if(agentPPO)
-                Instantiate(agentPrefabPPO, _position, _rotation, transform.Find("Agents"));
-            if(agentSAC)
-                Instantiate(agentPrefabSAC, _position, _rotation, transform.Find("Agents"));
-            
-           
-            //if (agentPPO && agentSAC)
-            //{
-            //    Instantiate(agentPrefabPPO, _position, _rotation, transform.Find("Agents"));
-            //    Instantiate(agentPrefabSAC, _position, _rotation, transform.Find("Agents"));
-            //}
-            //else if(!agentPPO && agentSAC)
-            //{
-            //   Instantiate(agentPrefabSAC, _position, _rotation, transform.Find("Agents"));
-            //}
-            //else if (agentPPO && !agentSAC)
-            //{
-            //    Instantiate(agentPrefabPPO, _position, _rotation, transform.Find("Agents"));
-            //}
-            //if (heuristic) 
-            //{
-            //    Instantiate(agentPrefabHeuristic, _position, _rotation, transform.Find("Agents"));
-            //}    
-        }
-
         if (heuristic)
+        {
             Instantiate(agentPrefabHeuristic, _position, _rotation, transform.Find("Agents"));
+        }
+        else if(isTraining)
+        {
+            Debug.Log("Spawning " + agents + " agents at " + _position + " and rotation " + _rotation);
+            for (int i = 0; i < agents; i++)
+            {
+                if (agentPPO)
+                    Instantiate(agentPrefabPPO, _position, _rotation, transform.Find("Agents"));
+                if (agentSAC)
+                    Instantiate(agentPrefabSAC, _position, _rotation, transform.Find("Agents"));
+            }
+        }
+        else
+        {
+            if (inferPPO)
+            {
+                Instantiate(agentPrefabPPO, _position, _rotation, transform.Find("Agents"));
+            }
+            if (inferSAC)
+            {
+                Instantiate(agentPrefabSAC, _position, _rotation, transform.Find("Agents"));
+            }
+        }
+  
+            
 
 
 
@@ -348,16 +342,19 @@ public class TrainingArea : MonoBehaviour
             while((line = sr.ReadLine()) != null){ 
                 bd = new BlockData();
                 bd = JsonUtility.FromJson<BlockData>(line);
-                foreach(GameObject item in roadBuildList){  
+                foreach(GameObject item in roadBuildList){
                     //Debug.Log("script name" + bd.name + " || listname:" + item.name);
-                    if(bd.name == item.name){
-                        var go = Instantiate(item,bd.blockPosition,bd.blockRotation) as GameObject;
+                    if (bd.name == item.name)
+                    {
+                        var go = Instantiate(item, bd.blockPosition, bd.blockRotation) as GameObject;
                         go.transform.SetParent(GameObject.Find("Track").transform);
                         go.tag = "wall";
                         go.layer = 10;
-                        go.transform.GetChild(0).gameObject.layer = 10;
-                        go.transform.GetChild(0).gameObject.tag = "wall";
-                        go.transform.GetChild(1).gameObject.tag = "checkpoint";
+                        if (go.transform.childCount > 0) { 
+                            go.transform.GetChild(0).gameObject.layer = 10;
+                            go.transform.GetChild(0).gameObject.tag = "wall";
+                            go.transform.GetChild(1).gameObject.tag = "checkpoint";
+                        }
                         go.transform.localPosition = bd.blockPosition;
                         go.transform.localRotation = bd.blockRotation;
                     }
@@ -465,13 +462,17 @@ public class TrainingArea : MonoBehaviour
     GameObject parentObj = GameObject.Find("Track");
     Debug.Log(parentObj);
     foreach(Transform child in parentObj.transform){
-        Transform checkPointChild = child.transform.GetChild(1);
-        if(counter % checkPointDiff == 0){
-            checkPointChild.GetComponent<Checkpoint>().isEnabled = true;
-            checkPointChild.GetComponent<Checkpoint>().checkpointNumber = cpCounter;
-            cpCounter++;
-        }
-        counter++;
+        if(child.transform.childCount > 0)
+            {
+                Transform checkPointChild = child.transform.GetChild(1);
+                if (counter % checkPointDiff == 0)
+                {
+                    checkPointChild.GetComponent<Checkpoint>().isEnabled = true;
+                    checkPointChild.GetComponent<Checkpoint>().checkpointNumber = cpCounter;
+                    cpCounter++;
+                }
+                counter++;
+            }
     }
 }
 
