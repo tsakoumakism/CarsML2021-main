@@ -46,6 +46,8 @@ public class TrainingArea : MonoBehaviour
     private CarAcademy academy;
     private GameObject[] cameraList;
 
+    public List<Checkpoint> checkpointList = new List<Checkpoint>();
+    public List<Checkpoint> checkpointPassingList = new List<Checkpoint>();
     private int currentCam;
 
 
@@ -67,7 +69,7 @@ public class TrainingArea : MonoBehaviour
 
     void Awake()
     {
-
+        
         if (!Application.isEditor)
         {
             training_type_path = Path.Combine(Application.dataPath, "../../mainBuild/CarsML2021-main_Data") + "/isTraining.json";
@@ -120,7 +122,8 @@ public class TrainingArea : MonoBehaviour
         //create finish line
         finishLinePos = new Vector3(startPosition.x, startPosition.y + 1.5f, startPosition.z - 3f);
         Instantiate(finishLine, finishLinePos, Quaternion.Euler(0, 0, 0), transform.Find("Track"));
-
+        finishLine.GetChild(0).transform.localPosition = new Vector3(0,-1.54f, 0);
+        finishLine.GetChild(0).transform.localScale = new Vector3(9,0.1f,3);
 
         //initialize cameras (create list, find active one and store index)
         cameraList = GameObject.FindGameObjectsWithTag("camera");
@@ -166,6 +169,7 @@ public class TrainingArea : MonoBehaviour
                 {
                     //when in editor, values are controlled from the editor
                     agentsToSpawn = numOfAgents;
+                    Debug.Log(numOfAgents);
                     if (spawnAgents && academy.spawnAgents)
                     {
                         if (academy.agentsPerArea != 0)
@@ -193,10 +197,14 @@ public class TrainingArea : MonoBehaviour
         }
         SpawnAgents(agentsToSpawn, startPosition, Quaternion.Euler(0, 0, 0));
 
+    }
 
 
-
-
+    private void Start()
+    {
+        Debug.Log("IsTraining " + isTraining + "\nSpawn Agents " + spawnAgents + "\nMapName " + mapName + "\nAgentPPO " + agentPPO + "\nAgent SAC " + agentSAC + "\nHeuristic " + heuristic
+            + "\nInfer PPO " + inferPPO + "\nInfer Sac " + inferSAC + "\nnum of agents " + numOfAgents + "\nSuccessReward " + successReward + "\nSpeedReward " + speedReward + 
+            "\ncollisionPenalty  " + collisionPenalty);
     }
 
     void GetAssetPathFromCommandLine()
@@ -244,7 +252,35 @@ public class TrainingArea : MonoBehaviour
 
     }
 
+    public Checkpoint getNextCheckpoint()
+    {
+        if (checkpointPassingList.Count <= 0)
+            ResetCheckpoints();
+        return checkpointPassingList[0];
+    }
 
+    public void PopCheckpoint(Checkpoint current)
+    {
+        foreach(Checkpoint cp in checkpointPassingList)
+        {
+            if(current == cp)
+            {
+                    checkpointPassingList.Remove(current);
+                
+            }
+        }
+    }
+
+    public void ResetCheckpoints()
+    {
+        checkpointPassingList.Clear();
+        foreach (Checkpoint cp in checkpointList)
+        {
+            cp.isPassed = false;
+            checkpointPassingList.Add(cp);
+        }
+    
+    }
 
     private void Update()
     {
@@ -329,10 +365,7 @@ public class TrainingArea : MonoBehaviour
         ResetCheckpoints();
     }
 
-    private void ResetCheckpoints()
-    {
-        //checkpoints are manual for now
-    }
+ 
 
 
     private void LoadMap(){
@@ -464,14 +497,19 @@ public class TrainingArea : MonoBehaviour
     foreach(Transform child in parentObj.transform){
         if(child.transform.childCount > 0)
             {
-                Transform checkPointChild = child.transform.GetChild(1);
-                if (counter % checkPointDiff == 0)
+                for(int i = 1; i < child.transform.childCount; i++)
                 {
-                    checkPointChild.GetComponent<Checkpoint>().isEnabled = true;
-                    checkPointChild.GetComponent<Checkpoint>().checkpointNumber = cpCounter;
-                    cpCounter++;
+                    Transform checkPointChild = child.transform.GetChild(i);
+                    if (counter % checkPointDiff == 0)
+                    {
+                        checkPointChild.GetComponent<Checkpoint>().isEnabled = true;
+                        checkPointChild.GetComponent<Checkpoint>().checkpointNumber = cpCounter;
+                        checkpointList.Add(checkPointChild.GetComponent<Checkpoint>());
+                        cpCounter++;
+                    }
+                    counter++;
                 }
-                counter++;
+                
             }
     }
 }

@@ -16,7 +16,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &8045052495525894213
 Transform:
   m_ObjectHideFlags: 0
@@ -46,13 +46,14 @@ MonoBehaviour:
   m_SensorName: FrontSensor
   m_DetectableTags:
   - wall
+  - checkpoint
   m_RaysPerDirection: 16
   m_MaxRayDegrees: 60
   m_SphereCastRadius: 0
   m_RayLength: 80
   m_RayLayerMask:
     serializedVersion: 2
-    m_Bits: 1024
+    m_Bits: 1536
   m_ObservationStacks: 1
   rayHitColor: {r: 1, g: 0, b: 0, a: 1}
   rayMissColor: {r: 1, g: 1, b: 1, a: 1}
@@ -74,6 +75,7 @@ GameObject:
   - component: {fileID: 693838929071877505}
   - component: {fileID: 1451786184476792636}
   - component: {fileID: 5060105050577723736}
+  - component: {fileID: 362273037407174605}
   m_Layer: 8
   m_Name: CarAgentSAC
   m_TagString: Player
@@ -146,8 +148,8 @@ MonoBehaviour:
     maxStep: 0
   hasUpgradedFromAgentParameters: 1
   MaxStep: 0
-  maxIdleTime: 10
-  monitorInfo: 0
+  maxIdleTime: 5
+  monitorInfo: 1
   speed: 0
   lapsCompleted: 0
   lapTime: 0
@@ -167,8 +169,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_BrainParameters:
-    VectorObservationSize: 1
-    NumStackedVectorObservations: 10
+    VectorObservationSize: 4
+    NumStackedVectorObservations: 2
     m_ActionSpec:
       m_NumContinuousActions: 2
       BranchSizes: 
@@ -176,7 +178,7 @@ MonoBehaviour:
     VectorActionDescriptions: []
     VectorActionSpaceType: 1
     hasUpgradedBrainParametersWithActionSpec: 1
-  m_Model: {fileID: 0}
+  m_Model: {fileID: 5022602860645237092, guid: 898b9e4f5a5fda64a82be9f7543a0673, type: 3}
   m_InferenceDevice: 0
   m_BehaviorType: 0
   m_BehaviorName: CarBrainSAC
@@ -196,7 +198,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3a5c9d521e5ef4759a8246a07d52221e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  DecisionPeriod: 5
+  DecisionPeriod: 1
   TakeActionsBetweenDecisions: 0
 --- !u!114 &1451786184476792636
 MonoBehaviour:
@@ -248,6 +250,34 @@ MonoBehaviour:
   maxEngineRpm: 6000
   maxPowerRpm: 3500
   idleRpm: 1000
+--- !u!114 &362273037407174605
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1833037495542234876}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6bb6b867a41448888c1cd4f99643ad71, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SensorName: FrontSensor
+  m_DetectableTags:
+  - wall
+  - checkpoint
+  m_RaysPerDirection: 16
+  m_MaxRayDegrees: 90
+  m_SphereCastRadius: 3
+  m_RayLength: 80
+  m_RayLayerMask:
+    serializedVersion: 2
+    m_Bits: 1536
+  m_ObservationStacks: 1
+  rayHitColor: {r: 1, g: 0, b: 0, a: 1}
+  rayMissColor: {r: 1, g: 1, b: 1, a: 1}
+  m_StartVerticalOffset: 0.5
+  m_EndVerticalOffset: 0.5
 --- !u!1 &2076497836910551491
 GameObject:
   m_ObjectHideFlags: 0
@@ -802,7 +832,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &8207106118930763301
 Transform:
   m_ObjectHideFlags: 0

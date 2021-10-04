@@ -89,7 +89,7 @@ public class TR_OnClick : MonoBehaviour
         }
 
         string[] directories = Directory.GetDirectories(path);
-        string[] fileNames;
+
 
 
         if (directories.Length > 0)
@@ -178,7 +178,7 @@ public class TR_OnClick : MonoBehaviour
         //launch the player for testing the selected model
         string strCmdText;
         string envPath;
-        string sceneName = "CarsML2021-main.exe";
+
         if (!Application.isEditor)
             envPath = Path.Combine(Application.dataPath, "../../") + "/trainingScene/CarsML2021-main.exe";
         else

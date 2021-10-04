@@ -403,7 +403,7 @@ MonoBehaviour:
     maxStep: 0
   hasUpgradedFromAgentParameters: 1
   MaxStep: 0
-  maxIdleTime: 10
+  maxIdleTime: 3
   monitorInfo: 1
   speed: 0
   lapsCompleted: 0
@@ -424,8 +424,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_BrainParameters:
-    VectorObservationSize: 1
-    NumStackedVectorObservations: 10
+    VectorObservationSize: 2
+    NumStackedVectorObservations: 11
     m_ActionSpec:
       m_NumContinuousActions: 2
       BranchSizes: 
@@ -722,7 +722,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 07f44fe3e9c462146a7769b976c50ec4, type: 2}
+  - {fileID: 2100000, guid: 560c7cd0ca90f564fbfc49a061e2277c, type: 2}
   - {fileID: 2100000, guid: ab035d7682921704a9015ac353311d57, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
@@ -1132,13 +1132,14 @@ MonoBehaviour:
   m_SensorName: FrontSensor
   m_DetectableTags:
   - wall
+  - checkpoint
   m_RaysPerDirection: 16
   m_MaxRayDegrees: 60
   m_SphereCastRadius: 0
   m_RayLength: 80
   m_RayLayerMask:
     serializedVersion: 2
-    m_Bits: 1024
+    m_Bits: 1536
   m_ObservationStacks: 1
   rayHitColor: {r: 1, g: 0, b: 0, a: 1}
   rayMissColor: {r: 1, g: 1, b: 1, a: 1}

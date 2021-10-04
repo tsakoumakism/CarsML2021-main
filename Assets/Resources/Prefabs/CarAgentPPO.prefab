@@ -407,13 +407,14 @@ MonoBehaviour:
   hasUpgradedFromAgentParameters: 1
   MaxStep: 0
   maxIdleTime: 10
-  monitorInfo: 0
+  monitorInfo: 1
   speed: 0
   lapsCompleted: 0
   lapTime: 0
   prevLapTime: 0
   bestLap: 0
   mostLaps: 0
+  trackCheckpoints: {fileID: 0}
 --- !u!114 &6788058488710904170
 MonoBehaviour:
   m_ObjectHideFlags: 0

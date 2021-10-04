@@ -16,7 +16,6 @@ public class TM_OnClickObject : MonoBehaviour
     string emp;
     string config_path;
     string env_path;
-    string env;
     string options_path;
     string mapPath;
     //---------------------------------------------------------------------------------
@@ -90,7 +89,6 @@ public class TM_OnClickObject : MonoBehaviour
         config_fileName = "trainer_config.yaml";
         config_path = Path.Combine(Application.dataPath, "../") +  "/config/" + config_fileName;
         env_path = Path.Combine(Application.dataPath, "../") + "/trainingScene";
-        env = "trainingScene";
         options_path = Application.dataPath + "/options.json";
 
         d_map = GameObject.Find("MapDropDown").GetComponent<Dropdown>();
