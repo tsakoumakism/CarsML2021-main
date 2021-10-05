@@ -30,7 +30,6 @@ public class CarAgent : Agent
 
     private bool respawned = false;
 
-    [HideInInspector] Vector3 localVelocity;
     [HideInInspector] public float speed;
 
     //performance variables
@@ -146,8 +145,6 @@ public class CarAgent : Agent
         //car vision
         //handled by the RayPerceptionSensor component
         //car velocity
-        //localVelocity = transform.InverseTransformDirection(agentRigidbody.velocity);
-       // localVelocity = transform.TransformDirection(agentRigidbody.velocity);
         sensor.AddObservation(agentRigidbody.velocity);
 
         sensor.AddObservation(car.SteeringAngle);
@@ -177,7 +174,7 @@ public class CarAgent : Agent
             car.BrakePedalPosition = 0f;
             car.GasPedalPosition = actionBuffers.ContinuousActions[0];
         }
-        speed = localVelocity.magnitude;
+        speed = agentRigidbody.velocity.magnitude;
 
         GiveBreakPenalty(actionBuffers.ContinuousActions[0]);
 
@@ -209,7 +206,7 @@ public class CarAgent : Agent
 
     void GiveBreakPenalty(float continuousAction)
     {
-        if (continuousAction < 0 && localVelocity.magnitude < 10)
+        if (continuousAction < 0 && agentRigidbody.velocity.magnitude < 10)
         {
             AddReward(continuousAction * 0.0008f);
         }

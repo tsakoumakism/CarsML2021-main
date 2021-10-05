@@ -1059,8 +1059,8 @@ MonoBehaviour:
   mapName: selectedMap
   isTraining: 1
   spawnAgents: 1
-  agentPPO: 1
-  agentSAC: 0
+  agentPPO: 0
+  agentSAC: 1
   heuristic: 0
   inferPPO: 0
   inferSAC: 0

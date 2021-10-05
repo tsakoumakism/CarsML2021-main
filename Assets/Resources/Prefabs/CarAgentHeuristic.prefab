@@ -273,8 +273,8 @@ GameObject:
   - component: {fileID: 2788649382245262226}
   - component: {fileID: 5314169158477287355}
   - component: {fileID: 3930300441486978734}
-  - component: {fileID: 2401545105129507851}
   - component: {fileID: -6750131911600585018}
+  - component: {fileID: 7541283918516679379}
   m_Layer: 8
   m_Name: CarAgentHeuristic
   m_TagString: Player
@@ -345,7 +345,7 @@ MonoBehaviour:
     maxStep: 0
   hasUpgradedFromAgentParameters: 1
   MaxStep: 0
-  maxIdleTime: 3
+  maxIdleTime: 10
   monitorInfo: 1
   speed: 0
   lapsCompleted: 0
@@ -366,8 +366,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_BrainParameters:
-    VectorObservationSize: 4
-    NumStackedVectorObservations: 2
+    VectorObservationSize: 6
+    NumStackedVectorObservations: 10
     m_ActionSpec:
       m_NumContinuousActions: 2
       BranchSizes: 
@@ -375,12 +375,12 @@ MonoBehaviour:
     VectorActionDescriptions: []
     VectorActionSpaceType: 1
     hasUpgradedBrainParametersWithActionSpec: 1
-  m_Model: {fileID: 5022602860645237092, guid: ca4f70f7ac5f03f45ab1cea6f59ab2f6, type: 3}
+  m_Model: {fileID: 5022602860645237092, guid: 57b9b7f54d4053947930d13f8769b397, type: 3}
   m_InferenceDevice: 0
   m_BehaviorType: 1
   m_BehaviorName: CarBrainPPO
   TeamId: 0
-  m_UseChildSensors: 1
+  m_UseChildSensors: 0
   m_UseChildActuators: 1
   m_ObservableAttributeHandling: 0
 --- !u!114 &2788649382245262226
@@ -395,7 +395,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3a5c9d521e5ef4759a8246a07d52221e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  DecisionPeriod: 5
+  DecisionPeriod: 1
   TakeActionsBetweenDecisions: 0
 --- !u!114 &5314169158477287355
 MonoBehaviour:
@@ -447,33 +447,6 @@ MonoBehaviour:
   maxEngineRpm: 6000
   maxPowerRpm: 3500
   idleRpm: 1000
---- !u!114 &2401545105129507851
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1946491787853393336}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6bb6b867a41448888c1cd4f99643ad71, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_SensorName: CheckpointSensor
-  m_DetectableTags:
-  - checkpoint
-  m_RaysPerDirection: 10
-  m_MaxRayDegrees: 45
-  m_SphereCastRadius: 0.3
-  m_RayLength: 80
-  m_RayLayerMask:
-    serializedVersion: 2
-    m_Bits: 512
-  m_ObservationStacks: 1
-  rayHitColor: {r: 0, g: 1, b: 0.10661459, a: 1}
-  rayMissColor: {r: 0.13203098, g: 0.20423697, b: 0.6509434, a: 1}
-  m_StartVerticalOffset: 0.5
-  m_EndVerticalOffset: 0.5
 --- !u!114 &-6750131911600585018
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -499,6 +472,33 @@ MonoBehaviour:
   m_ObservationStacks: 1
   rayHitColor: {r: 1, g: 0, b: 0, a: 1}
   rayMissColor: {r: 1, g: 1, b: 1, a: 1}
+  m_StartVerticalOffset: 0.5
+  m_EndVerticalOffset: 0.5
+--- !u!114 &7541283918516679379
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1946491787853393336}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6bb6b867a41448888c1cd4f99643ad71, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SensorName: CheckpointSensor
+  m_DetectableTags:
+  - checkpoint
+  m_RaysPerDirection: 10
+  m_MaxRayDegrees: 45
+  m_SphereCastRadius: 0.3
+  m_RayLength: 80
+  m_RayLayerMask:
+    serializedVersion: 2
+    m_Bits: 512
+  m_ObservationStacks: 1
+  rayHitColor: {r: 0, g: 1, b: 0.10661459, a: 1}
+  rayMissColor: {r: 0.13203098, g: 0.20423697, b: 0.6509434, a: 1}
   m_StartVerticalOffset: 0.5
   m_EndVerticalOffset: 0.5
 --- !u!1 &1946494749942712990
