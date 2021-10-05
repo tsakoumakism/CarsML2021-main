@@ -69,7 +69,7 @@ public class CarAgent : Agent
         carEngine = GetComponent<Engine>();
         agentRigidbody = GetComponent<Rigidbody>();
         trainingArea = transform.parent.GetComponentInParent<TrainingArea>();
-
+        speed = agentRigidbody.velocity.magnitude;
         startingPosition = transform.localPosition;
         startingRotation = transform.rotation;
 
@@ -80,22 +80,7 @@ public class CarAgent : Agent
 
     public void Start()
     {
-        //setsCompleted = 0;
-        //if (!Application.isEditor)
-        //{
-        //    if (trainingArea.m_BehaviorNameOverrides.ContainsKey(GetComponent<BehaviorParameters>().BehaviorName))
-        //    {
-        //        Debug.Log("Overriding brain...");
-        //        OverrideModel();
 
-        //    }
-        //    if (GetComponent<BehaviorParameters>().Model == null)
-        //        Debug.Log("Model Name After : " + "null");
-        //    else
-        //    {
-        //        Debug.Log("Model Name After : " + GetComponent<BehaviorParameters>().Model.ToString());
-        //    }
-        //}
 
     }
 
@@ -127,6 +112,9 @@ public class CarAgent : Agent
         //{
         //    dejaVu = false;
         //}
+
+
+        Debug.DrawRay(transform.position, agentRigidbody.velocity,Color.green);
         
        
             if (maxReward < GetCumulativeReward())
@@ -136,7 +124,7 @@ public class CarAgent : Agent
             string hudTextTraining = "Reward: " + GetCumulativeReward().ToString("0.00") +
                         "\nMax Reward: " + maxReward.ToString("0.00") +
                         "\nStep Count: " + StepCount;
-            string hudTextDriving = "\nSpeed: " + speed.ToString("0.00") +
+            string hudTextDriving = "\nSpeed: " + agentRigidbody.velocity.magnitude.ToString("0.00") +
                         "\nTorque: " + car.carEngine.Torque.ToString("0") +
                         "\nRPM: " + car.carEngine.Rpm.ToString("0") +
                         "\nTireRPM: " + car.frontDriverW.rpm.ToString("0") +
@@ -158,13 +146,19 @@ public class CarAgent : Agent
         //car vision
         //handled by the RayPerceptionSensor component
         //car velocity
-        localVelocity = transform.InverseTransformDirection(agentRigidbody.velocity);
-        sensor.AddObservation(localVelocity);
+        //localVelocity = transform.InverseTransformDirection(agentRigidbody.velocity);
+       // localVelocity = transform.TransformDirection(agentRigidbody.velocity);
+        sensor.AddObservation(agentRigidbody.velocity);
+
+        sensor.AddObservation(car.SteeringAngle);
 
         Vector3 checkpointForward = trainingArea.getNextCheckpoint().transform.forward;
         float directionDot = Vector3.Dot(transform.forward, checkpointForward);
         sensor.AddObservation(directionDot);
 
+        sensor.AddObservation(isColliding);
+
+        //sensor.AddObservation(trainingArea.checkpointList.);
 
     }
 
@@ -187,10 +181,6 @@ public class CarAgent : Agent
 
         GiveBreakPenalty(actionBuffers.ContinuousActions[0]);
 
-        if(speed < 10.0f)
-        {
-            AddReward(-0.01f);
-        }
         float movementScore = GiveLowSpeedPenalty();
 
         movementScore += tickPenalty;

@@ -10,6 +10,7 @@ using Unity.Barracuda;
 
 public class TrainingArea : MonoBehaviour
 {
+    public bool isBuildForDatacollection = false;
     [Header("Training Area Settings")]
     public CarAgent agentPrefabPPO;
     public CarAgent agentPrefabSAC;
@@ -39,7 +40,6 @@ public class TrainingArea : MonoBehaviour
     public Text trainingHUD;
     public Text drivingHUD;
     public Text performanceHUD;
-    //public TextMeshProUGUI areaMonitor;
     public Vector3 startPosition;
     private Vector3 finishLinePos;
     private CarAgent[] agentList;
@@ -50,7 +50,7 @@ public class TrainingArea : MonoBehaviour
     public List<Checkpoint> checkpointPassingList = new List<Checkpoint>();
     private int currentCam;
 
-
+    
     //performance
     public float recordLap = Mathf.Infinity;
 
@@ -72,14 +72,18 @@ public class TrainingArea : MonoBehaviour
         
         if (!Application.isEditor)
         {
+            if(!isBuildForDatacollection)
             training_type_path = Path.Combine(Application.dataPath, "../../mainBuild/CarsML2021-main_Data") + "/isTraining.json";
+            else training_type_path = Path.Combine(Application.dataPath, "../") + "/isTraining.json";
             CheckTraining();
             if (isTraining) {
                 options_path = Path.Combine(Application.dataPath, "../../mainBuild/CarsML2021-main_Data") + "/options.json";
             }
             else
             {
+                if(!isBuildForDatacollection)
                 inference_options_path = Path.Combine(Application.dataPath, "../../mainBuild/CarsML2021-main_Data") + "/InferenceOptions.json";
+                else inference_options_path = Path.Combine(Application.dataPath, "../") + "/InferenceOptions.json";
             }
             
             //training_type_path = Path.Combine(Application.dataPath, "../../mainBuild/CarsML2021-main_Data") + "/isTraining.json";
@@ -188,9 +192,6 @@ public class TrainingArea : MonoBehaviour
                 else
                 {
                     agentsToSpawn = 1;
-                    //CheckInferneceOptions();
-                    //agentPPO = inferPPO;
-                    //agentSAC = inferSAC;
 
                 }
 
@@ -236,19 +237,6 @@ public class TrainingArea : MonoBehaviour
         {
             Debug.Log("Behaviour: " + pair.Key + " -- " + pair.Value);
         }
-
-        //if (Application.isEditor)
-        //{
-
-        //    var value1 = @"E:\CarsML2021-main/mainBuild/results/pposac1\CarBrainSAC.onnx";
-        //    var key1 = "CarBrainSAC";
-        //    m_BehaviorNameOverrides[key1] = value1;
-
-        //    var value2 = @"E:\CarsML2021-main/mainBuild/results/pposac1\CarBrainPPO.onnx";
-        //    var key2 = "CarBrainPPO";
-        //    m_BehaviorNameOverrides[key2] = value2;
-
-        //}
 
     }
 
@@ -339,16 +327,8 @@ public class TrainingArea : MonoBehaviour
         drivingHUD.text = drivingText;
         performanceHUD.text = performanceText;
     }
-    /*
-    public void UpdateStats(float laptime)
-    {
-        if (laptime < recordLap)
-        {
-            recordLap = laptime;
-        }
-        UpdateMonitor("Best Lap: " + recordLap);
-    }
-    */
+
+
 
     //useless for now
     public void ResetArea()

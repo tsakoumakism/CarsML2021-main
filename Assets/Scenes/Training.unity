@@ -97,7 +97,8 @@ LightmapSettings:
     m_ExportTrainingData: 0
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
-  m_LightingDataAsset: {fileID: 0}
+  m_LightingDataAsset: {fileID: 112000000, guid: bdfa760185fad4f44867e5f699ddae4c,
+    type: 2}
   m_UseShadowmask: 1
 --- !u!196 &4
 NavMeshSettings:
@@ -1048,17 +1049,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 813e04e651726b848967f0db150fd90a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isBuildForDatacollection: 0
   agentPrefabPPO: {fileID: 5835202638623221330, guid: 8694103ecf8348d40a32db1df157fe08,
     type: 3}
   agentPrefabSAC: {fileID: 7522652056596063935, guid: 17b4aed6fc506ce40a091a7678b27342,
     type: 3}
   agentPrefabHeuristic: {fileID: 5475440274307165838, guid: 6d07e68016edae143a60631b5d480c85,
     type: 3}
-  mapName: simpleCircuit
+  mapName: selectedMap
   isTraining: 1
   spawnAgents: 1
-  agentPPO: 0
-  agentSAC: 1
+  agentPPO: 1
+  agentSAC: 0
   heuristic: 0
   inferPPO: 0
   inferSAC: 0

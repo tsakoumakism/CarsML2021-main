@@ -20,6 +20,9 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/TestModelArena.unity
     guid: 7c2de58eaebe12744be296c21feec4fb
+  - enabled: 0
+    path: Assets/Scenes/TestModelDataCollect.unity
+    guid: fcbac1c33d19e0b47b7de58cbf8b8b91
   - enabled: 1
     path: Assets/Scenes/Training.unity
     guid: 72971604b12e82943a919c757c030277
