@@ -205,6 +205,10 @@ public class TM_OnClickObject : MonoBehaviour
         //confPath = Path.Combine(Application.dataPath, "../../") +  "/config/" + config_fileName;
         //else
         confPath = Path.Combine(Application.dataPath, "../") +  "/config/" + config_fileName;
+        if(d_algorithm.value == 1)
+        {
+            confPath = Path.Combine(Application.dataPath, "../../") + "/config/" + "trainer_config_sac.yaml";
+        }
         string noGraphics = toggle_noGraphics ? " --no-graphics" : " ";
 
         strCmdText = "/K mlagents-learn " + confPath + " --time-scale="+txt_timeScale+" --run-id="+txt_runID + " "+ CheckRunID(txt_runID) + 
