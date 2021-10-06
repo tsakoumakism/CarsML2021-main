@@ -1088,9 +1088,9 @@ MonoBehaviour:
   - {fileID: 4326807469211228263, guid: 847e0a3a183685441964377a0dd31bfd, type: 3}
   - {fileID: 9159255839602904131, guid: c17e7c146f2ec034f8ad7af72284365c, type: 3}
   bd:
-    blockPosition: {x: 0, y: 0, z: 0}
-    blockRotation: {x: 0, y: 0, z: 0, w: 0}
-    name: 
+    blockPosition: {x: 20.859612, y: -96.24474, z: -11.540613}
+    blockRotation: {x: -0.5, y: 0.5, z: 0.5, w: 0.5}
+    name: RoadBlock_BigCurve
 --- !u!4 &1957397243
 Transform:
   m_ObjectHideFlags: 0

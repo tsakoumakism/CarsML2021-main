@@ -67,6 +67,7 @@
     <Compile Include="Assets\Scripts\FreeCam.cs" />
     <Compile Include="Assets\Scripts\TrackSpawner.cs" />
     <Compile Include="Assets\Scripts\TrainingArea.cs" />
+    <Compile Include="Assets\Scripts\TrainingAreaEditor.cs" />
     <Compile Include="Assets\UI\MainMenuUI\MM_OnCickUI.cs" />
     <Compile Include="Assets\UI\TestRunUI\TR_OnClick.cs" />
     <Compile Include="Assets\UI\TestRunUI\TR_OnClickDataCollect.cs" />

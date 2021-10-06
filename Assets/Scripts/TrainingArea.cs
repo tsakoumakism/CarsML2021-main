@@ -348,7 +348,7 @@ public class TrainingArea : MonoBehaviour
  
 
 
-    private void LoadMap(){
+    public void LoadMap(){
         string fileName = mapName;
         using(StreamReader sr = new StreamReader(Application.persistentDataPath + "/" + fileName + ".json")){
             string line;
